@@ -643,7 +643,7 @@
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
-            <div><strong>Email</strong><br><a href="/cdn-cgi/l/email-protection#ea80858284aa87858584998283848f98929d8f988199c4898587"><span class="__cf_email__" data-cfemail="85efeaedebc5e8eaeaebf6edecebe0f7fdf2e0f7eef6abe6eae8">[email&#160;protected]</span></a></div>
+            <div><strong>Email</strong><br><a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
@@ -705,7 +705,7 @@
 </footer>
 
 <!-- ════════ SCROLL REVEAL ════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   setTimeout(function() {
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
@@ -720,4 +720,13 @@
           observer.unobserve(entry.target);
         }
       });
-    },
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+  } catch(e) {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+  }
+</script>
+
+</body>
+</html>
