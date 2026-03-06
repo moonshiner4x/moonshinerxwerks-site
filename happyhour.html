@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Hour Radar — moonshinerXwerks LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
+    --text: #F0EDE8; --text-secondary: #8A8A8A; --accent: #F0A050;
+    --accent-dim: rgba(240,160,80,0.1); --border: #222222; --radius: 16px;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
+  .logo-img:hover { opacity: 1; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; transition: opacity 0.25s !important; }
+  .nav-cta:hover { opacity: 0.85; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+
+  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; }
+  .app-hero-top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+  .app-icon { width: 88px; height: 88px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; background: linear-gradient(135deg, #2D1E0E, #3A2510); box-shadow: 0 8px 32px rgba(240,160,80,0.15); }
+  .app-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
+  .app-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 620px; line-height: 1.7; margin-bottom: 32px; }
+  .app-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .meta-chip { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 0.84rem; color: var(--text-secondary); }
+  .meta-chip strong { color: var(--text); }
+
+  .features-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .features-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 48px; letter-spacing: -0.02em; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all 0.3s ease; }
+  .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(240,160,80,0.06); }
+  .feature-icon { width: 44px; height: 44px; background: var(--accent-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 1.2rem; }
+  .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 8px; }
+  .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
+  .back-link:hover { color: var(--text); }
+
+  footer { border-top: 1px solid var(--border); padding: 44px 32px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-left { display: flex; align-items: center; gap: 24px; }
+  .footer-logo-img { height: 56px; opacity: 0.7; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+  .footer-socials { display: flex; gap: 10px; }
+  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
+  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.7s ease both; }
+  .fade-in-d1 { animation-delay: 0.1s; }
+  .fade-in-d2 { animation-delay: 0.2s; }
+  .fade-in-d3 { animation-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .mobile-toggle { display: block; }
+    .app-hero { padding: 140px 20px 60px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .features-section { padding: 0 20px 60px; }
+    .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#legal">Legal</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="app-hero">
+  <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
+  <div class="app-hero-top fade-in fade-in-d1">
+    <div class="app-icon">🍻</div>
+    <h1>Happy Hour Radar</h1>
+  </div>
+  <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. Built for Bend, Oregon, it combines real-time deal browsing, social planning, and crowd reporting into a seamless mobile experience.</p>
+  <div class="app-meta fade-in fade-in-d3">
+    <div class="meta-chip"><strong>📱 Platform</strong> iPhone</div>
+    <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
+  </div>
+</section>
+
+<section class="features-section">
+  <h2 class="fade-in">Features</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Venue Discovery on Map</h3>
+      <p>Browse all local happy hour venues on an interactive map with custom logo pins, filterable by vibe (Chill, Craft Beer, Outdoor) and activities (Trivia, Live Music, Pool).</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Live Deal Browsing</h3>
+      <p>Filter venues to show only those with currently active happy hour deals, with deal details, timing, and crowd levels at a glance.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3>Crowd Reporting</h3>
+      <p>Users report and view real-time crowd density — Empty, Comfortable, Busy, or Packed — so you know what you're walking into.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎉</div>
+      <h3>Social Group Planning</h3>
+      <p>Create plans at a venue, invite contacts, RSVP, and coordinate meetups with smart time defaults that snap to deal start times.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>Proximity & Timed Alerts</h3>
+      <p>Push notifications 15 minutes before a deal starts and 30 minutes before it ends, with location-based check-in prompts when you're nearby.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⭐</div>
+      <h3>Visit Tracking & Favorites</h3>
+      <p>Log check-ins, track visited venues, and save favorites. Build your personal map of Bend's best spots over time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏪</div>
+      <h3>Business Owner Tools</h3>
+      <p>Venue claiming, deal management, logo uploads, and real-time announcements — like "Just tapped a new keg" — to drive foot traffic.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>Ratings & Reviews</h3>
+      <p>Star ratings with optional comments per venue so the community can surface the best happy hours in town.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="GitHub">GH</a>
+      <a href="#" aria-label="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
