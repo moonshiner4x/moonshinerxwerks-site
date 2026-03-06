@@ -16,7 +16,6 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
   .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
   .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
@@ -26,18 +25,21 @@
   .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
-
   .legal-content { max-width: 800px; margin: 0 auto; padding: 160px 32px 100px; }
   .legal-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 12px; }
   .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
   .legal-content h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin: 40px 0 16px; }
+  .legal-content h3 { font-family: var(--font-body); font-size: 1.0rem; font-weight: 700; margin: 24px 0 12px; color: var(--text); }
   .legal-content p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
   .legal-content ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin: 0 0 16px 24px; }
   .legal-content li { margin-bottom: 8px; }
   .legal-content a { color: var(--text); }
+  .legal-content strong { color: var(--text); }
+  .legal-content em { color: var(--text-secondary); font-style: italic; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
   .back-link:hover { color: var(--text); }
-
+  .legal-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  .closing-note { font-size: 0.85rem; color: var(--text-secondary); font-style: italic; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
   footer { border-top: 1px solid var(--border); padding: 44px 32px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .footer-left { display: flex; align-items: center; gap: 24px; }
@@ -46,7 +48,6 @@
   .footer-socials { display: flex; gap: 10px; }
   .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
   .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
-
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .legal-content { padding: 140px 20px 60px; }
@@ -60,6 +61,7 @@
   <div class="nav-inner">
     <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
     <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
       <li><a href="index.html#portfolio">Portfolio</a></li>
       <li><a href="index.html#legal">Legal</a></li>
       <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
@@ -69,61 +71,162 @@
 </nav>
 
 <div class="legal-content">
-  <a href="index.html#legal" class="back-link">← Back to Legal</a>
-  
+  <a href="happyhour.html" class="back-link">← Back to Happy Hour Radar</a>
+
   <h1>Happy Hour Radar — Privacy Policy</h1>
-  <p class="updated">Last updated: March 6, 2026</p>
+  <p class="updated">Effective Date: March 6, 2026 · Last Updated: March 6, 2026</p>
 
-  <h2>1. Introduction</h2>
-  <p>This Privacy Policy describes how moonshinerXwerks LLC collects, uses, and protects your information when you use Happy Hour Radar. This policy is in addition to our <a href="privacy.html">general Privacy Policy</a>.</p>
+  <p>Happy Hour Radar ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use the Happy Hour Radar mobile application (the "App"). By using the App, you agree to the practices described here. If you do not agree, please do not use the App.</p>
 
-  <h2>2. Data We Collect</h2>
-  <p><strong>Location data:</strong> The App uses your location to show nearby venues and deals. Location data is used in real-time and is not stored on our servers beyond what is necessary for the App's functionality.</p>
-  <p><strong>Account data:</strong> If you create an account, we store your name, email, and profile preferences to enable social features like group planning and RSVPs.</p>
-  <p><strong>Crowd reports:</strong> When you submit a crowd report, it is shared anonymously with other users. Your identity is not attached to crowd reports.</p>
-  <p><strong>Ratings & reviews:</strong> Reviews you submit are associated with your display name and are visible to other users.</p>
-  <p><strong>Check-ins & favorites:</strong> Your visit history and saved favorites are stored on your device and, if you have an account, synced to provide a consistent experience.</p>
+  <hr>
 
-  <h2>3. How We Use Your Data</h2>
-  <p>We use collected data solely to provide and improve the App's features and functionality. We do not use your data for advertising or sell it to third parties.</p>
+  <h2>1. Information We Collect</h2>
 
-  <h2>4. Data Storage & Security</h2>
-  <p>Your data is stored on your device by default. If cloud sync features are used, data is encrypted and stored via Apple's CloudKit infrastructure. We implement industry-standard security measures to protect your information.</p>
-  <p><strong>Business data:</strong> If you claim a venue as a business owner, your business contact information is stored to manage your venue listing.</p>
+  <h3>1.1 Information You Provide Directly</h3>
+  <ul>
+    <li><strong>Account information</strong> — email address, display name, and phone number used for sign-in</li>
+    <li><strong>Profile preferences</strong> — vibe tag selections (e.g. Chill, Craft Beer, Outdoor) and activity interests (e.g. Trivia, Karaoke, Live Music)</li>
+    <li><strong>Venue ratings and comments</strong> you submit</li>
+    <li><strong>Crowd density reports</strong> you contribute</li>
+    <li><strong>Group plan details</strong> — plan titles, dates, and participant lists</li>
+    <li><strong>Contact information</strong> you share when inviting others to group plans</li>
+    <li><strong>Business information</strong> — if you claim a venue: business name, address, phone number, website, and logo</li>
+  </ul>
 
-  <h2>5. Third-Party Services</h2>
-  <p>The App may use Apple's frameworks (CloudKit, StoreKit, MapKit) which are subject to Apple's privacy policy. We do not integrate third-party advertising SDKs or sell data to third parties.</p>
+  <h3>1.2 Information Collected Automatically</h3>
+  <ul>
+    <li>Device identifiers and operating system version</li>
+    <li>App usage data (screens viewed, features used, session duration)</li>
+    <li>Crash reports and performance diagnostics</li>
+    <li>Push notification tokens (to deliver alerts you have opted into)</li>
+  </ul>
 
-  <h2>6. Data Retention & Deletion</h2>
-  <p>Your data remains on your device until you delete the App or clear its data. Cloud-synced data can be deleted through the App's settings. Upon account deletion or App removal, we do not retain copies of your personal data.</p>
+  <h3>1.3 Location Information</h3>
+  <p>Happy Hour Radar is a location-based service. We collect location data to power core functionality:</p>
+  <ul>
+    <li>Approximate or precise location to display nearby venues and calculate distances</li>
+    <li>Proximity data to trigger timed deal alerts when you are near a venue with an active deal</li>
+    <li>Check-in proximity detection (within approximately 100 meters of a venue during an active deal)</li>
+  </ul>
+  <p>Location is collected only while the App is in use unless you grant "always on" background permission for proximity alerts. You can revoke location permissions at any time through your device settings, though this will limit core features.</p>
+
+  <h3>1.4 Visit and Check-In Data</h3>
+  <p>If you enable visit tracking, we record:</p>
+  <ul>
+    <li>Venues where a check-in was detected or confirmed</li>
+    <li>Timestamps of check-ins (subject to a 4-hour cooldown per venue to prevent duplicate records)</li>
+    <li>Aggregate visit counts per venue</li>
+  </ul>
+
+  <hr>
+
+  <h2>2. How We Use Your Information</h2>
+  <p>We use the information we collect to:</p>
+  <ul>
+    <li>Provide, operate, and improve the App and its features</li>
+    <li>Display relevant venues, deals, and crowd levels based on your location and preferences</li>
+    <li>Send push notifications, proximity alerts, timed deal reminders, and daily digests you have opted into</li>
+    <li>Facilitate group plans, invitations, RSVPs, and in-app communications among users</li>
+    <li>Allow business owners to manage venue listings, post announcements, and view aggregated analytics</li>
+    <li>Personalize venue recommendations based on your preferences and visit history</li>
+    <li>Detect and prevent fraudulent activity, abuse, and other policy violations</li>
+    <li>Comply with applicable legal obligations</li>
+    <li>Communicate with you about product updates, security notices, and support</li>
+  </ul>
+
+  <hr>
+
+  <h2>3. How We Share Your Information</h2>
+
+  <h3>3.1 With Other App Users</h3>
+  <p>Certain information is visible to other users as part of the App's social features:</p>
+  <ul>
+    <li>Ratings and comments are attributed to your display name and shown publicly on venue pages</li>
+    <li>Crowd density reports are aggregated and displayed anonymously — your identity is not disclosed</li>
+    <li>Group plan details (venue, time, participants) are visible only to invited plan members</li>
+    <li>If you are a business owner, your business name and contact details appear on your venue page</li>
+  </ul>
+
+  <h3>3.2 Service Providers</h3>
+  <p>We may share data with trusted third-party vendors who help us operate the App (e.g. cloud infrastructure, analytics, push notification services, payment processors for business subscriptions). All service providers are bound by confidentiality obligations and may not use your data for their own purposes.</p>
+
+  <h3>3.3 Legal Requirements</h3>
+  <p>We may disclose your information if required by law, court order, or governmental authority, or when we believe in good faith that disclosure is necessary to protect our rights, your safety, or the safety of others.</p>
+
+  <h3>3.4 Business Transfers</h3>
+  <p>If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will provide notice before your data becomes subject to a different privacy policy.</p>
+
+  <h3>3.5 No Sale of Personal Data</h3>
+  <p>We do not sell, rent, or trade your personal information to third parties for their own marketing purposes.</p>
+
+  <hr>
+
+  <h2>4. Notifications and Communications</h2>
+  <p>You have full control over the notifications you receive. You may opt in or out of any of the following at any time through the App's notification settings:</p>
+  <ul>
+    <li>Proximity alerts (triggered when near a venue with an active deal)</li>
+    <li>Timed deal alerts (15 minutes before deal start; 30 minutes before deal end)</li>
+    <li>Crowd level updates for subscribed venues</li>
+    <li>Real-time announcements from venues you follow</li>
+    <li>Daily digest summaries</li>
+    <li>Friend and group plan activity</li>
+    <li>Check-in prompts</li>
+  </ul>
+  <p>You can also manage push notification permissions through your device's operating system settings at any time.</p>
+
+  <hr>
+
+  <h2>5. Data Retention</h2>
+  <p>We retain your data for as long as your account is active or as needed to provide the App's services:</p>
+  <ul>
+    <li><strong>Account data</strong> is retained until you delete your account</li>
+    <li><strong>Visit history and check-in records</strong> are retained until you delete them or close your account</li>
+    <li><strong>Ratings and comments</strong> may remain in aggregated or anonymized form after account deletion</li>
+    <li><strong>Business listing data</strong> is retained for the duration of an active subscription and for a reasonable period thereafter</li>
+  </ul>
+  <p>You may request deletion of your data at any time by contacting us (see Section 9).</p>
+
+  <hr>
+
+  <h2>6. Security</h2>
+  <p>We implement reasonable administrative, technical, and physical safeguards to protect your information from unauthorized access, use, or disclosure — including encrypted data transmission (TLS), access controls, and secure cloud infrastructure.</p>
+  <p>No method of transmission over the internet is 100% secure. While we take commercially reasonable steps to protect your data, we cannot guarantee absolute security.</p>
+
+  <hr>
 
   <h2>7. Children's Privacy</h2>
-  <p>The App is not intended for children under 13. We do not knowingly collect data from children under 13.</p>
+  <p>Happy Hour Radar is intended for adults of legal drinking age. The App is not directed to anyone under the age of 21 in the United States, or under the applicable legal drinking age in their jurisdiction. We do not knowingly collect personal information from underage individuals. If we learn we have inadvertently done so, we will delete it promptly.</p>
 
-  <h2>8. Your Rights</h2>
-  <p>You have the right to access, correct, and delete your data. Since most data is stored on-device, you have direct control. For any data stored in our systems, contact us to exercise your rights.</p>
+  <hr>
 
-  <h2>9. Changes</h2>
-  <p>We may update this policy as the App evolves. Changes will be reflected on this page with an updated date.</p>
+  <h2>8. Your Rights and Choices</h2>
+  <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+  <ul>
+    <li><strong>Access</strong> — request a copy of the data we hold about you</li>
+    <li><strong>Correction</strong> — request that inaccurate or incomplete data be corrected</li>
+    <li><strong>Deletion</strong> — request that we delete your personal data</li>
+    <li><strong>Portability</strong> — request your data in a structured, machine-readable format</li>
+    <li><strong>Opt-out</strong> — opt out of certain data uses, including marketing communications and non-essential notifications</li>
+  </ul>
+  <p>To exercise any of these rights, contact us using the information in Section 9. We will respond within 30 days. We may need to verify your identity before processing your request.</p>
 
-  <h2>10. Contact</h2>
-  <p>For privacy questions, contact <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
+  <hr>
 
+  <h2>9. Contact Us</h2>
+  <p>If you have questions about this Privacy Policy, wish to exercise your data rights, or have a privacy concern, please contact us at:</p>
+  <p><strong>Happy Hour Radar</strong><br>
+  Email: <a href="/cdn-cgi/l/email-protection#c3a9acabad83aeacacadb0abaaada6b1bbb4a6b1a8b0eda0acae"><span class="__cf_email__" data-cfemail="442e2b2c2a04292b2b2a372c2d2a21363c3321362f376a272b29">[email&#160;protected]</span></a><br>
+  Location: Bend, Oregon, USA</p>
+
+  <hr>
+
+  <h2>10. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date at the top of this document. If changes are material, we will notify you via a prominent notice in the App or by email. Your continued use of the App after changes take effect constitutes your acceptance of the updated policy.</p>
+
+  <p class="closing-note">Happy Hour Radar is a product built in Bend, OR. We take your privacy seriously and will always be transparent about how your data is used.</p>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
-      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
-    </div>
-    <div class="footer-socials">
-      <a href="#" aria-label="Twitter">𝕏</a>
-      <a href="#" aria-label="GitHub">GH</a>
-      <a href="#" aria-label="LinkedIn">in</a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-lo

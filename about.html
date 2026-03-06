@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — moonshinerXwerks LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
+    --text: #F0EDE8; --text-secondary: #8A8A8A;
+    --border: #222222; --radius: 16px;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
+  .logo-img:hover { opacity: 1; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+
+  .about-hero { padding: 180px 32px 80px; max-width: 900px; margin: 0 auto; }
+  .about-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 28px; }
+  .about-hero h1 em { font-style: italic; background: linear-gradient(135deg, #fff 30%, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .about-hero .lead { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.75; max-width: 680px; }
+
+  .about-section { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+  .about-section h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .about-section p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; max-width: 680px; }
+
+  .founder-section { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+  .founder-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; }
+  .founder-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); font-weight: 500; margin-bottom: 16px; }
+  .founder-card h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .founder-title { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 28px; }
+  .founder-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
+  .founder-card p:last-child { margin-bottom: 0; }
+
+  .values-section { max-width: 900px; margin: 0 auto; padding: 0 32px 100px; }
+  .values-section h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 40px; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .value-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+  .value-icon { font-size: 1.6rem; margin-bottom: 16px; }
+  .value-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 10px; }
+  .value-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+
+  .cta-section { max-width: 900px; margin: 0 auto; padding: 0 32px 100px; text-align: center; }
+  .cta-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 16px; }
+  .cta-section p { color: var(--text-secondary); font-size: 1.02rem; margin-bottom: 32px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; border-radius: 100px; text-decoration: none; font-size: 0.93rem; font-weight: 500; transition: all 0.3s ease; border: none; cursor: pointer; font-family: var(--font-body); }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,255,255,0.1); }
+
+  footer { border-top: 1px solid var(--border); padding: 44px 32px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-left { display: flex; align-items: center; gap: 24px; }
+  .footer-logo-img { height: 56px; opacity: 0.7; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.7s ease both; }
+  .fade-in-d1 { animation-delay: 0.1s; }
+  .fade-in-d2 { animation-delay: 0.2s; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .mobile-toggle { display: block; }
+    .about-hero { padding: 140px 20px 60px; }
+    .about-section, .founder-section, .values-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .founder-card { padding: 32px; }
+    .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#legal">Legal</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <h1 class="fade-in">Built in Bend.<br>Brewed with <em>intent.</em></h1>
+  <p class="lead fade-in fade-in-d1">moonshinerXwerks LLC is an independent app studio that builds original products from scratch — no clients, no contracts, just ideas we believe in, built the way we think they should be built.</p>
+</section>
+
+<section class="about-section">
+  <h2 class="fade-in">The Story</h2>
+  <p class="fade-in fade-in-d1">moonshinerXwerks was founded with a straightforward premise: build useful apps for real people, own every pixel, and never cut corners on privacy. Every product in our portfolio started as a personal itch — a problem we encountered, a tool we wished existed, or an idea we couldn't shake.</p>
+  <p class="fade-in fade-in-d2">We're based in Bend, Oregon — a place where people actually go outside, fish real rivers, and meet friends for happy hour. Our apps reflect that. They're built for people who do things, not just scroll through things.</p>
+</section>
+
+<section class="founder-section">
+  <div class="founder-card fade-in">
+    <p class="founder-label">Founder</p>
+    <h2>John P. Jackson</h2>
+    <p class="founder-title">Founder & Builder — moonshinerXwerks LLC</p>
+    <p>John is a senior program manager with over 20 years of experience leading enterprise programs across PMO design, process optimization, commercial excellence, and global customer implementation. He spent a decade at Expedia's Egencia division, where he rose from senior reporting analyst to program manager overseeing global client delivery for Fortune 500 accounts — consolidating 8 regional implementation teams into a unified global PMO, earning a President's Club Award for onboarding $195M+ in annual new business revenue, and reducing SMB deployment timelines from 6 weeks to 2.</p>
+    <p>His career spans enterprise transformation and product-driven delivery at every scale: directing cloud migrations and SaaS platform rollouts at AmexGBT, leading product development initiatives to improve SaaS usability and drive adoption, spearheading internal commercialization efforts that aligned product capabilities with go-to-market strategy, and managing Salesforce CRM integrations and commercial excellence programs at OnTrac. At BCD Travel, he led strategic global implementations for enterprise clients. Along the way, he's built PMO frameworks from scratch, introduced self-service toolkits that boosted team autonomy by 50%, and delivered executive reporting that shaped C-suite strategy.</p>
+    <p>moonshinerXwerks is where all of that experience converges. The same discipline that drove enterprise-wide transformation programs now drives consumer apps — built with agile delivery, AI-enabled tooling, and the conviction that great products come from people who actually use them. Based in Bend, Oregon, usually found on a river when not shipping code.</p>
+  </div>
+</section>
+
+<section class="values-section">
+  <h2>How We Build</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🔒</div>
+      <h3>Privacy First</h3>
+      <p>Your data is yours. Our apps default to on-device storage, never sell data, and only transmit information when you explicitly opt in. No ads, no tracking SDKs, no exceptions.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <h3>Solve Real Problems</h3>
+      <p>Every app starts with a real need — not a market opportunity deck. If it doesn't solve a problem we've personally felt, we don't build it.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🛠️</div>
+      <h3>Own the Craft</h3>
+      <p>No outsourcing, no templates. Every line of code, every design decision, every user flow is built in-house with intention and care from concept to App Store.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Want to get in touch?</h2>
+  <p>Whether it's about one of our apps, a partnership idea, or just to say hello.</p>
+  <a href="index.html#contact" class="btn btn-primary">Contact Us →</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
