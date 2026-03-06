@@ -16,6 +16,7 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
   .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
   .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
@@ -25,37 +26,30 @@
   .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+
   .legal-content { max-width: 800px; margin: 0 auto; padding: 160px 32px 100px; }
   .legal-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 32px; }
+  .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
   .legal-content h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin: 40px 0 16px; }
-  .legal-content h3 { font-family: var(--font-body); font-size: 1.0rem; font-weight: 700; margin: 24px 0 12px; color: var(--text); }
   .legal-content p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
   .legal-content ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin: 0 0 16px 24px; }
   .legal-content li { margin-bottom: 8px; }
   .legal-content a { color: var(--text); }
-  .legal-content strong { color: var(--text); }
-  .legal-content em { color: var(--text-secondary); font-style: italic; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
   .back-link:hover { color: var(--text); }
-  .legal-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
-  .overview-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
-  .overview-box p { color: var(--text); font-size: 0.95rem; margin-bottom: 0; }
-  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.85rem; }
-  .data-table th { text-align: left; padding: 12px 16px; background: var(--surface); color: var(--text); border-bottom: 1px solid var(--border); font-weight: 600; }
-  .data-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
-  .data-table tr:last-child td { border-bottom: none; }
-  .closing-note { font-size: 0.82rem; color: var(--text-secondary); font-style: italic; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+
   footer { border-top: 1px solid var(--border); padding: 44px 32px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .footer-left { display: flex; align-items: center; gap: 24px; }
   .footer-logo-img { height: 56px; opacity: 0.7; }
   .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+  .footer-socials { display: flex; gap: 10px; }
+  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
+  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
+
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .legal-content { padding: 140px 20px 60px; }
-    .data-table { font-size: 0.78rem; }
-    .data-table th, .data-table td { padding: 8px 10px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
   }
 </style>
@@ -75,152 +69,44 @@
 </nav>
 
 <div class="legal-content">
-  <a href="pantrywizard.html" class="back-link">← Back to Pantry Wizard</a>
+  <a href="index.html#legal" class="back-link">← Back to Legal</a>
+  
+  <h1>Pantry Wizard — Privacy Policy</h1>
+  <p class="updated">Last updated: March 6, 2026</p>
 
-  <h1>Privacy Policy — Pantry Wizard</h1>
-  <p class="updated">Effective Date: March 6, 2026 · Last Updated: March 6, 2026<br>moonshinerXwerks LLC</p>
+  <h2>1. Introduction</h2>
+  <p>This Privacy Policy describes how moonshinerXwerks LLC collects, uses, and protects your information when you use Pantry Wizard. This policy is in addition to our <a href="privacy.html">general Privacy Policy</a>.</p>
 
-  <div class="overview-box">
-    <p>We built Pantry Wizard with a privacy-first mindset. Most of your data never leaves your device.</p>
-  </div>
+  <h2>2. Data We Collect</h2>
+  <p><strong>Ingredient data:</strong> Your pantry inventory, ingredient lists, and dietary preferences are stored locally on your device.</p>
+  <p><strong>Cooking history:</strong> Your favorites and cooking history are stored on-device to improve recipe suggestions.</p>
+  <p><strong>No personal data required:</strong> Pantry Wizard does not require an account to use. The App functions fully without collecting any personal information.</p>
 
-  <h2>Overview</h2>
-  <p>Pantry Wizard ("the App") is an iOS cooking assistant app developed and operated by moonshinerXwerks LLC ("we," "us," or "our"). This Privacy Policy explains what information we collect, how we use it, and your rights regarding your data.</p>
+  <h2>3. How We Use Your Data</h2>
+  <p>We use collected data solely to provide and improve the App's features and functionality. We do not use your data for advertising or sell it to third parties.</p>
 
-  <hr>
+  <h2>4. Data Storage & Security</h2>
+  <p>Your data is stored on your device by default. If cloud sync features are used, data is encrypted and stored via Apple's CloudKit infrastructure. We implement industry-standard security measures to protect your information.</p>
+  
 
-  <h2>1. Information We Collect</h2>
+  <h2>5. Third-Party Services</h2>
+  <p>The App may use Apple's frameworks (CloudKit, StoreKit, MapKit) which are subject to Apple's privacy policy. We do not integrate third-party advertising SDKs or sell data to third parties.</p>
 
-  <h3>1.1 Information You Provide Directly</h3>
-  <ul>
-    <li><strong>Account information:</strong> If you create a free or premium account, we collect your email address and a display name.</li>
-    <li><strong>Dietary preferences and skill level:</strong> Stored locally on your device via SwiftData and optionally synced to your personal iCloud account.</li>
-    <li><strong>Ingredients and cupboard items:</strong> Stored locally on your device. We do not transmit your ingredient lists to our servers.</li>
-    <li><strong>Custom recipes:</strong> Stored locally on your device and, if you choose, synced via your personal iCloud account.</li>
-    <li><strong>Recipe ratings and reviews:</strong> If you rate a recipe, your rating may be stored in our Firebase backend associated with your account to improve recipe recommendations.</li>
-  </ul>
+  <h2>6. Data Retention & Deletion</h2>
+  <p>Your data remains on your device until you delete the App or clear its data. Cloud-synced data can be deleted through the App's settings. Upon account deletion or App removal, we do not retain copies of your personal data.</p>
 
-  <h3>1.2 Information Collected Automatically</h3>
-  <ul>
-    <li><strong>Usage data:</strong> We may collect anonymized, aggregate data about how features are used (e.g., which filters are most commonly applied) to improve the App. This data is not linked to you personally.</li>
-    <li><strong>Crash reports:</strong> If the App crashes, anonymized diagnostic information may be collected to help us fix bugs. This does not include your personal data or ingredient information.</li>
-  </ul>
+  <h2>7. Children's Privacy</h2>
+  <p>The App is not intended for children under 13. We do not knowingly collect data from children under 13.</p>
 
-  <h3>1.3 Payment Information</h3>
-  <p>All subscription purchases are processed entirely through Apple's App Store and StoreKit. We never see, store, or process your payment card details. Apple handles all billing; please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details.</p>
+  <h2>8. Your Rights</h2>
+  <p>You have the right to access, correct, and delete your data. Since most data is stored on-device, you have direct control. For any data stored in our systems, contact us to exercise your rights.</p>
 
-  <h3>1.4 Information We Do NOT Collect</h3>
-  <ul>
-    <li>We do not collect your location.</li>
-    <li>We do not access your camera or photos unless you explicitly choose to add an image to a custom recipe, and those images are stored locally on your device.</li>
-    <li>We do not collect biometric data.</li>
-    <li>We do not sell your data to third parties. Ever.</li>
-  </ul>
+  <h2>9. Changes</h2>
+  <p>We may update this policy as the App evolves. Changes will be reflected on this page with an updated date.</p>
 
-  <hr>
+  <h2>10. Contact</h2>
+  <p>For privacy questions, contact <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
 
-  <h2>2. How We Use Your Information</h2>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Purpose</th><th>Data Used</th><th>Stored Where</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Provide recipe matching</td><td>Ingredients you enter</td><td>On your device only</td></tr>
-      <tr><td>Sync preferences across your devices</td><td>Dietary prefs, cupboard, favorites</td><td>Your personal iCloud</td></tr>
-      <tr><td>Manage your account</td><td>Email address</td><td>Firebase (encrypted)</td></tr>
-      <tr><td>Improve recipe recommendations</td><td>Anonymized ratings</td><td>Firebase</td></tr>
-      <tr><td>Process subscriptions</td><td>Transaction receipts</td><td>Apple / StoreKit</td></tr>
-      <tr><td>Fix bugs and improve stability</td><td>Anonymized crash logs</td><td>Diagnostic tools</td></tr>
-    </tbody>
-  </table>
-
-  <hr>
-
-  <h2>3. Data Storage and Security</h2>
-
-  <h3>On-Device Storage</h3>
-  <p>The majority of your data — ingredients, cupboard items, favorites, cooking history, and custom recipes — is stored locally on your iPhone using Apple's SwiftData framework. This data is protected by your device's built-in security (passcode, Face ID, Touch ID).</p>
-
-  <h3>iCloud Sync</h3>
-  <p>If you are signed into iCloud, your personal app data (cupboard, favorites, preferences) may sync across your devices via Apple's CloudKit. This sync is tied to your personal Apple ID and governed by Apple's iCloud Terms of Service. We do not have access to your iCloud data.</p>
-
-  <h3>Firebase (Cloud Storage)</h3>
-  <p>Your email address and anonymized recipe ratings are stored in Google Firebase Firestore. Firebase is protected by industry-standard encryption in transit (TLS) and at rest. We use Firebase security rules to ensure only authenticated users can access their own records.</p>
-  <p>We do not currently implement Firebase App Check but plan to do so prior to public launch to further harden our backend.</p>
-
-  <hr>
-
-  <h2>4. Third-Party Services</h2>
-  <p>The App uses the following third-party services:</p>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Service</th><th>Purpose</th><th>Privacy Policy</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Apple App Store / StoreKit</td><td>Subscription billing</td><td><a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a></td></tr>
-      <tr><td>Apple CloudKit / iCloud</td><td>Device sync</td><td><a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a></td></tr>
-      <tr><td>Google Firebase / Firestore</td><td>Account management, premium content</td><td><a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a></td></tr>
-    </tbody>
-  </table>
-
-  <p>We do not integrate advertising networks, analytics SDKs that track you across apps, or social media trackers.</p>
-
-  <hr>
-
-  <h2>5. Data Retention</h2>
-  <ul>
-    <li><strong>Account data:</strong> Retained as long as your account is active. You may request deletion at any time (see Section 7).</li>
-    <li><strong>Local device data:</strong> Persists until you delete the App or manually clear it within the App's settings.</li>
-    <li><strong>Anonymized usage/crash data:</strong> Retained for up to 12 months in aggregate form, then deleted.</li>
-    <li><strong>Subscription records:</strong> Apple maintains transaction records per their own retention policies.</li>
-  </ul>
-
-  <hr>
-
-  <h2>6. Children's Privacy</h2>
-  <p>Pantry Wizard is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us immediately at <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a> and we will delete it promptly.</p>
-
-  <hr>
-
-  <h2>7. Your Rights and Choices</h2>
-  <p>Depending on your location, you may have the following rights:</p>
-  <ul>
-    <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
-    <li><strong>Correction:</strong> Request that inaccurate data be corrected.</li>
-    <li><strong>Deletion:</strong> Request that your account and associated data be deleted. To delete your account, contact us at <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a> with the subject line "Delete My Account."</li>
-    <li><strong>Portability:</strong> Request your data in a portable format.</li>
-    <li><strong>Opt-out of anonymized analytics:</strong> You may opt out of anonymized usage collection in the App's Profile settings (when this feature is made available).</li>
-  </ul>
-  <p>To exercise any of these rights, email us at <strong><a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></strong>.</p>
-  <p>We will respond to verified requests within 30 days.</p>
-
-  <hr>
-
-  <h2>8. California Residents (CCPA)</h2>
-  <p>If you are a California resident, you have the right to know what personal information we collect, the right to delete your personal information, and the right to opt out of the sale of your personal information.</p>
-  <p><strong>We do not sell personal information.</strong> For any CCPA requests, contact us at <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
-
-  <hr>
-
-  <h2>9. International Users</h2>
-  <p>Pantry Wizard is operated in the United States. If you are accessing the App from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States where our servers are located. By using the App, you consent to this transfer.</p>
-
-  <hr>
-
-  <h2>10. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this document and, for material changes, notify you via an in-app notice or email. Your continued use of the App after any changes constitutes your acceptance of the updated policy.</p>
-
-  <hr>
-
-  <h2>11. Contact Us</h2>
-  <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
-  <p><strong>moonshinerXwerks LLC</strong><br>
-  Email: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></p>
-  <p>We aim to respond to all privacy inquiries within 5 business days.</p>
-
-  <p class="closing-note">Pantry Wizard · moonshinerXwerks LLC</p>
 </div>
 
 <footer>
@@ -228,6 +114,11 @@
     <div class="footer-left">
       <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
       <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="GitHub">GH</a>
+      <a href="#" aria-label="LinkedIn">in</a>
     </div>
   </div>
 </footer>
