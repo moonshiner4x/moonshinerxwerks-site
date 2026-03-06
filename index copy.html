@@ -284,92 +284,6 @@
   .thumb-teal .icon-wrap   { background: rgba(255,255,255,0.08); color: #50C8B0; }
   .thumb-teal .project-tag { background: rgba(80,200,176,0.12); color: #50C8B0; }
 
-  /* ─── PORTFOLIO TABS ─── */
-  .portfolio-tabs {
-    display: flex;
-    gap: 0;
-    margin-top: 40px;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .portfolio-tab {
-    background: none;
-    border: none;
-    padding: 14px 28px;
-    font-size: 0.93rem;
-    font-weight: 500;
-    font-family: var(--font-body);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.25s ease;
-    position: relative;
-    letter-spacing: 0.01em;
-  }
-
-  .portfolio-tab:hover { color: var(--text); }
-
-  .portfolio-tab.active {
-    color: var(--text);
-  }
-
-  .portfolio-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--text);
-    border-radius: 1px;
-  }
-
-  .tab-panel {
-    display: none;
-    animation: fadeUp 0.4s ease both;
-  }
-
-  .tab-panel.active {
-    display: block;
-  }
-
-  /* ─── "OTHER" EMPTY STATE ─── */
-  .other-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 420px;
-    text-align: center;
-    padding: 60px 20px;
-  }
-
-  .still-illustration {
-    width: 100%;
-    max-width: 380px;
-    opacity: 0.70;
-    margin-bottom: 36px;
-  }
-
-  .still-tagline {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-    color: #B87333;
-    line-height: 1.5;
-    max-width: 380px;
-    letter-spacing: 0.01em;
-  }
-
-  .still-subtext {
-    font-size: 0.82rem;
-    color: #555;
-    margin-top: 14px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
   /* ─── LEGAL ─── */
   .legal-section {
     max-width: 1200px; margin: 0 auto;
@@ -564,9 +478,6 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* Fallback if JS hasn't fired yet — content should never stay hidden */
-  noscript + style .reveal, .no-js .reveal { opacity: 1 !important; transform: none !important; }
-
   /* ─── MOBILE ─── */
   @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -618,245 +529,72 @@
     <div class="portfolio-header reveal">
       <p class="section-label">Portfolio</p>
       <h2 class="section-title">What we've been brewing</h2>
-      <p class="section-desc">Original apps and creative ventures — conceived, designed, and built in-house right here in Bend, Oregon.</p>
-
-      <div class="portfolio-tabs">
-        <button class="portfolio-tab active" data-tab="apps" onclick="switchTab('apps')">Apps</button>
-        <button class="portfolio-tab" data-tab="other" onclick="switchTab('other')">Other</button>
-      </div>
+      <p class="section-desc">Original iOS apps — conceived, designed, and built in-house right here in Bend, Oregon.</p>
     </div>
 
-    <!-- ── Apps Tab ── -->
-    <div class="tab-panel active" id="tab-apps">
-      <div class="portfolio-grid">
+    <div class="portfolio-grid">
 
-        <div class="project-card reveal">
-          <div class="project-thumb" style="padding:0;background:none;">
-            <img src="DaySnipAppLogo.png" alt="DaySnip" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Journaling</span><span class="project-tag">AI</span></div>
-            <h3>DaySnip</h3>
-            <p>Voice-first journaling app that captures thoughts throughout the day and uses AI to compile them into a cohesive journal entry each night.</p>
-          </div>
-          <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad · Watch</span>
-            <a href="daysnip.html" class="project-link">Learn More →</a>
-          </div>
+      <div class="project-card reveal">
+        <div class="project-thumb" style="padding:0;background:none;">
+          <img src="DaySnipAppLogo.png" alt="DaySnip" style="width:100%;height:100%;object-fit:cover;">
         </div>
-
-        <div class="project-card reveal">
-          <div class="project-thumb" style="padding:0;background:none;">
-            <img src="fishon.png" alt="FishON! Pro" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Outdoors</span><span class="project-tag">Data</span></div>
-            <h3>FishON! Pro</h3>
-            <p>Fishing intelligence platform that aggregates real-time data from five federal agencies to rank your spots from best bet to skip today.</p>
-          </div>
-          <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad</span>
-            <a href="fishon.html" class="project-link">Learn More →</a>
-          </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Journaling</span><span class="project-tag">AI</span></div>
+          <h3>DaySnip</h3>
+          <p>Voice-first journaling app that captures thoughts throughout the day and uses AI to compile them into a cohesive journal entry each night.</p>
         </div>
-
-        <div class="project-card reveal">
-          <div class="project-thumb" style="padding:0;background:none;">
-            <img src="hhr.png" alt="Happy Hour Radar" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Social</span><span class="project-tag">Local</span></div>
-            <h3>Happy Hour Radar</h3>
-            <p>Local discovery app that helps you find nearby venues with active happy hour deals, plan meetups, and report crowd levels in real time.</p>
-          </div>
-          <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad</span>
-            <a href="happyhour.html" class="project-link">Learn More →</a>
-          </div>
+        <div class="project-footer">
+          <span class="project-platform">📱 iPhone · iPad · Watch</span>
+          <a href="daysnip.html" class="project-link">Learn More →</a>
         </div>
-
-        <div class="project-card reveal">
-          <div class="project-thumb" style="padding:0;background:none;">
-            <img src="wizardchef.png" alt="Pantry Wizard" style="width:100%;height:100%;object-fit:cover;">
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Cooking</span><span class="project-tag">Beginner</span></div>
-            <h3>Pantry Wizard</h3>
-            <p>Ingredient-first cooking app — tell it what you have and it suggests meals you can actually make tonight, with step-by-step guidance.</p>
-          </div>
-          <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad</span>
-            <a href="pantrywizard.html" class="project-link">Learn More →</a>
-          </div>
-        </div>
-
       </div>
-    </div>
 
-    <!-- ── Other Tab ── -->
-    <div class="tab-panel" id="tab-other">
-      <div class="other-empty">
-        <svg class="still-illustration" viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="copperBody" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#D4944C"/>
-              <stop offset="35%" stop-color="#B87333"/>
-              <stop offset="65%" stop-color="#CD853F"/>
-              <stop offset="100%" stop-color="#8B5E3C"/>
-            </linearGradient>
-            <linearGradient id="copperHighlight" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#E8A860" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#B87333" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%" stop-color="#FF6B00"/>
-              <stop offset="40%" stop-color="#FFA500"/>
-              <stop offset="100%" stop-color="#FFD700" stop-opacity="0.3"/>
-            </linearGradient>
-            <radialGradient id="glowBase" cx="50%" cy="90%" r="50%">
-              <stop offset="0%" stop-color="#FF8C00" stop-opacity="0.15"/>
-              <stop offset="100%" stop-color="#FF8C00" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <linearGradient id="copperPipe" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#D4944C"/>
-              <stop offset="50%" stop-color="#B87333"/>
-              <stop offset="100%" stop-color="#96623B"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Warm glow under the pot -->
-          <ellipse cx="165" cy="370" rx="100" ry="30" fill="url(#glowBase)"/>
-
-          <!-- ── BRICK BASE ── -->
-          <rect x="85" y="340" width="160" height="16" rx="2" fill="#3D2B1F" opacity="0.7"/>
-          <rect x="80" y="352" width="170" height="14" rx="2" fill="#33231A" opacity="0.6"/>
-          <!-- brick lines -->
-          <line x1="120" y1="340" x2="120" y2="356" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="165" y1="340" x2="165" y2="356" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="205" y1="340" x2="205" y2="356" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="100" y1="352" x2="100" y2="366" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="140" y1="352" x2="140" y2="366" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="180" y1="352" x2="180" y2="366" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-          <line x1="220" y1="352" x2="220" y2="366" stroke="#2A1E14" stroke-width="1" opacity="0.5"/>
-
-          <!-- ── FLAMES ── -->
-          <g filter="url(#glow)">
-            <ellipse cx="130" cy="338" rx="8" ry="18" fill="url(#flameGrad)" opacity="0.7">
-              <animate attributeName="ry" values="18;24;16;22;18" dur="0.7s" repeatCount="indefinite"/>
-              <animate attributeName="rx" values="8;6;9;7;8" dur="0.9s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="150" cy="336" rx="10" ry="24" fill="url(#flameGrad)" opacity="0.8">
-              <animate attributeName="ry" values="24;30;22;28;24" dur="0.5s" repeatCount="indefinite"/>
-              <animate attributeName="rx" values="10;8;11;9;10" dur="0.7s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="170" cy="337" rx="9" ry="20" fill="url(#flameGrad)" opacity="0.75">
-              <animate attributeName="ry" values="20;26;18;24;20" dur="0.6s" repeatCount="indefinite"/>
-              <animate attributeName="rx" values="9;7;10;8;9" dur="0.8s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="190" cy="338" rx="7" ry="16" fill="url(#flameGrad)" opacity="0.65">
-              <animate attributeName="ry" values="16;22;14;20;16" dur="0.75s" repeatCount="indefinite"/>
-            </ellipse>
-            <!-- inner blue cores -->
-            <ellipse cx="150" cy="340" rx="4" ry="10" fill="#4488FF" opacity="0.3">
-              <animate attributeName="ry" values="10;14;8;12;10" dur="0.5s" repeatCount="indefinite"/>
-            </ellipse>
-            <ellipse cx="170" cy="340" rx="3" ry="8" fill="#4488FF" opacity="0.25">
-              <animate attributeName="ry" values="8;12;7;10;8" dur="0.6s" repeatCount="indefinite"/>
-            </ellipse>
-          </g>
-
-          <!-- ── POT BODY ── -->
-          <path d="M95 260 Q95 340 165 340 Q235 340 235 260 L235 220 L95 220 Z" fill="url(#copperBody)" stroke="#96623B" stroke-width="1.5"/>
-          <!-- highlight reflection -->
-          <path d="M105 230 Q105 320 155 330 L145 330 Q100 320 100 230 Z" fill="url(#copperHighlight)"/>
-          <!-- copper band at bottom -->
-          <rect x="93" y="215" width="144" height="12" rx="2" fill="#CD853F" stroke="#96623B" stroke-width="1"/>
-          <rect x="93" y="218" width="144" height="3" fill="#E8A860" opacity="0.3"/>
-          <!-- rivet details -->
-          <circle cx="110" cy="221" r="2.5" fill="#96623B"/>
-          <circle cx="130" cy="221" r="2.5" fill="#96623B"/>
-          <circle cx="200" cy="221" r="2.5" fill="#96623B"/>
-          <circle cx="220" cy="221" r="2.5" fill="#96623B"/>
-
-          <!-- ── ONION DOME / NECK ── -->
-          <path d="M115 220 Q115 185 130 170 Q145 155 165 145 Q185 155 200 170 Q215 185 215 220" fill="url(#copperBody)" stroke="#96623B" stroke-width="1.5"/>
-          <!-- dome highlight -->
-          <path d="M125 210 Q128 185 145 168 Q148 165 155 158 L150 160 Q132 175 128 200 Z" fill="#E8A860" opacity="0.25"/>
-
-          <!-- ── NECK COLUMN ── -->
-          <rect x="153" y="100" width="24" height="48" rx="3" fill="url(#copperBody)" stroke="#96623B" stroke-width="1.5"/>
-          <rect x="153" y="103" width="10" height="42" rx="2" fill="#E8A860" opacity="0.15"/>
-          <!-- band at top of neck -->
-          <rect x="150" y="96" width="30" height="8" rx="3" fill="#CD853F" stroke="#96623B" stroke-width="1"/>
-
-          <!-- ── LYNE ARM ── -->
-          <path d="M177 104 Q200 100 230 88 Q270 72 310 68" stroke="url(#copperPipe)" stroke-width="14" stroke-linecap="round" fill="none"/>
-          <path d="M177 104 Q200 100 230 88 Q270 72 310 68" stroke="#E8A860" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.2" stroke-dasharray="0" style="transform:translateY(-4px)"/>
-
-          <!-- ── CONDENSER / WORM TUB ── -->
-          <!-- Barrel/tub -->
-          <path d="M330 100 L320 100 Q308 100 308 112 L308 260 Q308 275 322 275 L378 275 Q392 275 392 260 L392 112 Q392 100 380 100 L370 100" fill="none" stroke="#5C3D2E" stroke-width="3"/>
-          <!-- barrel staves -->
-          <line x1="308" y1="130" x2="392" y2="130" stroke="#5C3D2E" stroke-width="1" opacity="0.3"/>
-          <line x1="308" y1="170" x2="392" y2="170" stroke="#5C3D2E" stroke-width="1" opacity="0.3"/>
-          <line x1="308" y1="210" x2="392" y2="210" stroke="#5C3D2E" stroke-width="1" opacity="0.3"/>
-          <line x1="308" y1="250" x2="392" y2="250" stroke="#5C3D2E" stroke-width="1" opacity="0.3"/>
-          <!-- barrel bands -->
-          <rect x="305" y="115" width="90" height="5" rx="1.5" fill="none" stroke="#7A5C4F" stroke-width="1.5"/>
-          <rect x="305" y="190" width="90" height="5" rx="1.5" fill="none" stroke="#7A5C4F" stroke-width="1.5"/>
-          <rect x="305" y="258" width="90" height="5" rx="1.5" fill="none" stroke="#7A5C4F" stroke-width="1.5"/>
-
-          <!-- Coil inside tub -->
-          <path d="M350 108 Q370 108 370 128 Q370 148 340 148 Q315 148 315 168 Q315 188 345 188 Q375 188 375 208 Q375 228 345 228 Q318 228 318 248 Q318 268 350 268" stroke="url(#copperPipe)" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <path d="M350 108 Q370 108 370 128 Q370 148 340 148 Q315 148 315 168 Q315 188 345 188 Q375 188 375 208 Q375 228 345 228 Q318 228 318 248 Q318 268 350 268" stroke="#E8A860" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.25" style="transform:translate(-2px,-2px)"/>
-
-          <!-- ── OUTPUT SPOUT ── -->
-          <path d="M350 268 Q350 285 365 285 L400 285 L400 292 Q400 300 392 300 L380 300" stroke="url(#copperPipe)" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-          <!-- ── DRIP ── -->
-          <ellipse cx="378" cy="318" rx="3" ry="5" fill="#B87333" opacity="0.7">
-            <animate attributeName="cy" values="308;330;308" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;0.15;0.8" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="ry" values="5;3;5" dur="2.5s" repeatCount="indefinite"/>
-          </ellipse>
-          <!-- second drip offset -->
-          <ellipse cx="378" cy="310" rx="2" ry="4" fill="#CD853F" opacity="0">
-            <animate attributeName="cy" values="308;325;308" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
-          </ellipse>
-
-          <!-- ── COLLECTION JAR ── -->
-          <rect x="362" y="335" width="32" height="45" rx="4" fill="none" stroke="#666" stroke-width="1.5"/>
-          <rect x="360" y="330" width="36" height="8" rx="3" fill="none" stroke="#666" stroke-width="1.5"/>
-          <!-- liquid in jar -->
-          <rect x="365" y="355" width="26" height="22" rx="2" fill="#B87333" opacity="0.25">
-            <animate attributeName="height" values="22;26;22" dur="5s" repeatCount="indefinite"/>
-            <animate attributeName="y" values="355;351;355" dur="5s" repeatCount="indefinite"/>
-          </rect>
-
-          <!-- ── STEAM WISPS from neck ── -->
-          <g opacity="0.15">
-            <circle cx="165" cy="85" r="6" fill="#F0EDE8">
-              <animate attributeName="cy" values="88;60;88" dur="4s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite"/>
-              <animate attributeName="r" values="4;10;4" dur="4s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="172" cy="78" r="4" fill="#F0EDE8">
-              <animate attributeName="cy" values="82;50;82" dur="3.5s" begin="0.8s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.15;0;0.15" dur="3.5s" begin="0.8s" repeatCount="indefinite"/>
-              <animate attributeName="r" values="3;8;3" dur="3.5s" begin="0.8s" repeatCount="indefinite"/>
-            </circle>
-          </g>
-        </svg>
-        <p class="still-tagline">New distillate coming soon.</p>
-        <p class="still-subtext">Good things take time — check back shortly.</p>
+      <div class="project-card reveal">
+        <div class="project-thumb" style="padding:0;background:none;">
+          <img src="fishon.png" alt="FishON! Pro" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Outdoors</span><span class="project-tag">Data</span></div>
+          <h3>FishON! Pro</h3>
+          <p>Fishing intelligence platform that aggregates real-time data from five federal agencies to rank your spots from best bet to skip today.</p>
+        </div>
+        <div class="project-footer">
+          <span class="project-platform">📱 iPhone · iPad</span>
+          <a href="fishon.html" class="project-link">Learn More →</a>
+        </div>
       </div>
-    </div>
 
+      <div class="project-card reveal">
+        <div class="project-thumb" style="padding:0;background:none;">
+          <img src="hhr.png" alt="Happy Hour Radar" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Social</span><span class="project-tag">Local</span></div>
+          <h3>Happy Hour Radar</h3>
+          <p>Local discovery app that helps you find nearby venues with active happy hour deals, plan meetups, and report crowd levels in real time.</p>
+        </div>
+        <div class="project-footer">
+          <span class="project-platform">📱 iPhone · iPad</span>
+          <a href="happyhour.html" class="project-link">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb" style="padding:0;background:none;">
+          <img src="wizardchef.png" alt="Pantry Wizard" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="project-tag">iOS</span><span class="project-tag">Cooking</span><span class="project-tag">Beginner</span></div>
+          <h3>Pantry Wizard</h3>
+          <p>Ingredient-first cooking app — tell it what you have and it suggests meals you can actually make tonight, with step-by-step guidance.</p>
+        </div>
+        <div class="project-footer">
+          <span class="project-platform">📱 iPhone · iPad</span>
+          <a href="pantrywizard.html" class="project-link">Learn More →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -906,7 +644,7 @@
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
-            <div><strong>Email</strong><br><a href="/cdn-cgi/l/email-protection#8ce6e3e4e2cce1e3e3e2ffe4e5e2e9fef4fbe9fee7ffa2efe3e1"><span class="__cf_email__" data-cfemail="472d282f29072a282829342f2e2922353f3022352c346924282a">[email&#160;protected]</span></a></div>
+            <div><strong>Email</strong><br><a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
@@ -967,32 +705,8 @@
   </div>
 </footer>
 
-<!-- ════════ TAB SWITCHING ════════ -->
-<script>
-  function switchTab(tabName) {
-    // Update tab buttons
-    document.querySelectorAll('.portfolio-tab').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
-    });
-    // Update tab panels
-    document.querySelectorAll('.tab-panel').forEach(function(panel) {
-      panel.classList.remove('active');
-    });
-    var target = document.getElementById('tab-' + tabName);
-    if (target) {
-      target.classList.add('active');
-      // Trigger reveal on newly visible cards
-      target.querySelectorAll('.reveal').forEach(function(el) {
-        el.classList.add('visible');
-      });
-    }
-  }
-</script>
-
 <!-- ════════ SCROLL REVEAL ════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-  // Fallback: make everything visible after 1s regardless
   setTimeout(function() {
     document.querySelectorAll('.reveal').forEach(function(el) {
       el.classList.add('visible');
@@ -1007,4 +721,12 @@
           observer.unobserve(entry.target);
         }
       });
-    },
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+  } catch(e) {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+  }
+</script>
+
+</body>
+</html>
