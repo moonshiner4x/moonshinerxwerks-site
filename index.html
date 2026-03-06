@@ -9,14 +9,14 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #111111;
-    --bg-elevated: #1A1A1A;
-    --surface: #222222;
+    --bg: #000000;
+    --bg-elevated: #0A0A0A;
+    --surface: #141414;
     --text: #F0EDE8;
     --text-secondary: #8A8A8A;
     --accent: #FFFFFF;
     --accent-dim: rgba(255,255,255,0.08);
-    --border: #2A2A2A;
+    --border: #222222;
     --radius: 16px;
     --font-display: 'Instrument Serif', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
@@ -37,7 +37,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    background: rgba(17, 17, 17, 0.85);
+    background: rgba(0, 0, 0, 0.85);
     border-bottom: 1px solid var(--border);
   }
 
@@ -673,7 +673,7 @@
         <div class="contact-details">
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
-            <div><strong>Email</strong><br><a href="mailto:hello@moonshinerxwerks.com">hello@moonshinerxwerks.com</a></div>
+            <div><strong>Email</strong><br><a href="/cdn-cgi/l/email-protection#ed8588818182ad808282839e858483889f959a889f869ec38e8280"><span class="__cf_email__" data-cfemail="f8909d949497b8959797968b9091969d8a808f9d8a938bd69b9795">[email&#160;protected]</span></a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
@@ -737,18 +737,8 @@
 </footer>
 
 <!-- ════════ SCROLL REVEAL ════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+     
