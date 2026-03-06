@@ -28,7 +28,8 @@
   .nav-cta:hover { opacity: 0.85; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
 
-  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; }
+  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+  .app-hero-content { display: flex; flex-direction: column; }
   .app-hero-top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
   .app-icon { width: 88px; height: 88px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; background: linear-gradient(135deg, #2D1E0E, #3A2510); box-shadow: 0 8px 32px rgba(240,160,80,0.15); }
   .app-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
@@ -38,17 +39,16 @@
   .meta-chip strong { color: var(--text); }
 
   /* ─── PHONE MOCKUP ─── */
-  .phone-mockup-section {
+  .phone-wrap {
     display: flex;
-    justify-content: center;
-    padding: 20px 0 80px;
-    max-width: 1200px;
-    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
   }
 
   .phone-frame {
     position: relative;
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     padding: 14px;
     background: #1A1A1A;
     border-radius: 44px;
@@ -60,49 +60,27 @@
       inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
-  .phone-frame::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;
-    height: 26px;
-    background: #000;
-    border-radius: 20px;
-    z-index: 10;
-  }
-
   .phone-frame::after {
     content: '';
     position: absolute;
-    top: 100px;
-    right: -3.5px;
-    width: 3px;
-    height: 52px;
-    background: #333;
-    border-radius: 0 2px 2px 0;
+    top: 100px; right: -3.5px;
+    width: 3px; height: 52px;
+    background: #333; border-radius: 0 2px 2px 0;
   }
 
   .phone-volume {
     position: absolute;
-    top: 88px;
-    left: -3.5px;
-    width: 3px;
-    height: 32px;
-    background: #333;
-    border-radius: 2px 0 0 2px;
+    top: 88px; left: -3.5px;
+    width: 3px; height: 32px;
+    background: #333; border-radius: 2px 0 0 2px;
   }
 
   .phone-volume::after {
     content: '';
     position: absolute;
-    top: 44px;
-    left: 0;
-    width: 3px;
-    height: 32px;
-    background: #333;
-    border-radius: 2px 0 0 2px;
+    top: 44px; left: 0;
+    width: 3px; height: 32px;
+    background: #333; border-radius: 2px 0 0 2px;
   }
 
   .phone-screen {
@@ -114,23 +92,9 @@
   }
 
   .phone-screen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
     display: block;
-  }
-
-  .phone-screen::after {
-    content: '';
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    height: 40%;
-    border-radius: 32px 32px 0 0;
-    background: linear-gradient(165deg, rgba(255,255,255,0.04) 0%, transparent 50%);
-    pointer-events: none;
   }
 
   .features-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
@@ -162,10 +126,12 @@
 
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
-    .app-hero { padding: 140px 20px 60px; }
+    .app-hero { padding: 140px 20px 60px; grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .features-section { padding: 0 20px 60px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+    .phone-wrap { margin-top: 20px; }
+    .phone-frame { max-width: 240px; }
   }
 </style>
 </head>
@@ -185,26 +151,28 @@
 </nav>
 
 <section class="app-hero">
-  <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
-  <div class="app-hero-top fade-in fade-in-d1">
-    <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="hhr.png" alt="Happy Hour Radar" style="width:88px;height:88px;border-radius:22px;"></div>
-    <h1>Happy Hour Radar</h1>
-  </div>
-  <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. Built for Bend, Oregon, it combines real-time deal browsing, social planning, and crowd reporting into a seamless mobile experience.</p>
-  <div class="app-meta fade-in fade-in-d3">
-    <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
-    <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
-  </div>
-</section>
-
-<div class="phone-mockup-section fade-in">
-  <div class="phone-frame">
-    <div class="phone-volume"></div>
-    <div class="phone-screen">
-      <img src="hhr-screenshot.png" alt="Happy Hour Radar app screenshot">
+  <div class="app-hero-content">
+    <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
+    <div class="app-hero-top fade-in fade-in-d1">
+      <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="hhr.png" alt="Happy Hour Radar" style="width:88px;height:88px;border-radius:22px;"></div>
+      <h1>Happy Hour Radar</h1>
+    </div>
+    <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. Built for Bend, Oregon, it combines real-time deal browsing, social planning, and crowd reporting into a seamless mobile experience.</p>
+    <div class="app-meta fade-in fade-in-d3">
+      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
+      <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
     </div>
   </div>
-</div>
+
+  <div class="phone-wrap fade-in fade-in-d2">
+    <div class="phone-frame">
+      <div class="phone-volume"></div>
+      <div class="phone-screen">
+        <img src="hhr-screenshot.png" alt="Happy Hour Radar app screenshot">
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="features-section">
   <h2 class="fade-in">Features</h2>

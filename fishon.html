@@ -28,7 +28,8 @@
   .nav-cta:hover { opacity: 0.85; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
 
-  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; }
+  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
+  .app-hero-content { display: flex; flex-direction: column; }
   .app-hero-top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
   .app-icon { width: 88px; height: 88px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; background: linear-gradient(135deg, #141E30, #1B2A45); box-shadow: 0 8px 32px rgba(91,155,247,0.15); }
   .app-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
@@ -38,14 +39,6 @@
   .meta-chip strong { color: var(--text); }
 
   /* ─── PHONE MOCKUP + CAROUSEL ─── */
-  .phone-mockup-section {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   .phone-carousel-wrap {
     position: relative;
     display: flex;
@@ -56,7 +49,8 @@
 
   .phone-frame {
     position: relative;
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     padding: 14px;
     background: #1A1A1A;
     border-radius: 44px;
@@ -66,14 +60,6 @@
       0 20px 60px rgba(0,0,0,0.6),
       0 4px 20px rgba(0,0,0,0.4),
       inset 0 1px 0 rgba(255,255,255,0.06);
-  }
-
-  .phone-frame::before {
-    content: '';
-    position: absolute;
-    top: 10px; left: 50%; transform: translateX(-50%);
-    width: 90px; height: 26px;
-    background: #000; border-radius: 20px; z-index: 10;
   }
 
   .phone-frame::after {
@@ -122,18 +108,6 @@
     opacity: 1;
   }
 
-  .phone-screen::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 40%;
-    border-radius: 32px 32px 0 0;
-    background: linear-gradient(165deg, rgba(255,255,255,0.04) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  /* Carousel dots */
   .carousel-dots {
     display: flex;
     gap: 10px;
@@ -199,10 +173,12 @@
 
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
-    .app-hero { padding: 140px 20px 60px; }
+    .app-hero { padding: 140px 20px 60px; grid-template-columns: 1fr; }
     .features-grid, .pricing-grid { grid-template-columns: 1fr; }
     .features-section, .pricing-section { padding: 0 20px 60px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+    .phone-carousel-wrap { margin-top: 20px; }
+    .phone-frame { max-width: 240px; }
   }
 </style>
 </head>
@@ -222,20 +198,20 @@
 </nav>
 
 <section class="app-hero">
-  <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
-  <div class="app-hero-top fade-in fade-in-d1">
-    <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="fishon.png" alt="FishON! Pro" style="width:88px;height:88px;border-radius:22px;"></div>
-    <h1>FishON! Pro</h1>
+  <div class="app-hero-content">
+    <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
+    <div class="app-hero-top fade-in fade-in-d1">
+      <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="fishon.png" alt="FishON! Pro" style="width:88px;height:88px;border-radius:22px;"></div>
+      <h1>FishON! Pro</h1>
+    </div>
+    <p class="app-subtitle fade-in fade-in-d2">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</p>
+    <div class="app-meta fade-in fade-in-d3">
+      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
+      <div class="meta-chip"><strong>🏷️ Category</strong> Outdoors · Data · Intelligence</div>
+    </div>
   </div>
-  <p class="app-subtitle fade-in fade-in-d2">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</p>
-  <div class="app-meta fade-in fade-in-d3">
-    <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
-    <div class="meta-chip"><strong>🏷️ Category</strong> Outdoors · Data · Intelligence</div>
-  </div>
-</section>
 
-<div class="phone-mockup-section fade-in">
-  <div class="phone-carousel-wrap">
+  <div class="phone-carousel-wrap fade-in fade-in-d2">
     <div class="phone-frame">
       <div class="phone-volume"></div>
       <div class="phone-screen" id="phoneCarousel">
@@ -256,7 +232,7 @@
       <button class="carousel-dot" onclick="goToSlide(5)"></button>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   var currentSlide = 0;
