@@ -1007,4 +1007,18 @@
           observer.unobserve(entry.target);
         }
       });
-    },
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } catch(e) {
+    // If IntersectionObserver not supported, show everything
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+</script>
+
+</body>
+</html>
