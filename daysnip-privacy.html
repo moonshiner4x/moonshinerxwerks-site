@@ -35,22 +35,17 @@
   .legal-content li { margin-bottom: 8px; }
   .legal-content a { color: var(--text); }
   .legal-content strong { color: var(--text); }
-  .legal-content em { color: var(--text-secondary); font-style: italic; }
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
   .back-link:hover { color: var(--text); }
   .legal-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   .tldr { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
   .tldr p { color: var(--text); font-size: 0.95rem; margin-bottom: 0; }
-  .tldr strong { color: var(--text); }
   .closing-note { font-size: 0.85rem; color: var(--text-secondary); font-style: italic; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
   footer { border-top: 1px solid var(--border); padding: 44px 32px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .footer-left { display: flex; align-items: center; gap: 24px; }
   .footer-logo-img { height: 56px; opacity: 0.7; }
   .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
-  .footer-socials { display: flex; gap: 10px; }
-  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
-  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .legal-content { padding: 140px 20px 60px; }
@@ -77,24 +72,24 @@
   <a href="daysnip.html" class="back-link">← Back to DaySnip</a>
 
   <h1>Privacy Policy — DaySnip</h1>
-  <p class="updated">Effective Date: March 6, 2026 · Last Updated: March 6, 2026<br>Contact: <a href="/cdn-cgi/l/email-protection#1b717473755b76747475687372757e69636c7e69706835787476"><span class="__cf_email__" data-cfemail="f79d989f99b79a989899849f9e9992858f8092859c84d994989a">[email&#160;protected]</span></a></p>
+  <p class="updated">Effective Date: March 6, 2026 · Last Updated: March 6, 2026<br>Contact: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></p>
 
   <div class="tldr">
-    <p><strong>The short version:</strong> Your journal is yours. Everything you write stays on your device by default. Cloud sync and AI compilation only activate when you choose them. Your content is never sold, shared with advertisers, or used to train AI models.</p>
+    <p><strong>The short version:</strong> Your journal is yours. Everything you write stays on your device by default. Cloud sync is available to all users via iCloud. AI compilation runs on-device for free users and automatically via cloud for DaySnip+ subscribers. Your content is never sold, shared with advertisers, or used to train AI models.</p>
   </div>
 
   <hr>
 
   <h2>1. Who We Are</h2>
-  <p>DaySnip is developed and operated by moonshinerXwerks LLC ("we," "us," or "our"). You can reach us at <a href="/cdn-cgi/l/email-protection#244e4b4c4a64494b4b4a574c4d4a41565c5341564f570a474b49"><span class="__cf_email__" data-cfemail="9af0f5f2f4daf7f5f5f4e9f2f3f4ffe8e2edffe8f1e9b4f9f5f7">[email&#160;protected]</span></a>.</p>
-  <p>This Privacy Policy explains how we handle information when you use the DaySnip app for iPhone, iPad, and Apple Watch ("the App").</p>
+  <p>DaySnip is developed and operated by moonshinerXwerks LLC ("we," "us," or "our"). You can reach us at <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
+  <p>This Privacy Policy explains how we handle information when you use the DaySnip app for iPhone, iPad, and Apple Watch ("the App"). DaySnip is rated 4+ and is suitable for all ages.</p>
 
   <hr>
 
   <h2>2. Information We Collect</h2>
 
   <h3>2.1 Content You Create</h3>
-  <p>DaySnip is a journaling app. The content you create — voice notes, text entries, guided reflections, mood tags, and compiled journal entries — is stored <strong>locally on your device</strong> by default using Apple's SwiftData framework. This content never leaves your device unless you explicitly enable iCloud Sync (see Section 3).</p>
+  <p>DaySnip is a journaling app. The content you create — voice notes, text entries, guided reflections, mood tags, and compiled journal entries — is stored <strong>locally on your device</strong> by default using Apple's SwiftData framework.</p>
 
   <h3>2.2 Technical Information</h3>
   <p>We collect minimal technical information needed to operate the App:</p>
@@ -103,14 +98,20 @@
     <li><strong>Subscription status</strong> — Whether you hold an active DaySnip+ or Therapy Prep subscription. This is processed entirely through Apple's StoreKit. We never receive your payment information.</li>
   </ul>
 
-  <h3>2.3 What We Do Not Collect</h3>
+  <h3>2.3 Speech Recognition</h3>
+  <p>DaySnip uses Apple's Speech Recognition framework to transcribe voice notes. Depending on your device and iOS version, speech recognition may be processed on-device or may send audio data to Apple's servers for processing. Apple's handling of speech data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>. We do not independently transmit, store, or have access to your audio recordings on any server.</p>
+
+  <h3>2.4 Local Notifications</h3>
+  <p>DaySnip may send local notifications for capture reminders and reflection prompts. These notifications are generated entirely on your device and do not involve any data transmission. You can manage notification permissions at any time through your device's Settings.</p>
+
+  <h3>2.5 What We Do Not Collect</h3>
   <ul>
     <li>No name, email address, or account credentials (DaySnip has no user accounts)</li>
-    <li>No crash analytics or usage telemetry beyond Apple's platform-level reporting</li>
     <li>No advertising identifiers (IDFA)</li>
     <li>No location data</li>
     <li>No contact list or other device data</li>
   </ul>
+  <p><strong>Note on crash reporting:</strong> Apple collects crash reports and diagnostic data through its standard platform-level reporting. This data may be shared with us through App Store Connect in anonymized, aggregate form. We do not integrate any third-party crash analytics SDKs.</p>
 
   <hr>
 
@@ -119,8 +120,8 @@
   <h3>3.1 On-Device Storage (Default)</h3>
   <p>All journal content is stored locally on your device. No internet connection is required to capture, view, or search your entries. If you delete the App, your local data is deleted with it.</p>
 
-  <h3>3.2 iCloud Sync (Optional — DaySnip+ Only)</h3>
-  <p>If you subscribe to DaySnip+ and enable iCloud Sync, your entries are encrypted and stored in your personal iCloud account via Apple's CloudKit. This means:</p>
+  <h3>3.2 iCloud Sync</h3>
+  <p>If you are signed into iCloud on your device, DaySnip may sync your journal entries across your devices via Apple's CloudKit. iCloud sync is available to <strong>all users</strong> (free and subscribed) and operates automatically when an iCloud account is present. This means:</p>
   <ul>
     <li>Data is stored in <strong>your</strong> iCloud account, not on our servers</li>
     <li>Apple encrypts your data in transit and at rest</li>
@@ -133,7 +134,7 @@
   <p>DaySnip compiles your daily entries into a cohesive journal wrap using AI:</p>
   <ul>
     <li><strong>Free tier:</strong> Compilation runs entirely <strong>on-device</strong> using Apple's Foundation Models framework. Your content never leaves your device for this feature.</li>
-    <li><strong>DaySnip+ (cloud AI):</strong> If you subscribe to DaySnip+ and have enabled cloud AI, your entries for the day are sent to our secure compilation service to generate an enhanced wrap. Content is transmitted over an encrypted connection (TLS), used only to generate your compilation, and <strong>not retained, logged, or used to train any AI model</strong>.</li>
+    <li><strong>DaySnip+:</strong> Compilation is automatically processed via our secure cloud AI service to generate an enhanced wrap with additional writing styles. Content is transmitted over an encrypted connection (TLS), used only to generate your compilation, and <strong>not retained, logged, or used to train any AI model</strong>. There is no user-facing toggle to switch between on-device and cloud AI — cloud compilation is enabled automatically for active DaySnip+ subscribers.</li>
   </ul>
 
   <hr>
@@ -146,7 +147,7 @@
     <li>If you choose to share a summary (e.g., via the PDF export), that sharing happens through Apple's standard Share Sheet — we have no involvement in or visibility into what you share or with whom</li>
     <li>Journal content processed for Therapy Prep summaries is <strong>never retained by us or used to train AI models</strong></li>
   </ul>
-  <p>Therapy Prep is not a medical service and is not a substitute for professional mental health care. See our Terms of Service for full disclaimers.</p>
+  <p><strong>Important:</strong> Therapy Prep is not a medical device, not a clinical tool, and is not a substitute for professional mental health care. AI-generated summaries may contain inaccuracies, omissions, or misinterpretations of your journal content. See our Terms of Service for full disclaimers.</p>
 
   <hr>
 
@@ -165,8 +166,9 @@
   <h2>6. Sharing and Disclosure</h2>
   <p>We do not sell your personal information. We do not share your journal content with any third party, with the following narrow exceptions:</p>
   <ul>
-    <li><strong>Apple / CloudKit</strong> — If you enable iCloud Sync, your data is stored in your personal iCloud account as described in Section 3.2.</li>
-    <li><strong>AI compilation service</strong> — If you use cloud AI compilation (DaySnip+), your day's entries are sent to our compilation endpoint for processing only, as described in Section 3.3. No third-party AI provider receives raw journal content for training.</li>
+    <li><strong>Apple / CloudKit</strong> — Your data may be synced to your personal iCloud account as described in Section 3.2.</li>
+    <li><strong>Apple Speech Recognition</strong> — Voice recordings may be processed by Apple's speech recognition service as described in Section 2.3.</li>
+    <li><strong>AI compilation service</strong> — If you are a DaySnip+ subscriber, your day's entries are sent to our compilation endpoint for processing only, as described in Section 3.3. No third-party AI provider receives raw journal content for training.</li>
     <li><strong>Legal requirements</strong> — We may disclose information if required by law, court order, or to protect the rights and safety of our users, provided that any such disclosure would be limited to technical/account data (which is minimal) and would never include raw journal content we do not possess.</li>
   </ul>
 
@@ -184,7 +186,7 @@
   <hr>
 
   <h2>8. Children's Privacy</h2>
-  <p>DaySnip is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us information, please contact us at <a href="/cdn-cgi/l/email-protection#d8b2b7b0b698b5b7b7b6abb0b1b6bdaaa0afbdaab3abf6bbb7b5"><span class="__cf_email__" data-cfemail="3d575255537d505252534e555453584f454a584f564e135e5250">[email&#160;protected]</span></a> and we will take steps to address it.</p>
+  <p>DaySnip is rated 4+ on the App Store and is suitable for all ages. We do not knowingly collect personal information from children under 13. Because DaySnip does not require account creation and stores data locally by default, minimal personal information is involved regardless of user age. If you believe a child has provided us information through a support channel, please contact us at <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a> and we will take steps to address it.</p>
 
   <hr>
 
@@ -205,11 +207,11 @@
   <ul>
     <li><strong>Access and export:</strong> Your entries are always accessible within the App. PDF export is available for compiled entries and Therapy Prep summaries.</li>
     <li><strong>Deletion:</strong> Delete individual entries, specific days, or all journal data from within the App at any time.</li>
-    <li><strong>Sync:</strong> Enable or disable iCloud Sync at any time in Settings.</li>
-    <li><strong>Cloud AI:</strong> If you prefer on-device-only AI, you can disable cloud AI compilation in Settings even with a DaySnip+ subscription.</li>
+    <li><strong>Sync:</strong> iCloud Sync can be disabled by signing out of iCloud or removing DaySnip from your iCloud settings.</li>
+    <li><strong>Notifications:</strong> Manage capture and reflection reminder notifications through your device's Settings at any time.</li>
     <li><strong>Subscription:</strong> Manage or cancel your subscription through Settings → Apple ID → Subscriptions.</li>
   </ul>
-  <p>If you are located in the European Economic Area, United Kingdom, or California, you may have additional rights under applicable privacy laws (GDPR, UK GDPR, CCPA). Because we do not maintain a database of your personal data or journal content, most of these rights are exercised directly through your device. For any questions or requests, contact <a href="/cdn-cgi/l/email-protection#016b6e696f416c6e6e6f7269686f6473797664736a722f626e6c"><span class="__cf_email__" data-cfemail="83e9ecebedc3eeececedf0ebeaede6f1fbf4e6f1e8f0ade0ecee">[email&#160;protected]</span></a>.</p>
+  <p>If you are located in the European Economic Area, United Kingdom, or California, you may have additional rights under applicable privacy laws (GDPR, UK GDPR, CCPA). Because we do not maintain a database of your personal data or journal content, most of these rights are exercised directly through your device. For any questions or requests, contact <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
 
   <hr>
 
@@ -217,9 +219,11 @@
   <p>DaySnip integrates with the following Apple platform services. These are governed by Apple's own privacy policies:</p>
   <ul>
     <li><strong>Apple StoreKit</strong> — Subscription purchase and management</li>
-    <li><strong>Apple CloudKit</strong> — Optional iCloud sync</li>
+    <li><strong>Apple CloudKit</strong> — iCloud sync (available to all users)</li>
     <li><strong>Apple Foundation Models</strong> — On-device AI compilation</li>
+    <li><strong>Apple Speech Recognition</strong> — Voice note transcription (may involve server-side processing)</li>
     <li><strong>Apple WidgetKit / App Groups</strong> — Widget capture feature</li>
+    <li><strong>Apple User Notifications</strong> — Local capture and reflection reminders</li>
   </ul>
   <p>We do not integrate with third-party advertising networks, analytics SDKs, or social platforms.</p>
 
@@ -231,4 +235,21 @@
   <hr>
 
   <h2>13. Contact Us</h2>
-  <p>If you have questions, concerns, or requests regarding this Pri
+  <p>If you have questions, concerns, or requests regarding this Privacy Policy:</p>
+  <p><strong>Email:</strong> <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></p>
+  <p>We aim to respond to all privacy inquiries within 5 business days.</p>
+
+  <p class="closing-note">DaySnip — Capture your day. Understand your story.</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
