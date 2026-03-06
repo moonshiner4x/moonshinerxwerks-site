@@ -1,115 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    body {background-color: #000000}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #0000e9; -webkit-text-stroke: #0000e9}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 28.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p6 {margin: 0.0px 0.0px 32.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.1px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.1px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.4px '.Apple Color Emoji UI'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.1px 'Helvetica Neue'; color: #4a85f5; -webkit-text-stroke: #4a85f5}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2}
-    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.6px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.1px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #000000}
-    li.li15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.3px 'Helvetica Neue'; color: #777777; -webkit-text-stroke: #777777}
-    span.s1 {font-kerning: none}
-    span.s2 {background-color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: 0px #000000}
-    span.s3 {background-color: #ece9e2; -webkit-text-stroke: 0px #000000}
-    span.s4 {font: 10.6px 'Helvetica Neue'; font-kerning: none; color: #777777; -webkit-text-stroke: 0px #777777}
-    span.s5 {font: 10.1px '.Apple Color Emoji UI'; font-kerning: none; background-color: #101010}
-    span.s6 {font-kerning: none; background-color: #101010}
-    span.s7 {font-kerning: none; background-color: rgba(74, 133, 245, 0.1)}
-    span.s8 {font: 21.6px 'Helvetica Neue'; font-kerning: none; color: #ece9e2; background-color: #101010; -webkit-text-stroke: 0px #ece9e2}
-    span.s9 {background-color: #101010; -webkit-text-stroke: 0px #000000}
-    span.s10 {font: 10.8px 'Helvetica Neue'; font-kerning: none; color: #777777; background-color: #101010; -webkit-text-stroke: 0px #777777}
-    span.s11 {font: 10.6px '.Apple Color Emoji UI'; font-kerning: none; background-color: #101010}
-    span.s12 {font: 10.6px 'Helvetica Neue'; font-kerning: none}
-    span.s13 {font: 12.0px 'Helvetica Neue'; font-kerning: none}
-    span.s14 {font: 10.6px 'Helvetica Neue'; font-kerning: none; background-color: #101010}
-    ul.ul1 {list-style-type: disc}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FishON! Pro — moonshinerXwerks LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
+    --text: #F0EDE8; --text-secondary: #8A8A8A; --accent: #5B9BF7;
+    --accent-dim: rgba(91,155,247,0.1); --border: #222222; --radius: 16px;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
+  .logo-img:hover { opacity: 1; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; transition: opacity 0.25s !important; }
+  .nav-cta:hover { opacity: 0.85; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+
+  .app-hero { padding: 180px 32px 100px; max-width: 1200px; margin: 0 auto; }
+  .app-hero-top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+  .app-icon { width: 88px; height: 88px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; background: linear-gradient(135deg, #141E30, #1B2A45); box-shadow: 0 8px 32px rgba(91,155,247,0.15); }
+  .app-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
+  .app-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 620px; line-height: 1.7; margin-bottom: 32px; }
+  .app-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .meta-chip { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 0.84rem; color: var(--text-secondary); }
+  .meta-chip strong { color: var(--text); }
+
+  .features-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .features-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 48px; letter-spacing: -0.02em; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+  .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all 0.3s ease; }
+  .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(91,155,247,0.06); }
+  .feature-icon { width: 44px; height: 44px; background: var(--accent-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 1.2rem; }
+  .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 8px; }
+  .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+
+  .pricing-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .pricing-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 48px; letter-spacing: -0.02em; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; }
+  .price-card.featured { border-color: var(--accent); }
+  .price-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+  .price-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 6px; }
+  .price-amount { font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
+  .price-amount span { font-size: 0.9rem; font-weight: 400; color: var(--text-secondary); }
+  .price-card ul { list-style: none; }
+  .price-card li { font-size: 0.86rem; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .price-card li:last-child { border-bottom: none; }
+  .price-card li::before { content: '✓ '; color: var(--accent); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
+  .back-link:hover { color: var(--text); }
+
+  footer { border-top: 1px solid var(--border); padding: 44px 32px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-left { display: flex; align-items: center; gap: 24px; }
+  .footer-logo-img { height: 56px; opacity: 0.7; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+  .footer-socials { display: flex; gap: 10px; }
+  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
+  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.7s ease both; }
+  .fade-in-d1 { animation-delay: 0.1s; }
+  .fade-in-d2 { animation-delay: 0.2s; }
+  .fade-in-d3 { animation-delay: 0.3s; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .mobile-toggle { display: block; }
+    .app-hero { padding: 140px 20px 60px; }
+    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .features-section, .pricing-section { padding: 0 20px 60px; }
+    .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/index.html"><img src="file:///Attachment.png" alt="Attachment.png"></a></span></p>
-<ul class="ul1">
-  <li class="li2"><span class="s2"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/about.html"><span class="s1">About</span></a></span></li>
-  <li class="li2"><span class="s2"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/index.html#portfolio"><span class="s1">Portfolio</span></a></span></li>
-  <li class="li2"><span class="s2"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/index.html#legal"><span class="s1">Legal</span></a></span></li>
-  <li class="li3"><span class="s3"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/index.html#contact"><span class="s1">Contact</span></a></span></li>
-</ul>
-<p class="p2"><span class="s1"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/index.html#portfolio">← Back to Portfolio<span class="s4"></span></a></span></p>
-<p class="p4"><span class="s1"><img src="file:///Attachment.png" alt="Attachment.png"></span></p>
-<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 40.0px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s1">FishON! Pro</span></h1>
-<p class="p6"><span class="s1">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</span></p>
-<p class="p7"><span class="s5">📱</span><span class="s6"> Platform</span></p>
-<p class="p8"><span class="s6">iPhone · iPad</span></p>
-<p class="p7"><span class="s5">🏷️</span><span class="s6"> Category</span></p>
-<p class="p8"><span class="s6">Outdoors · Data · Intelligence</span></p>
-<h2 style="margin: 0.0px 0.0px 48.0px 0.0px; font: 24.0px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s1">Features</span></h2>
-<p class="p10"><span class="s7">📡</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Live Multi-Agency Data</span></h3>
-<p class="p2"><span class="s6">Real-time conditions from USGS, NOAA, NWS, Bureau of Reclamation, and NDBC buoys — flow rates, water temps, tides, weather, and wave data in one place.</span></p>
-<p class="p10"><span class="s7">🏆</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Smart Scoring Engine</span></h3>
-<p class="p2"><span class="s6">Ranks your fishing spots daily based on current conditions, your catch history, and field reports. The app learns your personal "golden conditions" over time.</span></p>
-<p class="p10"><span class="s7">📍</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Three-Tier Location System</span></h3>
-<p class="p2"><span class="s6">Organize all your water with a River → Section → Location hierarchy that mirrors how anglers actually think about their spots.</span></p>
-<p class="p10"><span class="s7">📝</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Catch &amp; Trip Logging</span></h3>
-<p class="p2"><span class="s6">Log catches, trip reports, and field observations with automatic environmental snapshots that capture conditions at the moment you land a fish.</span></p>
-<p class="p10"><span class="s7">🗺️</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Offline Satellite Maps</span></h3>
-<p class="p2"><span class="s6">Full satellite maps for backcountry and remote water with no cell service. Download regions ahead of time and navigate without connectivity.</span></p>
-<p class="p10"><span class="s7">🎯</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Where to Fish Today</span></h3>
-<p class="p2"><span class="s6">Daily rankings from "best bet" to "skip today" that get smarter the more you fish — your own AI-powered fishing advisor.</span></p>
-<p class="p10"><span class="s7">🔒</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 13.8px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Privacy-First Design</span></h3>
-<p class="p2"><span class="s6">Your raw data never leaves your device. Your secret spots stay secret — we never share location or catch data with anyone.</span></p>
-<h2 style="margin: 0.0px 0.0px 48.0px 0.0px; font: 24.0px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s1">Pricing</span></h2>
-<p class="p12"><span class="s6">FREE</span></p>
-<h3 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 15.6px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Scout</span></h3>
-<p class="p14"><span class="s8">$0 </span><span class="s6">/ forever</span></p>
-<ul class="ul1">
-  <li class="li15"><span class="s9"></span><span class="s6">Basic conditions data</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Limited spot tracking</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Catch logging</span></li>
-</ul>
-<p class="p12"><span class="s6">MOST POPULAR</span></p>
-<h3 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 15.6px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Angler</span></h3>
-<p class="p16"><span class="s6">$12.99 </span><span class="s10">/ year</span></p>
-<ul class="ul1">
-  <li class="li15"><span class="s9"></span><span class="s6">Everything in Scout</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Full multi-agency data</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Smart scoring &amp; rankings</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Offline satellite maps</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Unlimited spots</span></li>
-</ul>
-<p class="p12"><span class="s6">PROFESSIONAL</span></p>
-<h3 style="margin: 0.0px 0.0px 6.0px 0.0px; font: 15.6px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s6">Guide</span></h3>
-<p class="p16"><span class="s6">$24.99 </span><span class="s10">/ year</span></p>
-<ul class="ul1">
-  <li class="li15"><span class="s9"></span><span class="s6">Everything in Angler</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Advanced analytics</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Client trip management</span></li>
-  <li class="li15"><span class="s9"></span><span class="s6">Priority data refresh</span></li>
-</ul>
-<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #ece9e2; -webkit-text-stroke: #ece9e2"><span class="s1">Legal</span></h2>
-<p class="p18"><span class="s11"><a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/fishon-terms.html">📜<span class="s12"> FishON! Pro Terms of Service</span></a></span><span class="s13"> <a href="file:///Users/johnjackson/Desktop/moonshinerxwerks-site/fishon-privacy.html"><span class="s11">🔒</span><span class="s14"> FishON! Pro Privacy Policy</span></a></span></p>
-<p class="p19"><span class="s1"><img src="file:///Attachment.png" alt="Attachment.png"></span></p>
-<p class="p20"><span class="s1">© 2026 moonshinerXwerks LLC. All rights reserved.</span></p>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#legal">Legal</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="app-hero">
+  <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
+  <div class="app-hero-top fade-in fade-in-d1">
+    <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="fishon.png" alt="FishON! Pro" style="width:88px;height:88px;border-radius:22px;"></div>
+    <h1>FishON! Pro</h1>
+  </div>
+  <p class="app-subtitle fade-in fade-in-d2">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</p>
+  <div class="app-meta fade-in fade-in-d3">
+    <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
+    <div class="meta-chip"><strong>🏷️ Category</strong> Outdoors · Data · Intelligence</div>
+  </div>
+</section>
+
+<section class="features-section">
+  <h2 class="fade-in">Features</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <h3>Live Multi-Agency Data</h3>
+      <p>Real-time conditions from USGS, NOAA, NWS, Bureau of Reclamation, and NDBC buoys — flow rates, water temps, tides, weather, and wave data in one place.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>Smart Scoring Engine</h3>
+      <p>Ranks your fishing spots daily based on current conditions, your catch history, and field reports. The app learns your personal "golden conditions" over time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📍</div>
+      <h3>Three-Tier Location System</h3>
+      <p>Organize all your water with a River → Section → Location hierarchy that mirrors how anglers actually think about their spots.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>Catch & Trip Logging</h3>
+      <p>Log catches, trip reports, and field observations with automatic environmental snapshots that capture conditions at the moment you land a fish.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Offline Satellite Maps</h3>
+      <p>Full satellite maps for backcountry and remote water with no cell service. Download regions ahead of time and navigate without connectivity.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Where to Fish Today</h3>
+      <p>Daily rankings from "best bet" to "skip today" that get smarter the more you fish — your own AI-powered fishing advisor.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Privacy-First Design</h3>
+      <p>Your raw data never leaves your device. Your secret spots stay secret — we never share location or catch data with anyone.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section">
+  <h2>Pricing</h2>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-label">Free</div>
+      <h3>Scout</h3>
+      <div class="price-amount">$0 <span>/ forever</span></div>
+      <ul>
+        <li>Basic conditions data</li>
+        <li>Limited spot tracking</li>
+        <li>Catch logging</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="price-label">Most Popular</div>
+      <h3>Angler</h3>
+      <div class="price-amount">$12.99 <span>/ year</span></div>
+      <ul>
+        <li>Everything in Scout</li>
+        <li>Full multi-agency data</li>
+        <li>Smart scoring & rankings</li>
+        <li>Offline satellite maps</li>
+        <li>Unlimited spots</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-label">Professional</div>
+      <h3>Guide</h3>
+      <div class="price-amount">$24.99 <span>/ year</span></div>
+      <ul>
+        <li>Everything in Angler</li>
+        <li>Advanced analytics</li>
+        <li>Client trip management</li>
+        <li>Priority data refresh</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:0 32px 100px;">
+  <div style="border-top:1px solid var(--border);padding-top:48px;">
+    <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400;margin-bottom:24px;">Legal</h2>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="fishon-terms.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--surface);border:1px solid var(--border);border-radius:100px;color:var(--text);text-decoration:none;font-size:0.88rem;transition:all 0.25s;">📜 FishON! Pro Terms of Service</a>
+      <a href="fishon-privacy.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--surface);border:1px solid var(--border);border-radius:100px;color:var(--text);text-decoration:none;font-size:0.88rem;transition:all 0.25s;">🔒 FishON! Pro Privacy Policy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+
+  </div>
+</footer>
+
 </body>
 </html>
