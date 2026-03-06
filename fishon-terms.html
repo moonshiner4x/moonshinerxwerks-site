@@ -7,26 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
-    --text: #F0EDE8; --text-secondary: #8A8A8A;
-    --border: #222222; --radius: 16px;
-    --font-display: 'Instrument Serif', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
-  }
+  :root { --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414; --text: #F0EDE8; --text-secondary: #8A8A8A; --border: #222222; --radius: 16px; --font-display: 'Instrument Serif', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
   .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
-  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
-  .logo-img:hover { opacity: 1; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; } .logo-img:hover { opacity: 1; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; } .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
-
   .legal-content { max-width: 800px; margin: 0 auto; padding: 160px 32px 100px; }
   .legal-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 12px; }
   .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
@@ -34,19 +24,15 @@
   .legal-content p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
   .legal-content ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin: 0 0 16px 24px; }
   .legal-content li { margin-bottom: 8px; }
-  .legal-content a { color: var(--text); }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
-  .back-link:hover { color: var(--text); }
-
+  .legal-content a { color: var(--text); } .legal-content strong { color: var(--text); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; } .back-link:hover { color: var(--text); }
+  .legal-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  .closing-note { font-size: 0.82rem; color: var(--text-secondary); font-style: italic; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
   footer { border-top: 1px solid var(--border); padding: 44px 32px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .footer-left { display: flex; align-items: center; gap: 24px; }
   .footer-logo-img { height: 56px; opacity: 0.7; }
   .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
-  .footer-socials { display: flex; gap: 10px; }
-  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
-  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
-
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .legal-content { padding: 140px 20px 60px; }
@@ -70,48 +56,106 @@
 </nav>
 
 <div class="legal-content">
-  <a href="index.html#legal" class="back-link">← Back to Legal</a>
-  
-  <h1>FishON! Pro — Terms of Service</h1>
-  <p class="updated">Last updated: March 6, 2026</p>
+  <a href="fishon.html" class="back-link">← Back to FishON! Pro</a>
+
+  <h1>FishON! Pro™ — Terms of Service</h1>
+  <p class="updated">Effective Date: March 6, 2026</p>
 
   <h2>1. Acceptance</h2>
-  <p>By downloading, installing, or using FishON! Pro ("the App"), you agree to these terms. The App is developed and published by moonshinerXwerks LLC. These terms are in addition to our <a href="terms.html">general Terms of Service</a>.</p>
+  <p>By downloading, installing, or using FishON! Pro ("the App"), you agree to these Terms of Service. The App is developed and published by moonshinerXwerks LLC.</p>
+
+  <hr>
 
   <h2>2. Description</h2>
-  <p>FishON! Pro is a fishing intelligence platform that aggregates real-time environmental data from federal agencies to help anglers decide where to fish.</p>
+  <p>FishON! Pro is a fishing intelligence platform that aggregates real-time environmental data from federal agencies (USGS, NOAA, NWS, Bureau of Reclamation, and NDBC) to help anglers decide where to fish. The App learns each angler's personal conditions over time and ranks fishing spots accordingly.</p>
+
+  <hr>
 
   <h2>3. License</h2>
   <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes on devices you own or control, subject to these terms and Apple's App Store terms.</p>
 
+  <hr>
+
   <h2>4. User Content</h2>
-  <p>You retain ownership of any content you create within the App. By using the App, you grant us a limited license to process your content solely for the purpose of providing the App's features and functionality.</p>
+  <p>You retain ownership of any content you create within the App, including catch logs, trip reports, field observations, and location data. By using the App, you grant us a limited license to process your content solely for the purpose of providing the App's features and functionality.</p>
 
-  <h2>5. Subscriptions</h2>
-  <p>FishON! Pro offers a free Scout tier, Angler at $12.99/year, and Guide at $24.99/year.</p>
-  <p>Subscriptions are managed and billed through Apple's App Store. You may cancel at any time through your Apple ID settings. Cancellation takes effect at the end of the current billing period.</p>
+  <hr>
 
-  <h2>6. Prohibited Use</h2>
+  <h2>5. iCloud Sync</h2>
+  <p>FishON! Pro uses Apple's CloudKit to sync your data across your Apple devices for Angler and Guide tier subscribers. When iCloud sync is active:</p>
+  <ul>
+    <li>Your data is stored in <strong>your personal iCloud account</strong>, not on our servers.</li>
+    <li>Apple encrypts your data in transit and at rest.</li>
+    <li>We do not have access to your synced data.</li>
+    <li>iCloud sync is governed by Apple's iCloud Terms of Service and <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+    <li>You can disable sync or delete your iCloud data at any time through your device's iCloud settings.</li>
+  </ul>
+
+  <hr>
+
+  <h2>6. Anonymous Telemetry</h2>
+  <p>FishON! Pro includes an optional, opt-in anonymous telemetry system that contributes anonymized data to a fisheries research dataset. This system is disabled by default and collects no personal information. For full details on what data is and is not transmitted, see the <a href="fishon-privacy.html">FishON! Pro Privacy Policy</a>.</p>
+
+  <hr>
+
+  <h2>7. Subscriptions and Pricing</h2>
+  <p>FishON! Pro offers the following tiers:</p>
+  <ul>
+    <li><strong>Scout (Free)</strong> — Basic conditions data, limited spot tracking, catch logging.</li>
+    <li><strong>Angler ($12.99/year or $34.99 lifetime)</strong> — Full multi-agency data, smart scoring and rankings, offline satellite maps, unlimited spots, iCloud sync.</li>
+    <li><strong>Guide ($24.99/year or $59.99 lifetime)</strong> — Everything in Angler plus advanced analytics, client trip management, and priority data refresh.</li>
+  </ul>
+  <p>All subscriptions and lifetime purchases are managed and billed through Apple's App Store. Key terms:</p>
+  <ul>
+    <li>Payment is charged to your Apple ID account at confirmation of purchase.</li>
+    <li>Annual subscriptions automatically renew unless you cancel at least 24 hours before the end of the current billing period.</li>
+    <li>You can manage and cancel subscriptions at any time through Settings → Apple ID → Subscriptions.</li>
+    <li>No refunds are provided for unused portions of a subscription period. Refund requests are handled by Apple in accordance with their policies.</li>
+    <li><strong>Lifetime purchases are non-refundable</strong> and grant access for the lifetime of the product.</li>
+  </ul>
+  <p>For more details on subscription terms, see <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple's Standard Licensed Application End User License Agreement</a>.</p>
+
+  <hr>
+
+  <h2>8. Prohibited Use</h2>
   <p>You may not reverse engineer, decompile, or disassemble the App; use the App for any unlawful purpose; attempt to gain unauthorized access to any systems connected to the App; or use automated means to access the App.</p>
 
-  <h2>7. Disclaimer</h2>
-  <p>The App is provided "as is." We make no guarantees about accuracy, reliability, or availability. We are not responsible for decisions made based on information provided by the App.</p>
+  <hr>
 
-  <h2>8. Limitation of Liability</h2>
-  <p>To the fullest extent permitted by law, moonshinerXwerks LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of the App.</p>
+  <h2>9. Disclaimer</h2>
+  <p>The App is provided "as is." We make no guarantees about the accuracy, reliability, or availability of environmental data sourced from federal agencies. Data from USGS, NOAA, NWS, Bureau of Reclamation, and NDBC is provided by those agencies and may be delayed, incomplete, or inaccurate. We are not responsible for decisions made based on information provided by the App, including fishing location choices, safety decisions, or navigation.</p>
 
-  <h2>9. Termination</h2>
-  <p>We may terminate or suspend your access to the App at any time for violation of these terms. Upon termination, your right to use the App ceases immediately.</p>
+  <hr>
 
-  <h2>10. Changes</h2>
-  <p>We may modify these terms at any time. Continued use of the App after changes constitutes acceptance.</p>
+  <h2>10. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, moonshinerXwerks LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including but not limited to damages arising from inaccurate environmental data, navigation errors, equipment damage, personal injury, or fishing outcomes.</p>
 
-  <h2>11. Contact</h2>
-  <p>For questions, contact <a href="/cdn-cgi/l/email-protection#95fffafdfbd5f8fafafbe6fdfcfbf0e7ede2f0e7fee6bbf6faf8"><span class="__cf_email__" data-cfemail="82e8edeaecc2efededecf1eaebece7f0faf5e7f0e9f1ace1edef">[email&#160;protected]</span></a>.</p>
+  <hr>
 
+  <h2>11. Termination</h2>
+  <p>We may terminate or suspend your access to the App at any time for violation of these terms. Upon termination, your right to use the App ceases immediately. Active subscriptions must be cancelled separately through your Apple ID settings.</p>
+
+  <hr>
+
+  <h2>12. Changes</h2>
+  <p>We may modify these terms at any time. If we make material changes, we will notify you through the App. Continued use of the App after changes constitutes acceptance.</p>
+
+  <hr>
+
+  <h2>13. Contact</h2>
+  <p>For questions, contact <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a>.</p>
+
+  <p class="closing-note">FishON! Pro™ · moonshinerXwerks LLC · March 6, 2026</p>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-l
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

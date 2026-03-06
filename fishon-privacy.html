@@ -7,26 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
-    --text: #F0EDE8; --text-secondary: #8A8A8A;
-    --border: #222222; --radius: 16px;
-    --font-display: 'Instrument Serif', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
-  }
+  :root { --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414; --text: #F0EDE8; --text-secondary: #8A8A8A; --border: #222222; --radius: 16px; --font-display: 'Instrument Serif', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
   .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
-  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
-  .logo-img:hover { opacity: 1; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; } .logo-img:hover { opacity: 1; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; } .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
-
   .legal-content { max-width: 800px; margin: 0 auto; padding: 160px 32px 100px; }
   .legal-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 12px; }
   .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
@@ -35,39 +25,25 @@
   .legal-content p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
   .legal-content ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin: 0 0 16px 24px; }
   .legal-content li { margin-bottom: 8px; }
-  .legal-content a { color: var(--text); }
-  .legal-content strong { color: var(--text); }
-  .legal-content em { color: var(--text-secondary); }
-  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
-  .back-link:hover { color: var(--text); }
-
+  .legal-content a { color: var(--text); } .legal-content strong { color: var(--text); } .legal-content em { color: var(--text-secondary); }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; } .back-link:hover { color: var(--text); }
   .data-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.85rem; }
   .data-table th { text-align: left; padding: 12px 16px; background: var(--surface); color: var(--text); border-bottom: 1px solid var(--border); font-weight: 600; }
   .data-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
   .data-table tr:last-child td { border-bottom: none; }
-  .tag-never { color: #F07080; font-weight: 600; }
-  .tag-limited { color: #F0A050; font-weight: 600; }
-  .tag-yes { color: #50C8B0; font-weight: 600; }
-
+  .tag-never { color: #F07080; font-weight: 600; } .tag-limited { color: #F0A050; font-weight: 600; } .tag-yes { color: #50C8B0; font-weight: 600; } .tag-reserved { color: #8A8A8A; font-weight: 600; }
   .pipeline-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin: 20px 0; }
   .pipeline-card h3 { margin-top: 0; }
-
   .version-note { font-size: 0.82rem; color: var(--text-secondary); margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
-
   footer { border-top: 1px solid var(--border); padding: 44px 32px; }
   .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .footer-left { display: flex; align-items: center; gap: 24px; }
   .footer-logo-img { height: 56px; opacity: 0.7; }
   .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
-  .footer-socials { display: flex; gap: 10px; }
-  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
-  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
-
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .legal-content { padding: 140px 20px 60px; }
-    .data-table { font-size: 0.78rem; }
-    .data-table th, .data-table td { padding: 8px 10px; }
+    .data-table { font-size: 0.78rem; } .data-table th, .data-table td { padding: 8px 10px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
   }
 </style>
@@ -91,7 +67,7 @@
   <a href="fishon.html" class="back-link">← Back to FishON! Pro</a>
 
   <h1>FishON! Pro™ Privacy Policy</h1>
-  <p class="updated">Effective: February 21, 2026 · moonshinerXwerks LLC · Version 2.0</p>
+  <p class="updated">Effective: March 6, 2026 · moonshinerXwerks LLC · Version 2.1</p>
 
   <h2>1. Overview</h2>
   <p>FishON! Pro is built on a simple principle: <strong>your personal fishing data is yours.</strong> Your catch logs, location names, GPS coordinates, photos, and preferences never leave your device unless you explicitly export them. This policy explains the one area where data does leave your device — the optional, opt-in anonymous fisheries telemetry system — and exactly what that means for your privacy.</p>
@@ -112,6 +88,7 @@
   <h2>3. Optional Anonymous Telemetry — Opt-In Only</h2>
   <p>FishON! Pro includes an optional, opt-in system that contributes anonymous data to a fisheries research dataset. This system is <strong>disabled by default</strong>. You are asked to enable it during onboarding and can change your choice at any time in <strong>Settings → Privacy</strong>. If you do not opt in, no data of any kind is transmitted.</p>
   <p>When enabled, the system operates three parallel data pipelines. Each pipeline is described in full below.</p>
+  <p><strong>Reserved event types:</strong> The telemetry system defines two additional event types — <code>conditionSnapshot</code> and <code>scoreViewed</code> — that exist in the codebase but are <strong>not currently wired to any data transmission</strong>. No data is collected or transmitted for these event types. If these are activated in a future version, this policy will be updated accordingly.</p>
 
   <div class="pipeline-card">
     <h3>3A. Anonymous Condition Telemetry</h3>
@@ -120,7 +97,7 @@
     <p><strong>What is captured:</strong></p>
     <ul>
       <li>A hashed, one-way section identifier — derived from river name, section index, and noisy rounded coordinates. Cannot be reversed to your section name.</li>
-      <li>River conditions at visit time: flow (CFS with ±8% random noise), water temperature (±0.4°F noise), air temperature (±1.0°F noise)</li>
+      <li>River conditions at visit time: flow (CFS with ±8% random noise, minimum ±2 CFS), water temperature (±0.4°F noise), air temperature (±1.0°F noise)</li>
       <li>Condition score (0–100) at time of visit</li>
       <li>Catch outcome: species category (e.g. Salmon &amp; Steelhead, Trout &amp; Char) and general method (fly, spin, bait). Never the exact species name or lure.</li>
       <li>Trip session data: fish count bucketed into ranges (0, 1–3, 4–10, 11+), session duration bucketed (under 2h, 2–4h, 4–8h, 8h+), quality rating (1–5)</li>
@@ -205,12 +182,14 @@
       <tr><td>Exact fish count</td><td class="tag-never">Never</td><td>Bucketed: 0, 1–3, 4–10, 11+</td></tr>
       <tr><td>Exact session duration</td><td class="tag-never">Never</td><td>Bucketed: &lt;2h, 2–4h, 4–8h, 8h+</td></tr>
       <tr><td>Hashed section identifier</td><td class="tag-limited">Pipeline 1 only</td><td>One-way SHA-256 hash — cannot be reversed</td></tr>
-      <tr><td>Condition scores and flow data</td><td class="tag-limited">Pipeline 1 only</td><td>With differential noise applied</td></tr>
+      <tr><td>Condition scores and flow data</td><td class="tag-limited">Pipeline 1 only</td><td>With ±8% noise (min ±2 CFS) applied</td></tr>
+      <tr><td>Air temperature at visit time</td><td class="tag-limited">Pipeline 1 only</td><td>With ±1.0°F random noise applied</td></tr>
       <tr><td>Public USGS/NOAA/NDBC station ID</td><td class="tag-limited">Pipeline 2 only</td><td>Public federal infrastructure identifier</td></tr>
       <tr><td>Flow at gauge visit time</td><td class="tag-limited">Pipeline 2 only</td><td>Same value on waterdata.usgs.gov</td></tr>
       <tr><td>0.05° grid cell identifier</td><td class="tag-limited">Pipeline 3 only</td><td>3–4 mile area, not a precise location</td></tr>
       <tr><td>Time of day bucket</td><td class="tag-yes">All pipelines</td><td>Early morning / morning / midday / evening / night</td></tr>
       <tr><td>Day of week</td><td class="tag-yes">All pipelines</td><td>1–7 (no precise timestamp)</td></tr>
+      <tr><td>conditionSnapshot / scoreViewed</td><td class="tag-reserved">Reserved</td><td>Defined in codebase but not currently transmitted</td></tr>
     </tbody>
   </table>
 
@@ -242,14 +221,21 @@
   <h2>9. Contact</h2>
   <p>Questions about this privacy policy or the FishON! Pro telemetry system:</p>
   <p>moonshinerXwerks LLC<br>
-  Email: <a href="/cdn-cgi/l/email-protection#b1dbded9dff1dcdededfc2d9d8dfd4c3c9c6d4c3dac29fd2dedc"><span class="__cf_email__" data-cfemail="1c767374725c717373726f747572796e646b796e776f327f7371">[email&#160;protected]</span></a><br>
+  Email: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a><br>
   Website: <a href="https://moonshinerxwerks.com">moonshinerxwerks.com</a></p>
 
-  <p class="version-note">FishON! Pro™ · moonshinerXwerks LLC · Version 2.0 · February 21, 2026<br>
-  This document supersedes the FishON! Pro Privacy Policy version dated prior to February 21, 2026.</p>
+  <p class="version-note">FishON! Pro™ · moonshinerXwerks LLC · Version 2.1 · March 6, 2026<br>
+  This document supersedes the FishON! Pro Privacy Policy version 2.0 dated February 21, 2026.</p>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-lo
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
