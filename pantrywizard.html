@@ -180,7 +180,8 @@
   }
   .beta-form {
     display: flex;
-    gap: 12px;
+    flex-direction: column;
+    gap: 0;
     max-width: 440px;
     margin: 0 auto;
   }
@@ -399,8 +400,14 @@
     <form class="beta-form" name="pantrywizard-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="pantrywizard-beta">
       <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button type="submit">Sign Up</button>
+      <div style="display:flex;gap:12px;width:100%;margin-bottom:12px;">
+        <input type="text" name="first-name" placeholder="First name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
+        <input type="text" name="last-name" placeholder="Last name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
+      </div>
+      <div style="display:flex;gap:12px;width:100%;">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Sign Up</button>
+      </div>
     </form>
   </div>
 </section>
