@@ -38,11 +38,12 @@
   .meta-chip { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 0.84rem; color: var(--text-secondary); }
   .meta-chip strong { color: var(--text); }
 
-  /* ─── PHONE MOCKUP ─── */
-  .phone-wrap {
+  /* ─── PHONE MOCKUP + CAROUSEL ─── */
+  .phone-carousel-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 24px;
   }
 
   .phone-frame {
@@ -89,12 +90,43 @@
     border-radius: 32px;
     overflow: hidden;
     background: #000;
+    position: relative;
   }
 
   .phone-screen img {
+    position: absolute;
+    top: 0; left: 0;
     width: 100%; height: 100%;
     object-fit: cover; object-position: top;
     display: block;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .phone-screen img.active {
+    opacity: 1;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .carousel-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #444;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--text);
+    width: 24px;
+    border-radius: 4px;
   }
 
   .features-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
@@ -130,7 +162,7 @@
     .features-grid { grid-template-columns: 1fr; }
     .features-section { padding: 0 20px 60px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
-    .phone-wrap { margin-top: 20px; }
+    .phone-carousel-wrap { margin-top: 20px; }
     .phone-frame { max-width: 240px; }
   }
 </style>
@@ -164,15 +196,56 @@
     </div>
   </div>
 
-  <div class="phone-wrap fade-in fade-in-d2">
+  <div class="phone-carousel-wrap fade-in fade-in-d2">
     <div class="phone-frame">
       <div class="phone-volume"></div>
-      <div class="phone-screen">
-        <img src="hhr-screenshot.png" alt="Happy Hour Radar app screenshot">
+      <div class="phone-screen" id="phoneCarousel">
+        <img src="hhr-screenshot.png" alt="Happy Hour Radar - Discover" class="active">
+        <img src="hhr-screenshot-2.png" alt="Happy Hour Radar - Splash">
+        <img src="hhr-screenshot-3.png" alt="Happy Hour Radar - Events">
+        <img src="hhr-screenshot-4.png" alt="Happy Hour Radar - Map">
+        <img src="hhr-screenshot-5.png" alt="Happy Hour Radar - New Plan">
+        <img src="hhr-screenshot-6.png" alt="Happy Hour Radar - Settings">
       </div>
+    </div>
+    <div class="carousel-dots" id="carouselDots">
+      <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+      <button class="carousel-dot" onclick="goToSlide(1)"></button>
+      <button class="carousel-dot" onclick="goToSlide(2)"></button>
+      <button class="carousel-dot" onclick="goToSlide(3)"></button>
+      <button class="carousel-dot" onclick="goToSlide(4)"></button>
+      <button class="carousel-dot" onclick="goToSlide(5)"></button>
     </div>
   </div>
 </section>
+
+<script>
+  var currentSlide = 0;
+  var totalSlides = 6;
+  var autoplayTimer;
+
+  function goToSlide(n) {
+    var imgs = document.querySelectorAll('#phoneCarousel img');
+    var dots = document.querySelectorAll('#carouselDots .carousel-dot');
+    imgs[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    imgs[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    resetAutoplay();
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(nextSlide, 4000);
+  }
+
+  resetAutoplay();
+</script>
 
 <section class="features-section">
   <h2 class="fade-in">Features</h2>
