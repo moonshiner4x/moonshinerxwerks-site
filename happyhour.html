@@ -138,6 +138,95 @@
   .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 8px; }
   .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
+  .pricing-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .pricing-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .pricing-intro { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; display: flex; flex-direction: column; }
+  .price-card:hover { border-color: #444; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+  .price-card.featured { border-color: var(--accent); }
+  .price-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+  .price-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 6px; }
+  .price-amount { font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
+  .price-amount span { font-size: 0.9rem; font-weight: 400; color: var(--text-secondary); }
+  .price-card ul { list-style: none; flex: 1; }
+  .price-card li { font-size: 0.86rem; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .price-card li:last-child { border-bottom: none; }
+  .price-card li::before { content: '✓ '; color: var(--accent); }
+  .price-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; padding: 13px 24px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.25s; font-family: var(--font-body); cursor: pointer; border: none; }
+  .price-cta-primary { background: var(--accent); color: var(--bg); }
+  .price-cta-primary:hover { opacity: 0.85; }
+  .price-cta-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .price-cta-secondary:hover { border-color: var(--accent); }
+  .price-for { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+
+
+  /* ─── BETA SIGNUP ─── */
+  .beta-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .beta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .beta-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .beta-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .beta-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .beta-form input[type="email"] {
+    flex: 1;
+    padding: 13px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--bg-elevated);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  .beta-form input[type="email"]::placeholder { color: #555; }
+  .beta-form input[type="email"]:focus { border-color: #555; }
+  .beta-form button {
+    padding: 13px 24px;
+    border: none;
+    border-radius: 100px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: opacity 0.25s;
+    white-space: nowrap;
+  }
+  .beta-form button:hover { opacity: 0.85; }
+  @media (max-width: 768px) {
+    .beta-form { flex-direction: column; }
+    .beta-card { padding: 32px 24px; }
+  }
+
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
   .back-link:hover { color: var(--text); }
 
@@ -159,7 +248,7 @@
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .app-hero { padding: 140px 20px 60px; grid-template-columns: 1fr; }
-    .features-grid { grid-template-columns: 1fr; }
+    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
     .features-section { padding: 0 20px 60px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
     .phone-carousel-wrap { margin-top: 20px; }
@@ -290,6 +379,76 @@
       <h3>Ratings & Reviews</h3>
       <p>Star ratings with optional comments per venue so the community can surface the best happy hours in town.</p>
     </div>
+  </div>
+</section>
+
+<section class="pricing-section">
+  <h2>Pricing</h2>
+  <p class="pricing-intro">Happy Hour Radar is free for everyone who uses it. Businesses get enhanced tools to reach more customers.</p>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-for">👤 For Users</div>
+      <div class="price-label">Free</div>
+      <h3>Consumer</h3>
+      <div class="price-amount">$0 <span>/ forever</span></div>
+      <ul>
+        <li>Browse all venues, deals & events</li>
+        <li>Map and list discovery with filters</li>
+        <li>Vibe tags & crowd density reports</li>
+        <li>Create & join group plans</li>
+        <li>Invite friends & RSVP</li>
+        <li>Rate venues & vote on deals</li>
+        <li>Favorite venues & get notifications</li>
+        <li>Proximity & timed deal alerts</li>
+      </ul>
+    </div>
+
+    <div class="price-card">
+      <div class="price-for">🏪 For Businesses</div>
+      <div class="price-label">Enhanced</div>
+      <h3>Plus</h3>
+      <div class="price-amount" style="font-size:1.2rem;color:var(--text-secondary);font-weight:400;font-style:italic;">Contact for pricing</div>
+      <ul>
+        <li>Everything in Free, plus:</li>
+        <li>Unlimited announcements</li>
+        <li>Deal scheduling & management</li>
+        <li>Custom logo upload</li>
+        <li>Respond to reviews</li>
+        <li>Weekly engagement digest</li>
+      </ul>
+      <a href="index.html#contact" class="price-cta price-cta-secondary">Get in Touch →</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-for">🏪 For Businesses</div>
+      <div class="price-label">Full Suite</div>
+      <h3>Pro</h3>
+      <div class="price-amount" style="font-size:1.2rem;color:var(--text-secondary);font-weight:400;font-style:italic;">Contact for pricing</div>
+      <ul>
+        <li>Everything in Plus, plus:</li>
+        <li>Promoted placement in Discover</li>
+        <li>Featured in "For You" sort</li>
+        <li>Push notifications on new deals</li>
+        <li>Analytics dashboard</li>
+        <li>Competitor benchmarking</li>
+      </ul>
+      <a href="index.html#contact" class="price-cta price-cta-primary">Get in Touch →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="beta-section">
+  <div class="beta-card">
+    <h2>Join the Happy Hour Radar Beta</h2>
+    <p>Be among the first to try new features before they go live. Drop your email and we'll reach out when the next beta is ready.</p>
+    <form class="beta-form" name="hhr-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="hhr-beta">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Sign Up</button>
+    </form>
   </div>
 </section>
 

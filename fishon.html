@@ -153,6 +153,73 @@
   .price-card li:last-child { border-bottom: none; }
   .price-card li::before { content: '✓ '; color: var(--accent); }
 
+
+  /* ─── BETA SIGNUP ─── */
+  .beta-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
+  .beta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .beta-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .beta-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .beta-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .beta-form input[type="email"] {
+    flex: 1;
+    padding: 13px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: var(--bg-elevated);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  .beta-form input[type="email"]::placeholder { color: #555; }
+  .beta-form input[type="email"]:focus { border-color: #555; }
+  .beta-form button {
+    padding: 13px 24px;
+    border: none;
+    border-radius: 100px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: opacity 0.25s;
+    white-space: nowrap;
+  }
+  .beta-form button:hover { opacity: 0.85; }
+  @media (max-width: 768px) {
+    .beta-form { flex-direction: column; }
+    .beta-card { padding: 32px 24px; }
+  }
+
   .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
   .back-link:hover { color: var(--text); }
 
@@ -354,6 +421,19 @@
         <li>Multi-segment support for long rivers</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section class="beta-section">
+  <div class="beta-card">
+    <h2>Join the FishON! Pro Beta</h2>
+    <p>Be among the first to try new features before they go live. Drop your email and we'll reach out when the next beta is ready.</p>
+    <form class="beta-form" name="fishon-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="fishon-beta">
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Sign Up</button>
+    </form>
   </div>
 </section>
 
