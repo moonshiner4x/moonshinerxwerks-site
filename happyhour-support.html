@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Hour Radar — Support — moonshinerXwerks LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
+    --text: #F0EDE8; --text-secondary: #8A8A8A;
+    --border: #222222; --radius: 16px;
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0,0,0,0.85); border-bottom: 1px solid var(--border); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
+  .logo-img { height: 80px; opacity: 0.95; transition: opacity 0.25s; }
+  .logo-img:hover { opacity: 1; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
+  .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+  .legal-content { max-width: 800px; margin: 0 auto; padding: 160px 32px 100px; }
+  .legal-content h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .legal-content .updated { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
+  .legal-content h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin: 40px 0 16px; }
+  .legal-content h3 { font-family: var(--font-body); font-size: 1.0rem; font-weight: 700; margin: 24px 0 12px; color: var(--text); }
+  .legal-content p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 16px; }
+  .legal-content ul { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin: 0 0 16px 24px; }
+  .legal-content li { margin-bottom: 8px; }
+  .legal-content a { color: var(--text); }
+  .legal-content strong { color: var(--text); }
+  .legal-content em { color: var(--text-secondary); font-style: italic; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 32px; transition: color 0.25s; }
+  .back-link:hover { color: var(--text); }
+  .legal-content hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  .closing-note { font-size: 0.85rem; color: var(--text-secondary); font-style: italic; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 16px; }
+  .contact-card p { margin-bottom: 8px; }
+  .contact-card .small { font-size: 0.8rem; color: #555; margin-top: 12px; }
+  footer { border-top: 1px solid var(--border); padding: 44px 32px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-left { display: flex; align-items: center; gap: 24px; }
+  .footer-logo-img { height: 56px; opacity: 0.7; }
+  .footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+  .footer-socials { display: flex; gap: 10px; }
+  .footer-socials a { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: all 0.25s; }
+  .footer-socials a:hover { border-color: #555; color: var(--text); background: rgba(255,255,255,0.08); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .mobile-toggle { display: block; }
+    .legal-content { padding: 140px 20px 60px; }
+    .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#legal">Legal</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<div class="legal-content">
+  <a href="happyhour.html" class="back-link">&larr; Back to Happy Hour Radar</a>
+
+  <h1>Happy Hour Radar &mdash; Support</h1>
+  <p class="updated">Contact: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></p>
+
+  <hr>
+
+  <h2>Getting Started</h2>
+
+  <h3>What is Happy Hour Radar?</h3>
+  <p>Happy Hour Radar helps you find the best happy hour deals at venues near you, save your favorite spots, and coordinate outings with friends. It covers venues in Central Oregon and is expanding to new markets.</p>
+
+  <h3>What permissions does the app need?</h3>
+  <p>Location access ("When In Use") is used to show nearby venues, sort by distance, and verify check-ins. Contacts access is optional &mdash; it's used only when you invite friends to a group plan. Notification access lets you receive deal alerts, plan updates, and proximity alerts. All permissions can be granted or revoked at any time in your device Settings.</p>
+
+  <h3>How do I set up my profile?</h3>
+  <p>Go to the Settings tab and tap your name at the top. You can set a display name, email, phone number, and profile photo. Your display name is visible to other members of group plans you join.</p>
+
+  <hr>
+
+  <h2>Discover</h2>
+
+  <h3>How do I find happy hour deals near me?</h3>
+  <p>Open the Discover tab and allow location access when prompted. Venues near you are shown on the map and in the list below. Tap "Active Now" in the top right to filter to venues with deals happening right now.</p>
+
+  <h3>How do I filter or sort venues?</h3>
+  <p>Tap the filter bar below the search field to filter by day, vibe, or activity. Tap the sort icon to sort by distance, rating, or deal count. Tap the radius icon to adjust how far out you want to search.</p>
+
+  <h3>How do I switch between map and list view?</h3>
+  <p>Tap the map/list toggle button in the top right of the Discover tab.</p>
+
+  <h3>How do I suggest a venue that isn't listed?</h3>
+  <p>Tap the suggest button on the Discover tab and fill in the venue name and any details you know. We review all requests and add qualifying venues as quickly as possible.</p>
+
+  <hr>
+
+  <h2>Venues &amp; Deals</h2>
+
+  <h3>How do I see a venue's deals?</h3>
+  <p>Tap any venue on the map or in the list to open its detail page. You'll see all active deals with days, times, and descriptions.</p>
+
+  <h3>How do I favorite a venue?</h3>
+  <p>Tap the heart icon on a venue's detail page. Favorited venues appear in your Favorites tab for quick access.</p>
+
+  <h3>How do I subscribe to a venue?</h3>
+  <p>Tap the bell icon on a venue's detail page. Subscribed venues appear in your Favorites tab under Subscriptions, and you'll receive alerts when their deals change or new specials are posted.</p>
+
+  <h3>How do I confirm or report a deal's accuracy?</h3>
+  <p>On a deal card you may see a "Still accurate?" prompt. Tap thumbs up to confirm the deal is current, or thumbs down if it no longer matches what the venue is offering. This helps keep information accurate for everyone.</p>
+
+  <h3>How do I report a venue as closed?</h3>
+  <p>On any venue's detail page, scroll to the bottom and tap "Report Closed." Add any notes you have. When three or more users report the same venue, it is automatically flagged for review.</p>
+
+  <hr>
+
+  <h2>Plans &amp; Groups</h2>
+
+  <h3>How do I create a group plan?</h3>
+  <p>Tap "Plan Here" on any venue's detail page, or tap the + button on the Plans tab. Choose a venue, set a date and time, and add any notes. You can invite friends immediately or after saving.</p>
+
+  <h3>How do I invite friends to a plan?</h3>
+  <p>On the plan detail page, tap Invite. You can invite friends via the app or send them an RSVP link by text message. Friends don't need to have the app installed to receive and respond to an invitation.</p>
+
+  <h3>How do I join a plan I was invited to?</h3>
+  <p>Tap the RSVP link in the text message you received. If you have the app installed it will open directly to the plan. You can also find pending invitations in your Plans tab inbox.</p>
+
+  <h3>What are departure reminders?</h3>
+  <p>When you RSVP to a plan, the app can notify you when it's time to leave based on real-time drive time to the venue. Notifications must be enabled in Settings for this to work.</p>
+
+  <h3>How do I cancel a plan I created?</h3>
+  <p>Open the plan from your Plans tab, tap the options menu, and select Cancel Plan. You can choose to notify invited guests or cancel quietly.</p>
+
+  <hr>
+
+  <h2>Notifications</h2>
+
+  <h3>How do I turn off notifications?</h3>
+  <p>Go to Settings &rarr; Notifications and toggle off any types you don't want. You can also disable all notifications system-wide via your device Settings &rarr; Notifications &rarr; Happy Hour Radar.</p>
+
+  <h3>What notification types are available?</h3>
+  <ul>
+    <li><strong>Push Notifications</strong> &mdash; master on/off switch for all alerts</li>
+    <li><strong>Proximity Alerts</strong> &mdash; notifies you when you're near a venue with an active deal (adjustable radius from 100m to 2km)</li>
+    <li><strong>Timed Deal Alerts</strong> &mdash; a heads-up 15 minutes before a subscribed deal starts, and a warning when it has 30 minutes left</li>
+    <li><strong>Daily Digest</strong> &mdash; a once-a-day summary of deals at your favorited and subscribed venues</li>
+    <li><strong>Deal Changes</strong> &mdash; alerts when a subscribed venue updates or removes a deal</li>
+    <li><strong>New Specials &amp; Events</strong> &mdash; alerts when a subscribed venue posts a new announcement</li>
+    <li><strong>Friend Activity</strong> &mdash; alerts when friends RSVP to plans or check in at venues</li>
+  </ul>
+
+  <hr>
+
+  <h2>Visit Tracking</h2>
+
+  <h3>What is visit tracking?</h3>
+  <p>When enabled, the app automatically records when you visit a venue based on your location. Visit history is stored locally on your device only and is never shared with other users.</p>
+
+  <h3>How do I enable or disable visit tracking?</h3>
+  <p>Go to Settings &rarr; Location &amp; Check-In and toggle "Track Visited Venues."</p>
+
+  <h3>Where can I see my visit history?</h3>
+  <p>Go to Settings &rarr; Location &amp; Check-In &rarr; Visit History.</p>
+
+  <hr>
+
+  <h2>Account &amp; Privacy</h2>
+
+  <h3>How do I update my profile or contact info?</h3>
+  <p>Go to Settings and tap your name at the top to edit your display name, email, phone number, and profile photo.</p>
+
+  <h3>How do I revoke location or contacts access?</h3>
+  <p>Go to your device Settings &rarr; Privacy &amp; Security &rarr; Location Services (or Contacts) and adjust the permissions for Happy Hour Radar. The app will continue to work with limited functionality.</p>
+
+  <h3>How do I reset my local data?</h3>
+  <p>Go to Settings &rarr; scroll to the bottom &rarr; Reset All User Data. This deletes your favorites and subscriptions from your device. Venue data, your ratings, and any plans you've created are not affected.</p>
+
+  <hr>
+
+  <h2>Venue Owners</h2>
+
+  <h3>How do I claim my venue listing?</h3>
+  <p>Venue claiming and management requires a business subscription. Tap "Own this business?" on your venue's detail page in the app &mdash; this will open happyhour.moonshinerxwerks.com where you can get started. You can also go there directly from your browser.</p>
+
+  <hr>
+
+  <h2>Contact Support</h2>
+
+  <p>For any issue not covered above, tap <strong>Settings &rarr; Help &amp; Support &rarr; Contact Support</strong> in the app, or email us directly.</p>
+
+  <div class="contact-card">
+    <p><strong>Moonshinerxwerks LLC</strong></p>
+    <p>Bend, Oregon</p>
+    <p>Email: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a></p>
+    <p class="small">When contacting support, selecting a topic and enabling "Send device logs" in the support form helps us diagnose issues faster.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+      <span class="footer-copy">&copy; 2026 moonshinerXwerks LLC. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
