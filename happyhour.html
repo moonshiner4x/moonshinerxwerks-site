@@ -139,16 +139,23 @@
   .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
   .pricing-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
-  .pricing-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.02em; }
-  .pricing-intro { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; display: flex; flex-direction: column; }
+  .pricing-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.02em; text-align: center; }
+  .pricing-intro { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto 40px; text-align: center; }
+  .tab-toggle-wrap { display: flex; justify-content: center; margin-bottom: 48px; }
+  .tab-toggle { display: inline-flex; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 4px; }
+  .tab-toggle button { font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; padding: 10px 24px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.25s; background: transparent; color: var(--text-secondary); }
+  .tab-toggle button.active { background: var(--accent); color: var(--bg); }
+  .tab-toggle button:not(.active):hover { color: var(--text); }
+  .pricing-panel { display: none; }
+  .pricing-panel.active { display: flex; justify-content: center; animation: fadeUp 0.3s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; display: flex; flex-direction: column; max-width: 420px; width: 100%; }
   .price-card:hover { border-color: #444; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
   .price-card.featured { border-color: var(--accent); }
   .price-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
   .price-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 6px; }
-  .price-amount { font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
-  .price-amount span { font-size: 0.9rem; font-weight: 400; color: var(--text-secondary); }
+  .price-subtitle { font-size: 1.2rem; color: var(--text-secondary); font-weight: 400; font-style: italic; margin-bottom: 16px; }
+  .price-note { font-size: 0.82rem; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; }
   .price-card ul { list-style: none; flex: 1; }
   .price-card li { font-size: 0.86rem; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border); }
   .price-card li:last-child { border-bottom: none; }
@@ -156,9 +163,6 @@
   .price-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px; padding: 13px 24px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.25s; font-family: var(--font-body); cursor: pointer; border: none; }
   .price-cta-primary { background: var(--accent); color: var(--bg); }
   .price-cta-primary:hover { opacity: 0.85; }
-  .price-cta-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .price-cta-secondary:hover { border-color: var(--accent); }
-  .price-for { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
 
 
   /* ─── BETA SIGNUP ─── */
@@ -249,8 +253,8 @@
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .app-hero { padding: 140px 20px 60px; grid-template-columns: 1fr; }
-    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
-    .features-section { padding: 0 20px 60px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .features-section, .pricing-section { padding: 0 20px 60px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
     .phone-carousel-wrap { margin-top: 20px; }
     .phone-frame { max-width: 240px; }
@@ -279,7 +283,7 @@
       <div class="app-icon" style="background:transparent;box-shadow:none;"><img src="hhr.png" alt="Happy Hour Radar" style="width:88px;height:88px;border-radius:22px;"></div>
       <h1>Happy Hour Radar</h1>
     </div>
-    <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. Built for Central Oregon, it combines real-time deal browsing, social planning, and crowd reporting into a seamless mobile experience.</p>
+    <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. It combines real-time deal browsing and social planning into a seamless mobile experience.</p>
     <div class="app-meta fade-in fade-in-d3">
       <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
       <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
@@ -348,12 +352,7 @@
     <div class="feature-card">
       <div class="feature-icon">🔥</div>
       <h3>Live Deal Browsing</h3>
-      <p>Filter venues to show only those with currently active happy hour deals, with deal details, timing, and crowd levels at a glance.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">👥</div>
-      <h3>Crowd Reporting</h3>
-      <p>Users report and view real-time crowd density — Empty, Comfortable, Busy, or Packed — so you know what you're walking into.</p>
+      <p>Filter venues to show only those with currently active happy hour deals, with deal details, timing at a glance.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🎉</div>
@@ -384,19 +383,26 @@
 </section>
 
 <section class="pricing-section">
-  <h2>Pricing</h2>
+  <h2>Plans</h2>
   <p class="pricing-intro">Happy Hour Radar is free for everyone who uses it. Businesses get enhanced tools to reach more customers.</p>
-  <div class="pricing-grid">
 
+  <div class="tab-toggle-wrap">
+    <div class="tab-toggle">
+      <button class="active" onclick="switchTab('users')">📱 For Users</button>
+      <button onclick="switchTab('businesses')">🏪 For Businesses</button>
+    </div>
+  </div>
+
+  <div id="panel-users" class="pricing-panel active">
     <div class="price-card">
-      <div class="price-for">👤 For Users</div>
-      <div class="price-label">Free</div>
+      <div class="price-label">Mobile App</div>
       <h3>Consumer</h3>
-      <div class="price-amount">$0 <span>/ forever</span></div>
+      <div class="price-subtitle">Free</div>
+      <p class="price-note">iPhone · Android coming soon</p>
       <ul>
         <li>Browse all venues, deals & events</li>
         <li>Map and list discovery with filters</li>
-        <li>Vibe tags & crowd density reports</li>
+        <li>Vibe tags & venue filters</li>
         <li>Create & join group plans</li>
         <li>Invite friends & RSVP</li>
         <li>Rate venues & vote on deals</li>
@@ -404,41 +410,40 @@
         <li>Proximity & timed deal alerts</li>
       </ul>
     </div>
+  </div>
 
-    <div class="price-card">
-      <div class="price-for">🏪 For Businesses</div>
-      <div class="price-label">Enhanced</div>
-      <h3>Plus</h3>
-      <div class="price-amount" style="font-size:1.2rem;color:var(--text-secondary);font-weight:400;font-style:italic;">Contact for pricing</div>
-      <ul>
-        <li>Everything in Free, plus:</li>
-        <li>Unlimited announcements</li>
-        <li>Deal scheduling & management</li>
-        <li>Custom logo upload</li>
-        <li>Respond to reviews</li>
-        <li>Weekly engagement digest</li>
-      </ul>
-      <a href="index.html#contact" class="price-cta price-cta-secondary">Get in Touch →</a>
-    </div>
-
+  <div id="panel-businesses" class="pricing-panel">
     <div class="price-card featured">
-      <div class="price-for">🏪 For Businesses</div>
-      <div class="price-label">Full Suite</div>
-      <h3>Pro</h3>
-      <div class="price-amount" style="font-size:1.2rem;color:var(--text-secondary);font-weight:400;font-style:italic;">Contact for pricing</div>
+      <div class="price-label">Venue Dashboard</div>
+      <h3>For Business Owners</h3>
+      <div class="price-subtitle">Web Portal</div>
+      <p class="price-note">Manage your venue from anywhere</p>
       <ul>
-        <li>Everything in Plus, plus:</li>
-        <li>Promoted placement in Discover</li>
-        <li>Featured in "For You" sort</li>
-        <li>Push notifications on new deals</li>
-        <li>Analytics dashboard</li>
-        <li>Competitor benchmarking</li>
+        <li>Your venue, live in the app</li>
+        <li>Full profile control</li>
+        <li>Happy hour deal management</li>
+        <li>Announcements & recurring posts</li>
+        <li>Customer reviews & ratings</li>
+        <li>Visit analytics</li>
+        <li>Favorites count</li>
+        <li>Multi-location support</li>
+        <li>Email support</li>
+        <li>60-day free trial</li>
       </ul>
-      <a href="index.html#contact" class="price-cta price-cta-primary">Get in Touch →</a>
+      <a href="https://happyhour.moonshinerxwerks.com/get-started" class="price-cta price-cta-primary">Get Started →</a>
     </div>
-
   </div>
 </section>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-toggle button').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  const idx = tab === 'users' ? 0 : 1;
+  document.querySelectorAll('.tab-toggle button')[idx].classList.add('active');
+}
+</script>
 
 <section class="beta-section">
   <div class="beta-card">
