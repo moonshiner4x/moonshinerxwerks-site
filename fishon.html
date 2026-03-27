@@ -275,7 +275,7 @@
     <p class="app-subtitle fade-in fade-in-d2">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</p>
     <p class="app-subtitle fade-in fade-in-d2" style="margin-top:-16px;">Particularly powerful for anglers chasing anadromous species — salmon, steelhead, and shad — where success hinges on reading the intersection of river flows, tides, and weather. Rising flows trigger upstream migration, incoming tides push fish into river mouths, and a falling barometer can set off a feeding frenzy. FishON! Pro puts all of these signals in one place so you can make the call before you leave the house.</p>
     <div class="app-meta fade-in fade-in-d3">
-      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
+      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad · Android coming soon</div>
       <div class="meta-chip"><strong>🏷️ Category</strong> Outdoors · Data · Intelligence</div>
     </div>
   </div>
@@ -437,6 +437,14 @@
         <input type="text" name="first-name" placeholder="First name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
         <input type="text" name="last-name" placeholder="Last name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
       </div>
+      <div style="display:flex;gap:10px;width:100%;margin-bottom:12px;">
+        <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-ios">
+          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> 🍎 iOS
+        </label>
+        <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-android">
+          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> 🤖 Android <span style="font-size:0.75rem;opacity:0.6;">(coming soon)</span>
+        </label>
+      </div>
       <div style="display:flex;gap:12px;width:100%;">
         <input type="email" name="email" placeholder="your@email.com" required>
         <button type="submit">Sign Up</button>
@@ -465,5 +473,14 @@
   </div>
 </footer>
 
+<script>
+function updatePlatformLabel() {
+  var val = document.querySelector('input[name="platform"]:checked').value;
+  document.getElementById('label-ios').style.borderColor = val === 'iOS' ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('label-ios').style.color = val === 'iOS' ? 'var(--accent)' : 'var(--text-secondary)';
+  document.getElementById('label-android').style.borderColor = val === 'Android' ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('label-android').style.color = val === 'Android' ? 'var(--accent)' : 'var(--text-secondary)';
+}
+</script>
 </body>
 </html>

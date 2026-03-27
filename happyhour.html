@@ -285,7 +285,7 @@
     </div>
     <p class="app-subtitle fade-in fade-in-d2">A local discovery app that helps users find nearby venues with active happy hour deals. It combines real-time deal browsing and social planning into a seamless mobile experience.</p>
     <div class="app-meta fade-in fade-in-d3">
-      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad</div>
+      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad · Android</div>
       <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
     </div>
   </div>
@@ -398,7 +398,7 @@
       <div class="price-label">Mobile App</div>
       <h3>Consumer</h3>
       <div class="price-subtitle">Free</div>
-      <p class="price-note">iPhone · Android coming soon</p>
+      <p class="price-note">iPhone · Android</p>
       <ul>
         <li>Browse all venues, deals & events</li>
         <li>Map and list discovery with filters</li>
@@ -456,6 +456,14 @@ function switchTab(tab) {
         <input type="text" name="first-name" placeholder="First name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
         <input type="text" name="last-name" placeholder="Last name" required style="flex:1;padding:13px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text);font-size:0.9rem;font-family:var(--font-body);outline:none;">
       </div>
+      <div style="display:flex;gap:10px;width:100%;margin-bottom:12px;">
+        <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-ios">
+          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> 🍎 iOS
+        </label>
+        <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-android">
+          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> 🤖 Android
+        </label>
+      </div>
       <div style="display:flex;gap:12px;width:100%;">
         <input type="email" name="email" placeholder="your@email.com" required>
         <button type="submit">Sign Up</button>
@@ -484,5 +492,14 @@ function switchTab(tab) {
   </div>
 </footer>
 
+<script>
+function updatePlatformLabel() {
+  var val = document.querySelector('input[name="platform"]:checked').value;
+  document.getElementById('label-ios').style.borderColor = val === 'iOS' ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('label-ios').style.color = val === 'iOS' ? 'var(--accent)' : 'var(--text-secondary)';
+  document.getElementById('label-android').style.borderColor = val === 'Android' ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('label-android').style.color = val === 'Android' ? 'var(--accent)' : 'var(--text-secondary)';
+}
+</script>
 </body>
 </html>
