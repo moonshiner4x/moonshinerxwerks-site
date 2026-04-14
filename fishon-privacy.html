@@ -71,7 +71,7 @@
   <p class="updated">Effective: March 6, 2026 · moonshinerXwerks LLC · Version 2.1</p>
 
   <h2>1. Overview</h2>
-  <p>FishON! Pro is built on a simple principle: <strong>your personal fishing data is yours.</strong> Your catch logs, location names, GPS coordinates, photos, and preferences never leave your device unless you explicitly export them. This policy explains the one area where data does leave your device — the optional, opt-in anonymous fisheries telemetry system — and exactly what that means for your privacy.</p>
+  <p>FishON! Pro is built on a simple principle: <strong>your personal fishing data is yours.</strong> Your catch logs, location names, GPS coordinates, photos, and preferences never leave your device unless you explicitly export them. The only external data transfer is iCloud sync, which moves data exclusively between your own Apple devices via your personal iCloud account.</p>
 
   <h2>2. Data That Stays on Your Device — Always</h2>
   <p>The following data is stored locally in the FishON! Pro app and is <strong>never transmitted</strong> to any server, shared with any third party, or included in any telemetry dataset, under any circumstances:</p>
@@ -86,147 +86,23 @@
     <li>iCloud sync data — synced only between your own Apple devices via your iCloud account</li>
   </ul>
 
-  <h2>3. Optional Anonymous Telemetry — Opt-In Only</h2>
-  <p>FishON! Pro includes an optional, opt-in system that contributes anonymous data to a fisheries research dataset. This system is <strong>disabled by default</strong>. You are asked to enable it during onboarding and can change your choice at any time in <strong>Settings → Privacy</strong>. If you do not opt in, no data of any kind is transmitted.</p>
-  <p>When enabled, the system operates three parallel data pipelines. Each pipeline is described in full below.</p>
-  <p><strong>Reserved event types:</strong> The telemetry system defines two additional event types — <code>conditionSnapshot</code> and <code>scoreViewed</code> — that exist in the codebase but are <strong>not currently wired to any data transmission</strong>. No data is collected or transmitted for these event types. If these are activated in a future version, this policy will be updated accordingly.</p>
+  <h2>3. Anonymous Data Contribution — Not Currently Active</h2>
+  <p>FishON! Pro does not currently transmit any data to external servers. A fisheries research data contribution program is planned for a future version of the app. If and when that feature is introduced, this policy will be updated in full before any data collection begins, and participation will always be opt-in.</p>
 
-  <div class="pipeline-card">
-    <h3>3A. Anonymous Condition Telemetry</h3>
-    <p><em>Collection: telemetry_batches</em></p>
-    <p>This pipeline captures anonymized snapshots of river conditions at the time of your section visits, catches, and trip reports. It answers the research question: <em>what environmental conditions are associated with successful fishing outcomes?</em></p>
-    <p><strong>What is captured:</strong></p>
-    <ul>
-      <li>A hashed, one-way section identifier — derived from river name, section index, and noisy rounded coordinates. Cannot be reversed to your section name.</li>
-      <li>River conditions at visit time: flow (CFS with ±8% random noise, minimum ±2 CFS), water temperature (±0.4°F noise), air temperature (±1.0°F noise)</li>
-      <li>Condition score (0–100) at time of visit</li>
-      <li>Catch outcome: species category (e.g. Salmon &amp; Steelhead, Trout &amp; Char) and general method (fly, spin, bait). Never the exact species name or lure.</li>
-      <li>Trip session data: fish count bucketed into ranges (0, 1–3, 4–10, 11+), session duration bucketed (under 2h, 2–4h, 4–8h, 8h+), quality rating (1–5)</li>
-      <li>Timestamp rounded to the nearest 15-minute window</li>
-    </ul>
-    <p><strong>What is never captured:</strong></p>
-    <ul>
-      <li>Your section name, river name, or any user-assigned label</li>
-      <li>Exact GPS coordinates — coordinates used to generate the section hash have ±0.003° noise applied first</li>
-      <li>Exact fish counts or precise session durations</li>
-      <li>Any user identity or device identifier</li>
-    </ul>
-    <p><strong>k-Anonymity enforcement:</strong> This pipeline only transmits data when a batch contains events from at least 10 distinct section identifiers. Your individual activity is never transmitted alone.</p>
-  </div>
+  <h2>4. Children's Privacy</h2>
+  <p>FishON! Pro is not directed at children under the age of 13. We do not knowingly collect any data from children under 13.</p>
 
-  <div class="pipeline-card">
-    <h3>3B. Public Monitoring Station Visits</h3>
-    <p><em>Collection: gauge_pressure</em></p>
-    <p>This pipeline records which federal monitoring stations are linked to sections you view. It answers the research question: <em>which public monitoring infrastructure is in areas that anglers actively use?</em></p>
-    <p><strong>What is captured:</strong></p>
-    <ul>
-      <li>The public station identifier — e.g. USGS gauge code '14103000', NDBC buoy ID '46029', NOAA tide station ID '9435380'. These are public federal infrastructure identifiers.</li>
-      <li>The station type: USGS river gauge, NOAA tide station, NDBC buoy, or Bureau of Reclamation</li>
-      <li>Date of visit (date only — no time component)</li>
-      <li>Time of day bucket: early morning, morning, midday, evening, or night</li>
-      <li>Day of week (1–7)</li>
-      <li>Current flow CFS at visit time — USGS gauges only. This is the same value publicly available at waterdata.usgs.gov at the same moment.</li>
-      <li>App version</li>
-    </ul>
-    <p><strong>What is never captured:</strong></p>
-    <ul>
-      <li>Which user visited the station — no user identity or device ID</li>
-      <li>Your section name or location name</li>
-      <li>Any data that could identify an individual angler</li>
-    </ul>
-    <p><strong>Privacy basis:</strong> Station codes are public federal infrastructure. Knowing that USGS gauge 14103000 receives angler app visits on Saturday mornings at 900–1100 CFS reveals nothing about any individual user.</p>
-  </div>
-
-  <div class="pipeline-card">
-    <h3>3C. Geographic Grid Pressure</h3>
-    <p><em>Collection: grid_pressure</em></p>
-    <p>This pipeline captures where along river corridors angling pressure and catch activity occurs, expressed as approximate geographic areas rather than precise coordinates. It enables seasonal pressure drift analysis — for example, tracking how angling pressure migrates upstream along a river corridor as a hatch progresses through the season.</p>
-    <p><strong>How coordinates are protected:</strong></p>
-    <p>Your GPS coordinates are rounded to the nearest 0.05 degree of latitude and longitude <strong>before any event object is created</strong>. This rounding happens on your device, in memory, before any data is prepared for transmission. The raw coordinate is discarded immediately. Only the rounded grid cell identifier is stored in the event.</p>
-    <p>At 45°N latitude, 0.05° corresponds to approximately 3.4 miles of latitude and 2.5 miles of longitude. Each grid cell covers roughly 10–15 square miles of river corridor.</p>
-    <p><strong>What is captured:</strong></p>
-    <ul>
-      <li>Grid cell identifier — a string like '44.95_-121.10' representing the rounded coordinate. Cannot be reversed to a precise location.</li>
-      <li>Grid resolution marker: '0.05deg' — stored so historical data can be re-analyzed if resolution changes</li>
-      <li>Event type: section visit, catch logged, or trip logged</li>
-      <li>Date of visit (date only)</li>
-      <li>Time of day bucket and day of week</li>
-      <li>Species group (e.g. Salmon &amp; Steelhead) — for catch and trip events only. Never the exact species name.</li>
-      <li>Catch outcome (yes/no) — for catch and trip events only</li>
-      <li>Fish count bucket (0, 1–3, 4–10, 11+) — for trip events only</li>
-      <li>Flow CFS rounded to nearest 10 — if available from conditions snapshot (already public USGS data)</li>
-      <li>Water temperature rounded to nearest whole degree °F — if available</li>
-    </ul>
-    <p><strong>What is never captured:</strong></p>
-    <ul>
-      <li>Precise GPS coordinates — raw coordinates never leave your device in any form</li>
-      <li>Your section or location name</li>
-      <li>Any user identity or device identifier</li>
-      <li>Exact fish counts or precise session times</li>
-    </ul>
-    <p>No k-anonymity threshold applies to grid cells — a 10–15 square mile area inherently aggregates multiple anglers. Sparse cells simply produce low data density, which is itself useful information for fisheries managers.</p>
-  </div>
-
-  <h2>4. What Is and Is Not Transmitted — Summary</h2>
-  <table class="data-table">
-    <thead>
-      <tr><th>Data Element</th><th>Transmitted?</th><th>Notes</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Your name or email</td><td class="tag-never">Never</td><td>Stays on device always</td></tr>
-      <tr><td>Location names you created</td><td class="tag-never">Never</td><td>Stays on device always</td></tr>
-      <tr><td>Precise GPS coordinates</td><td class="tag-never">Never</td><td>Rounded to 0.05° (3–4 miles) before any event is built</td></tr>
-      <tr><td>Device or advertising ID</td><td class="tag-never">Never</td><td>No identifier of any kind is included</td></tr>
-      <tr><td>Photos</td><td class="tag-never">Never</td><td>Stays on device always</td></tr>
-      <tr><td>Complete catch logs</td><td class="tag-never">Never</td><td>Only anonymous, bucketed summary signals</td></tr>
-      <tr><td>Exact species name</td><td class="tag-never">Never</td><td>Transmitted as broad group: Salmon &amp; Steelhead</td></tr>
-      <tr><td>Exact fish count</td><td class="tag-never">Never</td><td>Bucketed: 0, 1–3, 4–10, 11+</td></tr>
-      <tr><td>Exact session duration</td><td class="tag-never">Never</td><td>Bucketed: &lt;2h, 2–4h, 4–8h, 8h+</td></tr>
-      <tr><td>Hashed section identifier</td><td class="tag-limited">Pipeline 1 only</td><td>One-way SHA-256 hash — cannot be reversed</td></tr>
-      <tr><td>Condition scores and flow data</td><td class="tag-limited">Pipeline 1 only</td><td>With ±8% noise (min ±2 CFS) applied</td></tr>
-      <tr><td>Air temperature at visit time</td><td class="tag-limited">Pipeline 1 only</td><td>With ±1.0°F random noise applied</td></tr>
-      <tr><td>Public USGS/NOAA/NDBC station ID</td><td class="tag-limited">Pipeline 2 only</td><td>Public federal infrastructure identifier</td></tr>
-      <tr><td>Flow at gauge visit time</td><td class="tag-limited">Pipeline 2 only</td><td>Same value on waterdata.usgs.gov</td></tr>
-      <tr><td>0.05° grid cell identifier</td><td class="tag-limited">Pipeline 3 only</td><td>3–4 mile area, not a precise location</td></tr>
-      <tr><td>Time of day bucket</td><td class="tag-yes">All pipelines</td><td>Early morning / morning / midday / evening / night</td></tr>
-      <tr><td>Day of week</td><td class="tag-yes">All pipelines</td><td>1–7 (no precise timestamp)</td></tr>
-      <tr><td>conditionSnapshot / scoreViewed</td><td class="tag-reserved">Reserved</td><td>Defined in codebase but not currently transmitted</td></tr>
-    </tbody>
-  </table>
-
-  <h2>5. Data Storage and Security</h2>
-  <p>Telemetry data is transmitted via HTTPS to a Firebase Firestore database operated by Google Cloud (us-central1 region). No third-party analytics SDK is used — only direct HTTPS POST calls to the Firestore REST API.</p>
-  <ul>
-    <li><strong>Data in transit:</strong> encrypted via TLS 1.2+</li>
-    <li><strong>Data at rest:</strong> encrypted by Google Cloud Storage</li>
-    <li><strong>Client access:</strong> write-only. No client application can read the telemetry database.</li>
-    <li><strong>Buffering:</strong> events are held in device memory only. They are not written to disk. If the app closes before a batch transmits, buffered events are discarded.</li>
-    <li><strong>No retry queue:</strong> events that fail to transmit are discarded, never persisted to storage.</li>
-  </ul>
-
-  <h2>6. Your Rights and Controls</h2>
-  <p>You are in full control of whether any telemetry is collected.</p>
-  <ul>
-    <li><strong>Opt in:</strong> During onboarding, you are shown a clear explanation of what data is shared before being asked to consent. No data transmits until you tap Yes.</li>
-    <li><strong>Opt out at any time:</strong> Settings → Privacy → Contribute to Fisheries Research. Toggle off to immediately stop all telemetry. Any buffered events are discarded at the moment consent is revoked.</li>
-    <li><strong>Deletion rights:</strong> Because no user identity is ever included in transmissions, we cannot retrieve and delete your specific data from the aggregate dataset. This is by design — the anonymization architecture makes it technically infeasible to re-associate transmitted data with any individual user.</li>
-    <li><strong>No sale of data:</strong> Your data is not sold. The anonymized fisheries dataset may be shared with or licensed to state fish and wildlife agencies, academic researchers, and conservation organizations for fisheries management purposes.</li>
-  </ul>
-
-  <h2>7. Children's Privacy</h2>
-  <p>FishON! Pro is not directed at children under the age of 13. We do not knowingly collect any data from children under 13. The opt-in telemetry system does not collect any personal information from any user regardless of age.</p>
-
-  <h2>8. Changes to This Policy</h2>
+  <h2>5. Changes to This Policy</h2>
   <p>If we make material changes to what data is collected or how it is used, we will update the effective date of this policy and notify users via an in-app notice. Continued use of the app after notification constitutes acceptance of the updated policy.</p>
 
-  <h2>9. Contact</h2>
-  <p>Questions about this privacy policy or the FishON! Pro telemetry system:</p>
+  <h2>6. Contact</h2>
+  <p>Questions about this privacy policy:</p>
   <p>moonshinerXwerks LLC<br>
   Email: <a href="mailto:john@moonshinerxwerks.com">john@moonshinerxwerks.com</a><br>
   Website: <a href="https://moonshinerxwerks.com">moonshinerxwerks.com</a></p>
 
-  <p class="version-note">FishON! Pro™ · moonshinerXwerks LLC · Version 2.1 · March 6, 2026<br>
-  This document supersedes the FishON! Pro Privacy Policy version 2.0 dated February 21, 2026.</p>
+  <p class="version-note">FishON! Pro™ · moonshinerXwerks LLC · Version 2.2 · April 9, 2026<br>
+  This document supersedes the FishON! Pro Privacy Policy version 2.1 dated March 6, 2026.</p>
 </div>
 
 <footer>
