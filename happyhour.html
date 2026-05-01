@@ -141,16 +141,9 @@
 
   .pricing-section { max-width: 1200px; margin: 0 auto; padding: 0 32px 100px; }
   .pricing-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 12px; letter-spacing: -0.02em; text-align: center; }
-  .pricing-intro { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto 40px; text-align: center; }
-  .tab-toggle-wrap { display: flex; justify-content: center; margin-bottom: 48px; }
-  .tab-toggle { display: inline-flex; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 4px; }
-  .tab-toggle button { font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; padding: 10px 24px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.25s; background: transparent; color: var(--text-secondary); }
-  .tab-toggle button.active { background: var(--accent); color: var(--bg); }
-  .tab-toggle button:not(.active):hover { color: var(--text); }
-  .pricing-panel { display: none; }
-  .pricing-panel.active { display: flex; justify-content: center; animation: fadeUp 0.3s ease both; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; display: flex; flex-direction: column; max-width: 420px; width: 100%; }
+  .pricing-intro { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto 48px; text-align: center; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s ease; display: flex; flex-direction: column; }
   .price-card:hover { border-color: #444; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
   .price-card.featured { border-color: var(--accent); }
   .price-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
@@ -251,11 +244,19 @@
   .fade-in-d2 { animation-delay: 0.2s; }
   .fade-in-d3 { animation-delay: 0.3s; }
 
+  .store-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+  .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; background: rgba(255,255,255,0.05); color: var(--text); text-decoration: none; font-family: var(--font-body); font-weight: 500; font-size: 0.95rem; transition: border-color 0.25s, background 0.25s; }
+  .store-badge:hover { border-color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.1); }
+  .store-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .store-badge-label { display: flex; flex-direction: column; line-height: 1.2; }
+  .store-badge-label span:first-child { font-size: 0.62rem; color: rgba(240,237,232,0.5); font-weight: 400; }
+
   @media (max-width: 768px) {
     .nav-links { display: none; } .mobile-toggle { display: block; }
     .app-hero { padding: 140px 20px 60px; grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .features-section, .pricing-section { padding: 0 20px 60px; }
+    .pricing-grid { grid-template-columns: 1fr; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
     .phone-carousel-wrap { margin-top: 20px; }
     .phone-frame { max-width: 240px; }
@@ -289,8 +290,15 @@
       <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad · Android</div>
       <div class="meta-chip"><strong>🏷️ Category</strong> Social · Local Discovery · Food & Drink</div>
     </div>
-    <div class="fade-in fade-in-d3">
-      <a href="https://apps.apple.com/us/app/happy-hour-radar/id6760730023" class="price-cta price-cta-primary" style="align-self:flex-start;">Download on the App Store →</a>
+    <div class="store-badges fade-in fade-in-d3">
+      <a href="https://apps.apple.com/us/app/happy-hour-radar/id6760730023" class="store-badge" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-badge-label"><span>Download on the</span><span>App Store</span></div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=moonshinerxwerksllc.happyhourradar" class="store-badge" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 01-.609-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.991l-2.302 2.302-8.635-8.635z"/></svg>
+        <div class="store-badge-label"><span>Get it on</span><span>Google Play</span></div>
+      </a>
     </div>
   </div>
 
@@ -374,11 +382,6 @@
       <p>Log check-ins, track visited venues, and save favorites. Build your personal map of Bend's best spots over time.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🏪</div>
-      <h3>Business Owner Tools</h3>
-      <p>Venue claiming, deal management, logo uploads, and real-time announcements — like "Just tapped a new keg" — to drive foot traffic.</p>
-    </div>
-    <div class="feature-card">
       <div class="feature-icon">💬</div>
       <h3>Ratings & Reviews</h3>
       <p>Star ratings with optional comments per venue so the community can surface the best happy hours in town.</p>
@@ -390,14 +393,7 @@
   <h2>Plans</h2>
   <p class="pricing-intro">Happy Hour Radar is free for everyone who uses it. Businesses get enhanced tools to reach more customers.</p>
 
-  <div class="tab-toggle-wrap">
-    <div class="tab-toggle">
-      <button class="active" onclick="switchTab('users')">📱 For Users</button>
-      <button onclick="switchTab('businesses')">🏪 For Businesses</button>
-    </div>
-  </div>
-
-  <div id="panel-users" class="pricing-panel active">
+  <div class="pricing-grid">
     <div class="price-card">
       <div class="price-label">Mobile App</div>
       <h3>Consumer</h3>
@@ -413,11 +409,8 @@
         <li>Favorite venues & get notifications</li>
         <li>Proximity & timed deal alerts</li>
       </ul>
-      <a href="https://apps.apple.com/us/app/happy-hour-radar/id6760730023" class="price-cta price-cta-primary">Download on the App Store →</a>
     </div>
-  </div>
 
-  <div id="panel-businesses" class="pricing-panel">
     <div class="price-card featured">
       <div class="price-label">Venue Dashboard</div>
       <h3>For Business Owners</h3>
@@ -439,16 +432,6 @@
     </div>
   </div>
 </section>
-
-<script>
-function switchTab(tab) {
-  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-toggle button').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + tab).classList.add('active');
-  const idx = tab === 'users' ? 0 : 1;
-  document.querySelectorAll('.tab-toggle button')[idx].classList.add('active');
-}
-</script>
 
 <section class="beta-section">
   <div class="beta-card">
