@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leader Builder — moonshinerXwerks LLC</title>
+  <meta name="description"
+    content="Catalog every fly rod, line, leader, and tip you own — then save the leader recipes that actually fish on each rod. One tap at the river.">
+  <link rel="canonical" href="https://moonshinerxwerks.com/leaderbuilder.html" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #000000;
+      --bg-elevated: #0A0A0A;
+      --surface: #141414;
+      --text: #F0EDE8;
+      --text-secondary: #8A8A8A;
+      --accent: #c9b896;
+      --accent-dim: rgba(201, 184, 150, 0.10);
+      --slate: #5a7a85;
+      --slate-dark: #3a4a55;
+      --border: #222222;
+      --radius: 16px;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+    }
+
+    .logo-img {
+      height: 80px;
+      opacity: 0.95;
+      transition: opacity 0.25s;
+    }
+
+    .logo-img:hover {
+      opacity: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 400;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: var(--text) !important;
+      color: var(--bg) !important;
+      padding: 10px 22px !important;
+      border-radius: 100px;
+      font-weight: 500 !important;
+      font-size: 0.84rem !important;
+      transition: opacity 0.25s !important;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.85;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .app-hero {
+      padding: 180px 32px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .app-hero-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-hero-top {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .app-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(201, 184, 150, 0.15);
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      display: block;
+    }
+
+    .app-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .app-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .app-subtitle strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .app-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-chip strong {
+      color: var(--text);
+    }
+
+    .price-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+    }
+
+    .price-cta-primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .price-cta-primary:hover {
+      opacity: 0.85;
+    }
+
+    .price-cta-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .price-cta-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .features-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    .features-section h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .features-section .section-lead {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(201, 184, 150, 0.08);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-dim);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .pricing-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    .pricing-section h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .pricing-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .support-col {
+      grid-column: span 2;
+    }
+
+    .support-body {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .support-cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .support-fineprint {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      line-height: 1.6;
+      margin-top: auto;
+    }
+
+    .support-fineprint a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .combined-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
+      padding: 40px;
+    }
+
+    .combined-support {
+      border-left: 1px solid var(--border);
+      padding-left: 40px;
+    }
+
+    .combined-pricing h3,
+    .combined-support h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+    }
+
+    .price-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .price-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .price-amount {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .price-amount.muted {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .price-card ul {
+      list-style: none;
+    }
+
+    .price-card li {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-card li:last-child {
+      border-bottom: none;
+    }
+
+    .price-card li::before {
+      content: '✓ ';
+      color: var(--accent);
+    }
+
+    /* ─── BETA SIGNUP ─── */
+    .beta-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+
+    .beta-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .beta-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .beta-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .beta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .beta-form input[type="email"],
+    .beta-form input[type="text"] {
+      flex: 1;
+      padding: 13px 18px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-elevated);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+
+    .beta-form input::placeholder {
+      color: #555;
+    }
+
+    .beta-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .beta-form button {
+      padding: 13px 24px;
+      border: none;
+      border-radius: 100px;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.88rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: opacity 0.25s;
+      white-space: nowrap;
+    }
+
+    .beta-form button:hover {
+      opacity: 0.85;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      margin-bottom: 32px;
+      transition: color 0.25s;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-logo-img {
+      height: 56px;
+      opacity: 0.7;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .fade-in-d1 {
+      animation-delay: 0.1s;
+    }
+
+    .fade-in-d2 {
+      animation-delay: 0.2s;
+    }
+
+    .fade-in-d3 {
+      animation-delay: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .app-hero {
+        padding: 140px 20px 60px;
+      }
+
+      .features-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .support-col {
+        grid-column: auto;
+      }
+
+      .combined-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .combined-support {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-left: 0;
+        padding-top: 24px;
+      }
+
+      .features-section,
+      .pricing-section {
+        padding: 0 20px 60px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-left {
+        flex-direction: column;
+      }
+
+      .beta-card {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#legal">Legal</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'"
+        aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section class="app-hero">
+    <div class="app-hero-content">
+      <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
+      <div class="app-hero-top fade-in fade-in-d1">
+        <div class="app-icon"><img src="leaderbuilder.png" alt="Leader Builder"></div>
+        <h1>Leader Builder</h1>
+      </div>
+      <p class="app-subtitle fade-in fade-in-d2">
+        <!-- App description paragraph -->
+        You finally dial in all the line, leader, and tip combinations that work best with your rods, conditions
+        and casting ability. Now, fast forward to next season - your rigging up at the truck in the pre-dawn light and
+        can't remember which line and tip goes with which least of which whether or now you need T8 or T11 to fish this
+        new intruder pattern
+        on the run you are about to step in. <strong>Leader Builder ends that.</strong>
+      </p>
+      <p class="app-subtitle fade-in fade-in-d2">
+        Save the leader recipes that actually fish on each of your rods. Add casting notes for what makes each one work.
+        Next time you grip that rod at the river, the recipe is one tap away.
+      </p>
+      <div class="app-meta fade-in fade-in-d3">
+        <div class="meta-chip"><strong>📱 Platform</strong> iPhone · Android</div>
+        <div class="meta-chip"><strong>🏷️ Category</strong> Sports · Fly Fishing</div>
+        <div class="meta-chip"><strong>🆓 Pricing</strong> Free</div>
+      </div>
+      <div class="cta-row fade-in fade-in-d3">
+        <a href="#beta" class="price-cta price-cta-primary">Join the Beta →</a>
+        <a href="#features" class="price-cta price-cta-ghost">See what it does</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <h2 class="fade-in">What it does</h2>
+    <p class="section-lead fade-in">
+      Keep a readily accessible and organized list of all line, tip and leader combinations that you use for every rod
+      in every situation at your fingertips - approach that next run confident you have the right setup to get your fly
+      in the target zone!
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>Build leader recipes</h3>
+        <p>A line + tip + leader, paired to a specific rod for specific water conditions (flow speed, target
+          depth) and fly type.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <h3>Casting notes per recipe</h3>
+        <p>Free-form memo for feel, anchor, loop shape, conditions where this rig shines. The note you'd write on the
+          back of a fly box — searchable and synced.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎣</div>
+        <h3>Recall any recipe fast</h3>
+        <p>Pick the rod you're fishing today and every recipe you've ever built for it is right there.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧰</div>
+        <h3>Curated catalog for recipe building</h3>
+        <p>LDR | BLDR maintains a comprehensive list of readily available rods, lines, tips and leader building
+          materials for you to quickly select from when configuring your recipes. If you don't see what you are looking
+          for, add it and it will be there when you need it next!</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📵</div>
+        <h3>Works in the cell-dead canyon</h3>
+        <p>Fully offline. Your recipes live on your device and sync up the next time you have a signal — because the
+          spots you actually fish don't have 5G.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Privacy-first</h3>
+        <p>No ads, no trackers, no analytics, no in-app purchases. Three sign-in options — Apple, Google, or email — so
+          your recipes sync across your devices and nowhere else.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <h2>Free — and how we keep it free</h2>
+    <div class="price-card featured combined-card">
+      <div class="combined-pricing">
+        <div class="price-label">Free</div>
+        <h3>Leader Builder</h3>
+        <div class="price-amount muted">100% Free</div>
+        <ul>
+          <li>Unlimited recipes</li>
+          <li>Casting notes per recipe</li>
+          <li>Recall recipes by rod or water conditions</li>
+          <li>Curated gear catalog for recipe building</li>
+          <li>Offline-first sync</li>
+          <li>Apple · Google · Email sign-in</li>
+        </ul>
+      </div>
+      <div class="combined-support">
+        <div class="price-label">Amazon Affiliate</div>
+        <h3>Tap "Buy on Amazon" in the app</h3>
+        <div class="price-amount muted">Same price for you — small commission for the studio</div>
+        <p class="support-body">Every line, leader, tip, and tippet material in the curated catalog has a <strong>Buy on Amazon</strong> button. When you tap it and complete a purchase, Leader Builder earns a small affiliate commission on what you buy that visit. <strong>The price you pay doesn't change</strong> — Amazon pays the commission out of their own margin.</p>
+        <p class="support-body"><strong>Your local fly shop deserves first call.</strong> If you'd rather hand them the money, that's the right answer and we fully support it. The Amazon button is here for the times you were going to order from Amazon anyway — and an occasional purchase through it helps cover the operating costs (hosting, developer account, catalog upkeep) that maintain the online and offline infrastructure behind the app, and lets us avoid putting ads in front of you.</p>
+        <p class="support-fineprint">As an Amazon Associate, Moonshinerxwerks LLC earns from qualifying purchases. The affiliate relationship does not influence what we include in the curated catalog or which products we recommend. See our <a href="leaderbuilder-privacy.html">Privacy Policy</a> for detail.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="beta-section" id="beta">
+    <div class="beta-card">
+      <h2>Join the Leader Builder Beta</h2>
+      <p>Pre-launch as of fishing season 2026. Drop your email below and we'll send a TestFlight invite as soon as the
+        next beta is ready.</p>
+      <form class="beta-form" name="leaderbuilder-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="leaderbuilder-beta">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div style="display:flex;gap:12px;width:100%;margin-bottom:12px;">
+          <input type="text" name="first-name" placeholder="First name" required>
+          <input type="text" name="last-name" placeholder="Last name" required>
+        </div>
+        <div style="display:flex;gap:12px;width:100%;">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="footer-logo-img">
+        <span class="footer-copy">© 2026 moonshinerXwerks LLC. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="leaderbuilder-privacy.html">Privacy</a>
+        <a href="leaderbuilder-terms.html">Terms</a>
+        <a href="leaderbuilder-support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
