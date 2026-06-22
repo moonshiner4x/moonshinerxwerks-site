@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leader Builder — moonshinerXwerks LLC</title>
+  <title>LDR | BLDR — moonshinerXwerks LLC</title>
   <meta name="description"
     content="Catalog every fly rod, line, leader, and tip you own — then save the leader recipes that actually fish on each rod. One tap at the river.">
   <link rel="canonical" href="https://moonshinerxwerks.com/leaderbuilder.html" />
@@ -125,11 +125,107 @@
       padding: 180px 32px 100px;
       max-width: 1200px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
     }
 
     .app-hero-content {
       display: flex;
       flex-direction: column;
+    }
+
+    /* ─── PHONE MOCKUP + CAROUSEL ─── */
+    .phone-carousel-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      padding: 14px;
+      background: #1A1A1A;
+      border-radius: 44px;
+      border: 2px solid #333;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 20px 60px rgba(0,0,0,0.6),
+        0 4px 20px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .phone-frame::after {
+      content: '';
+      position: absolute;
+      top: 100px; right: -3.5px;
+      width: 3px; height: 52px;
+      background: #333; border-radius: 0 2px 2px 0;
+    }
+
+    .phone-volume {
+      position: absolute;
+      top: 88px; left: -3.5px;
+      width: 3px; height: 32px;
+      background: #333; border-radius: 2px 0 0 2px;
+    }
+
+    .phone-volume::after {
+      content: '';
+      position: absolute;
+      top: 44px; left: 0;
+      width: 3px; height: 32px;
+      background: #333; border-radius: 2px 0 0 2px;
+    }
+
+    .phone-screen {
+      width: 100%;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+
+    .phone-screen img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .phone-screen img.active {
+      opacity: 1;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .carousel-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #444;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--text);
+      width: 24px;
+      border-radius: 4px;
     }
 
     .app-hero-top {
@@ -243,6 +339,13 @@
       gap: 12px;
       flex-wrap: wrap;
     }
+
+    .store-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+    .store-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; background: rgba(255,255,255,0.05); color: var(--text); text-decoration: none; font-family: var(--font-body); font-weight: 500; font-size: 0.95rem; transition: border-color 0.25s, background 0.25s; }
+    .store-badge:hover { border-color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.1); }
+    .store-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .store-badge-label { display: flex; flex-direction: column; line-height: 1.2; }
+    .store-badge-label span:first-child { font-size: 0.62rem; color: rgba(240,237,232,0.5); font-weight: 400; }
 
     .features-section {
       max-width: 1200px;
@@ -634,7 +737,10 @@
 
       .app-hero {
         padding: 140px 20px 60px;
+        grid-template-columns: 1fr;
       }
+
+      .phone-carousel-wrap { margin-top: 20px; }
 
       .features-grid,
       .pricing-grid {
@@ -699,8 +805,8 @@
     <div class="app-hero-content">
       <a href="index.html#portfolio" class="back-link fade-in">← Back to Portfolio</a>
       <div class="app-hero-top fade-in fade-in-d1">
-        <div class="app-icon"><img src="leaderbuilder.png" alt="Leader Builder"></div>
-        <h1>Leader Builder</h1>
+        <div class="app-icon"><img src="leaderbuilder.png" alt="LDR | BLDR"></div>
+        <h1>LDR | BLDR</h1>
       </div>
       <p class="app-subtitle fade-in fade-in-d2">
         <!-- App description paragraph -->
@@ -708,7 +814,7 @@
         and casting ability. Now, fast forward to next season - your rigging up at the truck in the pre-dawn light and
         can't remember which line and tip goes with which least of which whether or now you need T8 or T11 to fish this
         new intruder pattern
-        on the run you are about to step in. <strong>Leader Builder ends that.</strong>
+        on the run you are about to step in. <strong>LDR | BLDR ends that.</strong>
       </p>
       <p class="app-subtitle fade-in fade-in-d2">
         Save the leader recipes that actually fish on each of your rods. Add casting notes for what makes each one work.
@@ -716,15 +822,71 @@
       </p>
       <div class="app-meta fade-in fade-in-d3">
         <div class="meta-chip"><strong>📱 Platform</strong> iPhone · Android</div>
-        <div class="meta-chip"><strong>🏷️ Category</strong> Sports · Fly Fishing</div>
+        <div class="meta-chip"><strong>🏷️ Category</strong> Sports · Lifestyle</div>
         <div class="meta-chip"><strong>🆓 Pricing</strong> Free</div>
       </div>
-      <div class="cta-row fade-in fade-in-d3">
-        <a href="#beta" class="price-cta price-cta-primary">Join the Beta →</a>
-        <a href="#features" class="price-cta price-cta-ghost">See what it does</a>
+      <div class="store-badges fade-in fade-in-d3">
+        <a href="https://apps.apple.com/us/app/ldr-bldr/id6774310335" class="store-badge" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="store-badge-label"><span>Download on the</span><span>App Store</span></div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=moonshinerxwerksllc.leaderbuilder" class="store-badge" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 01-.609-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.991l-2.302 2.302-8.635-8.635z"/></svg>
+          <div class="store-badge-label"><span>Get it on</span><span>Google Play</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="phone-carousel-wrap fade-in fade-in-d2">
+      <div class="phone-frame">
+        <div class="phone-volume"></div>
+        <div class="phone-screen" id="phoneCarousel">
+          <img src="leaderbuilder-screenshot-1.png" alt="LDR | BLDR - Your rods organized by casting style" class="active">
+          <img src="leaderbuilder-screenshot-2.png" alt="LDR | BLDR - Line and leader recipes tied to a rod">
+          <img src="leaderbuilder-screenshot-3.png" alt="LDR | BLDR - Full recipe breakdown: line, tip, and leader">
+          <img src="leaderbuilder-screenshot-4.png" alt="LDR | BLDR - Guided new-recipe builder">
+          <img src="leaderbuilder-screenshot-5.png" alt="LDR | BLDR - Tune for water speed, depth, and fly type">
+          <img src="leaderbuilder-screenshot-6.png" alt="LDR | BLDR - Deep catalog detail on every line">
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots">
+        <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+        <button class="carousel-dot" onclick="goToSlide(1)"></button>
+        <button class="carousel-dot" onclick="goToSlide(2)"></button>
+        <button class="carousel-dot" onclick="goToSlide(3)"></button>
+        <button class="carousel-dot" onclick="goToSlide(4)"></button>
+        <button class="carousel-dot" onclick="goToSlide(5)"></button>
       </div>
     </div>
   </section>
+
+  <script>
+    var currentSlide = 0;
+    var totalSlides = 6;
+    var autoplayTimer;
+
+    function goToSlide(n) {
+      var imgs = document.querySelectorAll('#phoneCarousel img');
+      var dots = document.querySelectorAll('#carouselDots .carousel-dot');
+      imgs[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = n;
+      imgs[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+      resetAutoplay();
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % totalSlides);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(nextSlide, 4000);
+    }
+
+    resetAutoplay();
+  </script>
 
   <section class="features-section" id="features">
     <h2 class="fade-in">What it does</h2>
@@ -778,7 +940,7 @@
     <div class="price-card featured combined-card">
       <div class="combined-pricing">
         <div class="price-label">Free</div>
-        <h3>Leader Builder</h3>
+        <h3>LDR | BLDR</h3>
         <div class="price-amount muted">100% Free</div>
         <ul>
           <li>Unlimited recipes</li>
@@ -793,16 +955,17 @@
         <div class="price-label">Amazon Affiliate</div>
         <h3>Tap "Buy on Amazon" in the app</h3>
         <div class="price-amount muted">Same price for you — small commission for the studio</div>
-        <p class="support-body">Every line, leader, tip, and tippet material in the curated catalog has a <strong>Buy on Amazon</strong> button. When you tap it and complete a purchase, Leader Builder earns a small affiliate commission on what you buy that visit. <strong>The price you pay doesn't change</strong> — Amazon pays the commission out of their own margin.</p>
+        <p class="support-body">Every line, leader, tip, and tippet material in the curated catalog has a <strong>Buy on Amazon</strong> button. When you tap it and complete a purchase, LDR | BLDR earns a small affiliate commission on what you buy that visit. <strong>The price you pay doesn't change</strong> — Amazon pays the commission out of their own margin.</p>
         <p class="support-body"><strong>Your local fly shop deserves first call.</strong> If you'd rather hand them the money, that's the right answer and we fully support it. The Amazon button is here for the times you were going to order from Amazon anyway — and an occasional purchase through it helps cover the operating costs (hosting, developer account, catalog upkeep) that maintain the online and offline infrastructure behind the app, and lets us avoid putting ads in front of you.</p>
         <p class="support-fineprint">As an Amazon Associate, Moonshinerxwerks LLC earns from qualifying purchases. The affiliate relationship does not influence what we include in the curated catalog or which products we recommend. See our <a href="leaderbuilder-privacy.html">Privacy Policy</a> for detail.</p>
       </div>
     </div>
   </section>
 
+  <!-- Beta signup hidden — LDR | BLDR is publicly launched. Restore for the next fishing-season beta cycle.
   <section class="beta-section" id="beta">
     <div class="beta-card">
-      <h2>Join the Leader Builder Beta</h2>
+      <h2>Join the LDR | BLDR Beta</h2>
       <p>Pre-launch as of fishing season 2026. Drop your email below and we'll send a TestFlight invite as soon as the
         next beta is ready.</p>
       <form class="beta-form" name="leaderbuilder-beta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -819,6 +982,7 @@
       </form>
     </div>
   </section>
+  -->
 
   <footer>
     <div class="footer-inner">
