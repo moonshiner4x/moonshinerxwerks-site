@@ -136,7 +136,6 @@
   .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
   .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all 0.3s ease; }
   .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(91,155,247,0.06); }
-  .feature-icon { width: 44px; height: 44px; background: var(--accent-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 1.2rem; }
   .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 8px; }
   .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
@@ -285,8 +284,8 @@
     <p class="app-subtitle fade-in fade-in-d2">Comprehensive fishing intelligence for the modern angler. FishON! Pro helps anglers decide where to fish today by aggregating real-time data from five federal agencies into a single, personalized intelligence platform.</p>
     <p class="app-subtitle fade-in fade-in-d2" style="margin-top:-16px;">Particularly powerful for anglers chasing anadromous species — salmon, steelhead, and shad — where success hinges on reading the intersection of river flows, tides, and weather. Rising flows trigger upstream migration, incoming tides push fish into river mouths, and a falling barometer can set off a feeding frenzy. FishON! Pro puts all of these signals in one place so you can make the call before you leave the house.</p>
     <div class="app-meta fade-in fade-in-d3">
-      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad · Android coming soon</div>
-      <div class="meta-chip"><strong>🏷️ Category</strong> Sports · Weather</div>
+      <div class="meta-chip"><strong>Platform</strong> iPhone · iPad · Android coming soon</div>
+      <div class="meta-chip"><strong>Category</strong> Sports · Weather</div>
     </div>
     <div class="store-badges fade-in fade-in-d3">
       <a href="https://apps.apple.com/us/app/fishon-pro/id6759226228" class="store-badge" target="_blank" rel="noopener">
@@ -351,37 +350,30 @@
   <h2 class="fade-in">Features</h2>
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">📡</div>
       <h3>Live Multi-Agency Data</h3>
       <p>Real-time conditions from USGS, NOAA, NWS, Bureau of Reclamation, and NDBC buoys — flow rates, water temps, tides, weather, and wave data in one place.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🏆</div>
       <h3>Smart Scoring Engine</h3>
       <p>Ranks your fishing spots daily based on current conditions, your catch history, and field reports. The app learns your personal "golden conditions" over time.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📍</div>
       <h3>Three-Tier Location System</h3>
       <p>Organize all your water with a River → Section → Location hierarchy that mirrors how anglers actually think about their spots.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📝</div>
       <h3>Catch & Trip Logging</h3>
       <p>Log catches, trip reports, and field observations with automatic environmental snapshots that capture conditions at the moment you land a fish.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🗺️</div>
       <h3>Offline Satellite Maps</h3>
       <p>Full satellite maps for backcountry and remote water with no cell service. Download regions ahead of time and navigate without connectivity.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🎯</div>
       <h3>Where to Fish Today</h3>
       <p>Daily rankings from "best bet" to "skip today" that get smarter the more you fish — your own AI-powered fishing advisor.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔒</div>
       <h3>Privacy-First Design</h3>
       <p>Your data is yours alone — never sold, never shared with third parties. Your secret spots stay secret.</p>
     </div>
@@ -457,10 +449,10 @@
       </div>
       <div style="display:flex;gap:10px;width:100%;margin-bottom:12px;">
         <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-ios">
-          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> 🍎 iOS
+          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> iOS
         </label>
         <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-android">
-          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> 🤖 Android <span style="font-size:0.75rem;opacity:0.6;">(coming soon)</span>
+          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> Android <span style="font-size:0.75rem;opacity:0.6;">(coming soon)</span>
         </label>
       </div>
       <div style="display:flex;gap:12px;width:100%;">

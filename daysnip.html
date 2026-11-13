@@ -137,7 +137,6 @@
   .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
   .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: all 0.3s ease; }
   .feature-card:hover { border-color: var(--accent); box-shadow: 0 4px 24px rgba(176,126,240,0.06); }
-  .feature-icon { width: 44px; height: 44px; background: var(--accent-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 1.2rem; }
   .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 8px; }
   .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
 
@@ -285,8 +284,8 @@
     </div>
     <p class="app-subtitle fade-in fade-in-d2">A voice-first journaling app that captures your daily thoughts throughout the day — voice notes, typed observations, reflections — and every Sunday night, AI compiles each day's snippets into polished journal entries.</p>
     <div class="app-meta fade-in fade-in-d3">
-      <div class="meta-chip"><strong>📱 Platform</strong> iPhone · iPad · Apple Watch · Android coming soon</div>
-      <div class="meta-chip"><strong>🏷️ Category</strong> Lifestyle · Health & Fitness</div>
+      <div class="meta-chip"><strong>Platform</strong> iPhone · iPad · Apple Watch · Android coming soon</div>
+      <div class="meta-chip"><strong>Category</strong> Lifestyle · Health & Fitness</div>
     </div>
     <div class="store-badges fade-in fade-in-d3">
       <a href="https://apps.apple.com/us/app/daysnip/id6759875348" class="store-badge" target="_blank" rel="noopener">
@@ -347,42 +346,34 @@
   <h2 class="fade-in">Features</h2>
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">🎙️</div>
       <h3>Voice & Text Capture</h3>
       <p>Record voice notes or type thoughts anytime. Offline-first architecture means it always works — no connectivity required.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🤖</div>
       <h3>AI Weekly Wraps</h3>
       <p>Every Sunday at 11:59 PM, AI compiles the past week's snippets into polished daily entries. Choose from 7 writing styles including Narrative, Poetic, Dry Humor, and more.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">⌚</div>
       <h3>Apple Watch Companion</h3>
       <p>Quick-capture from your wrist. Tap, speak, done — your thought is saved without pulling out your phone.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🧠</div>
       <h3>Guided Reflections</h3>
       <p>Prompt themes and guided reflection questions to help you dig deeper on days when the words don't come easily.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🩺</div>
       <h3>Therapy Prep</h3>
       <p>Weekly AI-generated session summaries with PDF export — designed for sharing with your therapist to make sessions more productive.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📊</div>
       <h3>Mood Tracking & Trends</h3>
       <p>Track how you feel over time with mood logging and visual trend data that surfaces patterns in your emotional life.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📚</div>
       <h3>Journal Bookshelf</h3>
       <p>Browse past entries in a beautiful bookshelf view. Your personal library of lived experience, always at your fingertips.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔒</div>
       <h3>Privacy-First Design</h3>
       <p>Journal content stays on-device by default. All CloudKit synced data is encrypted. Multi-device sync when you want it, privacy when you need it.</p>
     </div>
@@ -444,10 +435,10 @@
       </div>
       <div style="display:flex;gap:10px;width:100%;margin-bottom:12px;">
         <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-ios">
-          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> 🍎 iOS
+          <input type="radio" name="platform" value="iOS" required style="display:none;" onchange="updatePlatformLabel()"> iOS
         </label>
         <label style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-elevated);color:var(--text-secondary);font-size:0.88rem;font-family:var(--font-body);cursor:pointer;transition:all 0.25s;" id="label-android">
-          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> 🤖 Android <span style="font-size:0.75rem;opacity:0.6;">(coming soon)</span>
+          <input type="radio" name="platform" value="Android" style="display:none;" onchange="updatePlatformLabel()"> Android <span style="font-size:0.75rem;opacity:0.6;">(coming soon)</span>
         </label>
       </div>
       <div style="display:flex;gap:12px;width:100%;">

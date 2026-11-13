@@ -392,13 +392,6 @@
     box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   }
 
-  .legal-icon {
-    width: 44px; height: 44px;
-    background: var(--accent-dim);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px; font-size: 1.2rem;
-  }
 
   .legal-card h3 {
     font-family: var(--font-display);
@@ -452,28 +445,6 @@
     font-size: 1.02rem; line-height: 1.7;
     margin-bottom: 40px;
   }
-
-  .contact-details { display: flex; flex-direction: column; gap: 20px; }
-
-  .contact-item {
-    display: flex; align-items: center; gap: 14px;
-    color: var(--text-secondary); font-size: 0.93rem;
-  }
-  .contact-item strong { color: var(--text); }
-
-  .contact-item-icon {
-    width: 42px; height: 42px;
-    background: var(--accent-dim);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .contact-item a {
-    color: var(--text); text-decoration: none;
-    transition: color 0.25s;
-  }
-  .contact-item a:hover { color: var(--text-secondary); }
 
   .contact-form {
     background: var(--surface);
@@ -634,7 +605,7 @@
             <p>Voice-first journaling app that captures thoughts throughout the day and uses AI to compile them into a cohesive journal entry each night. Includes an optional Therapy Prep feature that compiles your week's entries — mood data, reflections, and recurring themes — into a structured summary ready to share with your therapist before a session.</p>
           </div>
           <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad · Watch</span>
+            <span class="project-platform">iPhone · iPad · Watch</span>
             <a href="daysnip.html" class="project-link">Learn More →</a>
           </div>
         </div>
@@ -648,7 +619,7 @@
             <p>Fishing intelligence platform that pulls real-time data from five federal agencies — flows, tides, water temps, and weather — to rank your spots from best bet to skip today. Built for serious anglers chasing anadromous fish like salmon and steelhead, with smart catch logging, offline satellite maps, and a scoring engine that learns your personal conditions over time.</p>
           </div>
           <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad</span>
+            <span class="project-platform">iPhone · iPad</span>
             <a href="fishon.html" class="project-link">Learn More →</a>
           </div>
         </div>
@@ -662,7 +633,7 @@
             <p>Local discovery app that helps you find nearby venues with active happy hour deals, plan meetups, and report crowd levels in real time.</p>
           </div>
           <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad · Android</span>
+            <span class="project-platform">iPhone · iPad · Android</span>
             <a href="happyhour.html" class="project-link">Learn More →</a>
           </div>
         </div>
@@ -676,7 +647,7 @@
             <p>Save the leader recipes that work best for your rods and casting style — line + leader + tip + casting notes — and recall them with one tap at the river. When using a water anchored cast, it is important that you have the correct line setup to maximize your cast. Offline-first; free.</p>
           </div>
           <div class="project-footer">
-            <span class="project-platform">📱 iPhone · iPad · Android</span>
+            <span class="project-platform">iPhone · iPad · Android</span>
             <a href="leaderbuilder.html" class="project-link">Learn More →</a>
           </div>
         </div>
@@ -706,21 +677,18 @@
 
     <div class="legal-grid">
       <div class="legal-card reveal">
-        <div class="legal-icon">📜</div>
         <h3>Terms of Service</h3>
         <p>Standard terms governing the use of our products, services, and intellectual property.</p>
         <a href="terms.html" class="legal-link">Read Full Terms →</a>
       </div>
 
       <div class="legal-card reveal">
-        <div class="legal-icon">🔒</div>
         <h3>Privacy Policy</h3>
         <p>How we collect, store, and protect personal information across our apps and this website.</p>
         <a href="privacy.html" class="legal-link">Read Privacy Policy →</a>
       </div>
 
       <div class="legal-card reveal">
-        <div class="legal-icon">🍪</div>
         <h3>Cookie Policy</h3>
         <p>Details on cookies and tracking technologies we use, plus your options to manage preferences.</p>
         <a href="cookies.html" class="legal-link">Read Cookie Policy →</a>
@@ -737,17 +705,6 @@
         <p class="section-label">Contact</p>
         <h2>Got something<br>to <em>say?</em></h2>
         <p>Whether it's a question about one of our apps, a partnership idea, or just a friendly hello — drop us a line.</p>
-
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div><strong>Base</strong><br>Bend, Oregon</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">⏰</div>
-            <div><strong>Response Time</strong><br>Within 48 hours</div>
-          </div>
-        </div>
       </div>
 
       <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -774,6 +731,7 @@
             <option>App Question / Support</option>
             <option>Partnership / Collab</option>
             <option>Press / Media</option>
+            <option>Employment Opportunity</option>
             <option>General Inquiry</option>
           </select>
         </div>
