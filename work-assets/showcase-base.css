@@ -1,0 +1,76 @@
+/*
+ * Filename: showcase-base.css
+ * App Name: moonshinerXwerks website
+ *
+ * Created Date: 2026-11-12
+ * Last Edited Date: 2026-11-12
+ *
+ * Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+ *
+ * Code Description: Shared tokens, mockup bar, nav and footer for the Work page layout mockups.
+ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #000; --bg-elevated: #0A0A0A; --surface: #141414; --surface-2: #1B1B1B;
+  --text: #F0EDE8; --text-2: #8A8A8A; --border: #222;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --note: #F5D76E;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+.mock-bar { position: sticky; top: 0; z-index: 300; background: #1a1607; border-bottom: 1px solid #3d3410; color: var(--note); font-size: 0.8rem; padding: 9px 24px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.mock-bar a { text-decoration: none; border: 1px solid #5a4c17; border-radius: 100px; padding: 3px 11px; }
+.mock-bar a.cur { background: var(--note); color: #1a1607; }
+.mock-bar button { background: transparent; border: 1px dashed #5a4c17; color: var(--note); border-radius: 100px; padding: 3px 11px; font: inherit; cursor: pointer; margin-left: auto; }
+.note { display: inline-block; background: rgba(245,215,110,0.1); border: 1px dashed rgba(245,215,110,0.5); color: var(--note); font-size: 0.78rem; padding: 2px 8px; border-radius: 6px; }
+body.hide-notes .note { display: none !important; }
+
+.site-nav { border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.9); }
+.site-nav .in { max-width: 1600px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; }
+.site-nav img { height: 48px; }
+.site-nav ul { display: flex; gap: 26px; list-style: none; align-items: center; font-size: 0.88rem; }
+.site-nav a { text-decoration: none; color: var(--text-2); }
+.site-nav a.on { color: var(--text); }
+.site-nav .cta { background: var(--text); color: var(--bg); padding: 8px 18px; border-radius: 100px; font-weight: 500; }
+
+.icon { width: 56px; height: 56px; border-radius: 14px; background: var(--surface-2); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; overflow: hidden; flex: none; }
+.icon img { width: 100%; height: 100%; object-fit: cover; }
+.pill { font-size: 0.72rem; padding: 3px 10px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-2); white-space: nowrap; }
+.chip { font-size: 0.76rem; padding: 3px 9px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+.ph { border: 1px dashed #333; border-radius: 14px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--text-2); font-size: 0.86rem; background: repeating-linear-gradient(135deg, #0d0d0d 0 12px, #101010 12px 24px); }
+
+.site-foot { border-top: 1px solid var(--border); padding: 26px 32px; color: var(--text-2); font-size: 0.8rem; text-align: center; }
+
+@media (max-width: 700px) {
+  .site-nav .in { padding: 10px 16px; }
+  .site-nav li:not(:last-child) { display: none; }
+}
+
+/* "Why build my own?" theme block */
+.why { border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin: 8px 0 48px; background: radial-gradient(120% 140% at 0% 0%, #161616 0%, #0A0A0A 60%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 48px; align-items: start; }
+.why-k { font-size: 0.72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-bottom: 12px; }
+.why h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 2.6vw, 2.6rem); line-height: 1.1; }
+.why h2 em { font-style: italic; }
+.why-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.why-cols span { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-2); }
+.why-cols h3 { font-size: 1.05rem; font-weight: 500; margin: 4px 0 8px; }
+.why-cols p { color: #cfcbc5; font-size: 0.94rem; }
+.why > .note { grid-column: 1 / -1; justify-self: start; }
+
+/* Per-project theme lines */
+.theme-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.theme-pair > div { background: #0d0d0d; padding: 18px 22px; }
+.theme-pair h4 { font-size: 0.7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); font-weight: 500; margin-bottom: 6px; }
+.theme-pair p { color: #cfcbc5; font-size: 0.92rem; }
+@media (max-width: 900px) {
+  .why { grid-template-columns: 1fr; padding: 26px 20px; gap: 24px; }
+  .why-cols, .theme-pair { grid-template-columns: 1fr; }
+}
+.pill.live { color: #6FCF6F; border-color: rgba(111,207,111,0.35); background: rgba(111,207,111,0.08); }
+.pill.tool { color: #5B9BF7; border-color: rgba(91,155,247,0.35); background: rgba(91,155,247,0.08); }
+.pill.concept { color: #B07EF0; border-color: rgba(176,126,240,0.35); background: rgba(176,126,240,0.08); }

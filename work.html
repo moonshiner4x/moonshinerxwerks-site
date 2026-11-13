@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!--
+  Filename: work-page.html
+  App Name: moonshinerXwerks website
+  Created Date: 2026-11-12
+  Last Edited Date: 2026-11-13
+  Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+  Code Description: Source of the employer-facing Work page (published as work.html by build-preview.sh). Answers why,
+  how, what and expertise in four calm sections; each project's full case study (reels, flows, details) opens in a side panel.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — moonshinerXwerks LLC</title>
+<meta name="description" content="Case studies from moonshinerXwerks: how each product started from a real problem and was built to fit it, from App Store apps to the tools that run the studio.">
+<link rel="canonical" href="https://moonshinerxwerks.com/work.html" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="work-assets/showcase-base.css">
+<style>
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  section.s { padding: 112px 0 0; }
+  .k { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-2); margin-bottom: 18px; }
+  h2.t { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 3.4vw, 3.4rem); line-height: 1.08; max-width: 900px; }
+  h2.t em { font-style: italic; }
+  .lede { color: var(--text-2); font-size: 1.1rem; max-width: 680px; margin-top: 18px; }
+
+  /* Hero */
+  .hero { padding: 128px 0 0; }
+  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(3rem, 5.6vw, 5.8rem); line-height: 1.0; max-width: 1150px; }
+  .hero h1 em { font-style: italic; }
+  .hero .lede { font-size: 1.2rem; max-width: 760px; margin-top: 28px; }
+  .jump { display: flex; gap: 28px; margin-top: 40px; font-size: .95rem; }
+  .jump a { color: var(--text); text-decoration: none; border-bottom: 1px solid #444; padding-bottom: 2px; }
+
+  /* Why */
+  .reasons { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; margin-top: 48px; }
+  .reasons h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 10px; }
+  .reasons p { color: #cfcbc5; font-size: 1.02rem; }
+
+  /* How */
+  .how { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; margin-top: 48px; }
+  .how .n { font-family: var(--font-display); font-size: 2.2rem; color: var(--text-2); line-height: 1; }
+  .how h3 { font-size: 1.05rem; font-weight: 500; margin: 14px 0 8px; }
+  .how p { color: var(--text-2); font-size: .95rem; }
+
+  /* What */
+  .group { margin-top: 56px; }
+  .group h4 { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-2); margin-bottom: 18px; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; }
+  .card { background: var(--bg-elevated); border: 1px solid #1c1c1c; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; text-align: left; font: inherit; color: inherit; padding: 0; transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: #333; transform: translateY(-2px); }
+  .thumb { aspect-ratio: 1 / 1; height: auto; align-items: center !important; background: radial-gradient(120% 120% at 50% 0%, color-mix(in srgb, var(--c) 22%, #0d0d0d) 0%, #0b0b0b 70%); position: relative; overflow: hidden; display: flex; justify-content: center; align-items: flex-start; }
+  .thumb .appicon { width: 65%; height: auto; aspect-ratio: 1 / 1; margin: auto; border-radius: 22%; object-fit: cover; filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); transition: transform .4s ease; }
+  .card:hover .thumb .appicon { transform: scale(1.04); }
+  .thumb .appicon.mono { display: grid; place-items: center; background: #161616; border: 1px solid #2a2a2a; font-family: var(--font-display); font-size: 4.5rem; color: var(--text); }
+  .thumb .g { position: absolute; left: 7%; top: 30px; width: 112%; pointer-events: none; }
+  .thumb .g .g-frame { font-size: 1.08cqw; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
+  .thumb .g .g-cap { display: none; }
+  .thumb .tph { position: absolute; inset: 30px 24px auto; height: 190px; font-size: .8rem; }
+  .cbody { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .fam { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+  .works { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: .8rem; color: var(--text-2); margin-top: 10px; }
+  .works button { font: inherit; font-size: .78rem; padding: 4px 12px; border-radius: 100px; border: 1px solid #333; background: none; color: var(--text); cursor: pointer; }
+  .ctop { display: flex; align-items: center; gap: 12px; }
+  .ctop .icon { width: 40px; height: 40px; border-radius: 10px; font-size: 1rem; }
+  .ctop h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; line-height: 1.05; }
+  .ctop small { display: block; color: var(--text-2); font-size: .78rem; }
+  .cbody > p { color: #cfcbc5; font-size: .96rem; }
+  .cbody > p.cq { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; line-height: 1.25; color: var(--text); }
+  .cwhy { color: var(--text-2); font-size: .9rem; }
+  .cwhy b { color: var(--text); font-weight: 500; }
+  .skills { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+  .skills span { font-size: .74rem; padding: 3px 10px; border-radius: 100px; border: 1px solid #2a2a2a; color: var(--text-2); }
+  .open { font-size: .88rem; color: var(--text); }
+
+  /* Expertise */
+  .exp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 56px; margin-top: 56px; }
+  .exp h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.75rem; line-height: 1.1; }
+  .exp p { color: #cfcbc5; font-size: .98rem; margin: 10px 0 14px; }
+  .exp .from { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: .74rem; color: var(--text-2); }
+  .exp .from button { font: inherit; font-size: .74rem; padding: 3px 10px; border-radius: 100px; border: 1px solid #2a2a2a; background: none; color: var(--text-2); cursor: pointer; }
+  .exp .from button:hover { color: var(--text); border-color: #444; }
+
+  /* CTA */
+  .cta { margin: 128px 0 96px; display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 56px; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { text-decoration: none; padding: 13px 26px; border-radius: 100px; font-weight: 500; font-size: .92rem; }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-secondary { border: 1px solid var(--border); color: var(--text); }
+
+
+  /* Case study drawer */
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,.65); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 400; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(1240px, 100%); background: #0a0a0a; border-left: 1px solid var(--border); transform: translateX(100%); transition: transform .35s ease; z-index: 401; overflow-y: auto; }
+  body.open { overflow: hidden; }
+  body.open .scrim { opacity: 1; pointer-events: auto; }
+  body.open .drawer { transform: none; }
+  .d-head { position: sticky; top: 0; z-index: 5; background: #0a0a0a; border-bottom: 1px solid var(--border); padding: 22px 40px; display: flex; gap: 16px; align-items: center; }
+  .d-head h2 { font-family: var(--font-display); font-weight: 400; font-size: 2.2rem; line-height: 1; }
+  .d-head p { color: var(--text-2); font-size: .92rem; margin-top: 4px; }
+  .mk { flex: none; margin-left: auto; font-size: .85rem; color: var(--text); text-decoration: none; border: 1px solid #333; border-radius: 100px; padding: 8px 14px; white-space: nowrap; }
+  .mk + .close { margin-left: 12px; }
+  .close { margin-left: auto; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 1.1rem; cursor: pointer; }
+  .d-sec { padding: 36px 40px; border-bottom: 1px solid var(--border); }
+  .d-sec .sh { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-2); margin-bottom: 20px; }
+  .d-shots { display: flex; gap: 14px; overflow-x: auto; }
+  .d-shots img { height: 420px; width: auto; border-radius: 22px; border: 1px solid var(--border); }
+  .d-story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; }
+  .d-story .full { grid-column: 1 / -1; }
+  .d-story h4 { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--c); font-weight: 500; margin-bottom: 8px; }
+  .d-story p, .d-story li { color: #cfcbc5; font-size: .96rem; }
+  .d-story ul { padding-left: 18px; display: grid; gap: 6px; }
+  .d-story blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; line-height: 1.3; margin-bottom: 10px; color: var(--text); }
+  .flow-title { font-family: var(--font-display); font-size: 1.8rem; margin: 0 18px 22px; }
+
+  @media (max-width: 1100px) {
+    .reasons, .exp { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .how { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    .wrap { padding: 0 16px; }
+    section.s { padding-top: 80px; }
+    .hero { padding-top: 72px; }
+    .reasons, .how, .exp, .d-story { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .d-head, .d-sec { padding-left: 18px; padding-right: 18px; }
+    .d-shots img { height: 320px; }
+  }
+
+  /* Skills learned on the job */
+  .skillset { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+  .sk { border: 1px solid #1c1c1c; border-radius: 20px; padding: 30px; background: var(--bg-elevated); display: flex; flex-direction: column; gap: 12px; }
+  .sk h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.75rem; line-height: 1.1; }
+  .sk p { color: #cfcbc5; font-size: .96rem; }
+  .sk .metric { align-self: flex-start; font-size: .8rem; padding: 3px 10px; border-radius: 100px; border: 1px solid #2a2a2a; color: var(--text); }
+  .sk .as { font-size: .82rem; color: var(--text-2); }
+  .sk .as b { font-weight: 500; color: var(--text-2); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-right: 6px; }
+  .sk .now { margin-top: auto; padding-top: 14px; border-top: 1px solid #1c1c1c; }
+  .sk .now small { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-bottom: 6px; }
+  .sk .now p { font-size: .92rem; }
+  .sk .from { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .sk .from button { font: inherit; font-size: .74rem; padding: 3px 10px; border-radius: 100px; border: 1px solid #2a2a2a; background: none; color: var(--text-2); cursor: pointer; }
+  .together { grid-column: 1 / -1; border: 1px solid #333; border-radius: 20px; padding: 32px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 40px; align-items: center; background: radial-gradient(120% 160% at 0% 0%, #1a1a1a 0%, #0a0a0a 60%); }
+  .together h3 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.1; }
+  .together p { color: #cfcbc5; }
+  @media (max-width: 1100px) { .skillset { grid-template-columns: 1fr 1fr; } .together { grid-template-columns: 1fr; gap: 14px; } }
+  @media (max-width: 700px) { .skillset { grid-template-columns: 1fr; } }
+
+  /* Imagination */
+  .leaps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+  .leap { border: 1px solid #1c1c1c; border-radius: 20px; padding: 28px; background: radial-gradient(140% 120% at 0% 0%, color-mix(in srgb, var(--c) 14%, #0b0b0b) 0%, #0a0a0a 60%); display: flex; flex-direction: column; gap: 16px; cursor: pointer; transition: border-color .2s; }
+  .leap:hover { border-color: #333; }
+  .leap .who { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: var(--text-2); }
+  .leap .who .icon { width: 30px; height: 30px; border-radius: 8px; font-size: .8rem; }
+  .leap .ob { color: var(--text-2); font-size: .92rem; text-decoration: line-through; text-decoration-color: #555; }
+  .leap .ob b { text-decoration: none; display: inline-block; font-weight: 500; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-right: 6px; }
+  .leap .im { font-family: var(--font-display); font-size: 1.55rem; line-height: 1.2; }
+  .leap .im b { display: block; font-family: var(--font-body); font-weight: 500; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
+  .brands { margin-top: 64px; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
+  .brand-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+  .brand-row img { width: 72px; height: 72px; border-radius: 18px; object-fit: cover; box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+  .brand-row img.logo { width: auto; background: #111; padding: 14px; object-fit: contain; }
+  .brands p { color: var(--text-2); max-width: 620px; font-size: .96rem; }
+  @media (max-width: 1100px) { .leaps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .leaps { grid-template-columns: 1fr; } .brand-row img { width: 54px; height: 54px; } }
+
+  /* Feature spotlight */
+  .spot { margin-top: 56px; border: 1px solid #1c1c1c; border-radius: 24px; padding: 48px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; align-items: center; background: radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--c) 16%, #0b0b0b) 0%, #0a0a0a 65%); }
+  .spot .k { color: var(--c); }
+  .spot h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.08; }
+  .spot h3 em { font-style: italic; }
+  .spot .pb { margin-top: 22px; display: grid; gap: 16px; }
+  .spot .pb small { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-bottom: 4px; }
+  .spot .pb p { color: #cfcbc5; font-size: 1rem; }
+  .spot ul { list-style: none; display: grid; gap: 8px; margin-top: 18px; }
+  .spot ul li { color: var(--text-2); font-size: .92rem; padding-left: 16px; position: relative; }
+  .spot ul li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+  .spot .acts { display: flex; gap: 14px; align-items: center; margin-top: 22px; flex-wrap: wrap; }
+  .spot .acts button { font: inherit; font-size: .88rem; color: var(--text); background: none; border: 1px solid #333; border-radius: 100px; padding: 8px 16px; cursor: pointer; }
+  .paper { background: #f6f1e7; color: #2b2622; border-radius: 16px; padding: 26px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.55); transform: rotate(1.2deg); font-size: .86rem; line-height: 1.45; }
+  .paper .pill { display: inline-block; font-size: .64rem; letter-spacing: .12em; font-weight: 700; background: #e9dfcd; color: #7a5b3a; border: 0; padding: 3px 9px; border-radius: 100px; }
+  .paper h5 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; margin: 10px 0 0; color: #1f1b18; }
+  .paper .dt { color: #8a7e72; font-size: .78rem; }
+  .paper h6 { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: #a0522d; margin: 14px 0 4px; }
+  .paper .mood { display: flex; gap: 4px; align-items: flex-end; height: 44px; }
+  .paper .mood i { display: block; }
+  .paper .mood i { flex: 1; border-radius: 3px 3px 0 0; background: #c98f6a; opacity: .85; }
+  .paper .chips { display: flex; gap: 5px; flex-wrap: wrap; }
+  .paper .chips span { background: #ece3d3; border-radius: 100px; padding: 2px 9px; font-size: .74rem; }
+  .paper ol { padding-left: 18px; }
+  .paper .disc { margin-top: 14px; font-size: .68rem; color: #8a7e72; border-top: 1px solid #e3d9c8; padding-top: 8px; }
+  .d-sec .spot { margin-top: 0; padding: 32px; }
+  @media (max-width: 1100px) { .spot { grid-template-columns: 1fr; padding: 28px 20px; } .paper { transform: none; } }
+
+  /* Multi-part case study */
+  .d-tabs { position: sticky; top: 97px; z-index: 4; background: #0a0a0a; border-bottom: 1px solid var(--border); display: flex; gap: 8px; padding: 12px 40px; }
+  .d-tabs a { text-decoration: none; color: var(--text); font-size: .88rem; border: 1px solid #2a2a2a; border-radius: 100px; padding: 6px 14px; display: flex; gap: 8px; align-items: center; }
+  .d-tabs a b { font-weight: 500; color: var(--text-2); }
+  .together3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .together3 span { font-family: var(--font-display); font-size: 1.8rem; color: var(--c); }
+  .together3 h4 { font-size: 1.05rem; font-weight: 500; margin: 2px 0 6px; }
+  .together3 p, .tnote { color: #cfcbc5; font-size: .95rem; }
+  .tnote { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--text-2); }
+  .part { scroll-margin-top: 160px; border-top: 6px solid #111; }
+  .part-head { padding: 44px 40px 0; }
+  .part-head span { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--c); }
+  .part-head h3 { font-family: var(--font-display); font-weight: 400; font-size: 2.6rem; line-height: 1.05; margin: 6px 0; }
+  .part-head p { color: var(--text-2); max-width: 760px; }
+  .part .d-story h4 { color: var(--c); }
+  @media (max-width: 700px) { .together3 { grid-template-columns: 1fr; } .d-tabs { padding: 10px 18px; overflow-x: auto; } .part-head { padding: 32px 18px 0; } }
+
+  /* App Foundry: lessons mapped onto its 12 stages */
+  .foundry { margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .stage { border: 1px solid #1c1c1c; border-radius: 16px; padding: 18px 20px; background: #0a0a0a; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+  .stage.has { border-color: color-mix(in srgb, #B07EF0 45%, #1c1c1c); background: radial-gradient(140% 120% at 0% 0%, rgba(176,126,240,.12) 0%, #0a0a0a 60%); }
+  .stage .n { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+  .stage h4 { font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; line-height: 1.1; }
+  .stage p { color: #cfcbc5; font-size: .88rem; }
+  .stage p.none { color: #555; }
+  .stage .from { display: flex; gap: 5px; flex-wrap: wrap; margin-top: auto; }
+  .stage .from button { font: inherit; font-size: .7rem; padding: 2px 9px; border-radius: 100px; border: 1px solid #2a2a2a; background: none; color: var(--text-2); cursor: pointer; }
+  .phase { grid-column: 1 / -1; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: #B07EF0; margin-top: 10px; }
+  .f-feature { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 56px; align-items: center; border: 1px solid #1c1c1c; border-radius: 24px; padding: 48px; background: radial-gradient(120% 140% at 0% 0%, rgba(176,126,240,.14) 0%, #0a0a0a 60%); }
+  .f-feature img { width: 100%; border-radius: 22%; filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); }
+  @media (max-width: 900px) { .f-feature { grid-template-columns: 1fr; padding: 28px 20px; gap: 24px; } .f-feature img { width: 120px; } }
+  .f-foot { display: flex; gap: 16px; align-items: center; margin-top: 24px; flex-wrap: wrap; }
+  .f-foot button { font: inherit; font-size: .9rem; color: var(--text); background: none; border: 1px solid #333; border-radius: 100px; padding: 9px 18px; cursor: pointer; }
+  .d-sec .foundry { margin-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 1100px) { .foundry, .d-sec .foundry { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .foundry, .d-sec .foundry { grid-template-columns: 1fr; } }
+
+  /* Site header — copied from the main site so every page matches. */
+  nav.main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(0, 0, 0, 0.85); border-bottom: 1px solid var(--border); }
+  .main-nav .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; }
+  .main-nav .logo-img { display: inline; height: 80px; opacity: 0.95; transition: opacity 0.25s; }
+  .main-nav .logo-img:hover { opacity: 1; }
+  .main-nav .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .main-nav .nav-links a { text-decoration: none; color: var(--text-2); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
+  .main-nav .nav-links a:hover, .main-nav .nav-links a.current { color: var(--text); }
+  .main-nav .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; transition: opacity 0.25s !important; }
+  .main-nav .nav-cta:hover { opacity: 0.85; }
+  .main-nav .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
+  body { padding-top: 117px; }
+  @media (max-width: 768px) { .main-nav .nav-links { display: none; } .main-nav .mobile-toggle { display: block; } }
+
+  /* Large and ultrawide screens: the page adapts to the browser width.
+     Text blocks keep their reading widths; grids, the case-study panel and the app screenshots get the extra room. */
+  @media (min-width: 1800px) {
+    .wrap, .main-nav .nav-inner { max-width: 1520px; }
+    .drawer { width: min(2000px, 88vw); }
+    .d-sec { padding: 44px 64px; }
+    .d-head { padding: 24px 64px; }
+    .d-story { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 56px; }
+    .d-shots img { height: 560px; }
+    .exp, .leaps, .skillset { gap: 32px; }
+  }
+  @media (min-width: 2400px) {
+    html { font-size: 17px; }
+    .wrap, .main-nav .nav-inner { max-width: 1680px; }
+    .drawer { width: min(2280px, 86vw); }
+    .d-shots img { height: 640px; }
+  }
+
+  /* Full-screen view of a reel screenshot */
+  .zoomview { position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,.92); display: none; align-items: center; justify-content: center; padding: 3vh 3vw; cursor: zoom-out; }
+  .zoomview.on { display: flex; }
+  .zoomview img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 120px rgba(0,0,0,.8); }
+  .zoomview p { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: var(--text-2); font-size: .82rem; }
+</style>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#marketplace">Marketplace</a></li>
+      <li><a href="#top" class="current">Work</a></li>
+      <li><a href="index.html#legal">Legal</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <h1>A well-designed product is worth little if it solves <em>the wrong problem.</em></h1>
+    <p class="lede">So I start by pinning down the real problem — who has it, what it costs them, and why what exists falls short — then develop the solution that fits it, and nothing more. Ten products built that way, from apps on the App Store and Google Play to tools that run my own work.</p>
+  </header>
+
+  <section class="s" id="how">
+    <p class="k">How I work</p>
+    <h2 class="t">Get the problem right. <em>Then build only what solves it.</em></h2>
+    <div class="how">
+      <div><div class="n">01</div><h3>Identify the real problem</h3><p>Start from an observed pain: who has it, what it costs them, and what they do today. Not a feature idea.</p></div>
+      <div><div class="n">02</div><h3>Test the fit</h3><p>Check why existing tools fall short, then argue out scope, data and risk until the solution fits the problem — and cut what doesn’t.</p></div>
+      <div><div class="n">03</div><h3>Develop the solution</h3><p>Mock it up, then direct AI coding agents to build it, with every prompt, audit and change tracked.</p></div>
+      <div><div class="n">04</div><h3>Prove it solved it</h3><p>Put it in front of real users or a real workflow, and judge it against the original problem — not against the feature list.</p></div>
+    </div>
+  </section>
+
+  <section class="s" id="what">
+    <p class="k">The projects</p>
+    <h2 class="t">Familiar problems, <em>a different take.</em></h2>
+    <p class="lede">A few of these had no good answer yet. Most already had one — these are my attempts at a solution that fits one specific need more closely.</p>
+    <div class="group"><h4>Shipped apps</h4><div class="grid" id="g-shipped"></div></div>
+    <div class="group"><h4>Built, not released</h4><div class="grid" id="g-unreleased"></div></div>
+    <div class="group"><h4>Tools that run my own work · and one concept</h4><div class="grid" id="g-tools"></div></div>
+  </section>
+
+  <section class="s" id="foundry">
+    <div class="f-feature">
+      <img src="work-assets/icons/app-foundry.svg" alt="App Foundry icon">
+      <div>
+        <p class="k">The culmination · App Foundry</p>
+        <h2 class="t">Every lesson, built back into <em>the next idea.</em></h2>
+        <p class="lede">App Foundry takes a raw idea to a build-ready spec in twelve stages. Each stage carries what I learned the hard way building the apps above, so the next product starts where the last one finished.</p>
+        <div class="f-foot"><button data-id="groomer">See the twelve stages and their lessons →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="imagination">
+    <p class="k">Imagination at work</p>
+    <h2 class="t">Practical problems, <em>imaginative answers.</em></h2>
+    <p class="lede">Fitting a solution to a problem isn’t only analysis. The best fits usually come from seeing the problem from an angle nobody tried.</p>
+    <div class="leaps" id="leaps"></div>
+    <div class="brands">
+      <div class="brand-row" id="brands"></div>
+      <p>Every product named, branded and given its own identity in-house — from a wizard-chef mascot to a rebrand that landed on <em>LDR | BLDR</em>.</p>
+    </div>
+  </section>
+
+  <section class="s" id="path">
+    <p class="k">Where the skills come from</p>
+    <h2 class="t">Learned on the job inside global companies. <em>Put to work together here.</em></h2>
+    <p class="lede">None of these projects started from scratch. Each one draws on skills I built solving problems for large organizations, now applied end to end in moonshinerXwerks, an active practice in AI-enabled delivery.</p>
+    <div class="skillset" id="pathlist"></div>
+  </section>
+
+  <section class="s" id="why">
+    <p class="k">Why build my own</p>
+    <h2 class="t">Most of these problems already had an app. <em>I built my own anyway.</em></h2>
+    <div class="reasons">
+      <div><h3>Fit the problem exactly</h3><p>Off-the-shelf software is built for everyone, so it rarely fits anyone’s problem exactly. Each project is an experiment in purpose-built solutions — cut to fit one real need, and nothing more.</p></div>
+      <div><h3>Learn by shipping</h3><p>Taking every one from idea to launch — design, data, store review, outages, customers — is how I learned what building software really takes, not just how to design it.</p></div>
+    </div>
+  </section>
+
+  <section class="s" id="expertise">
+    <p class="k">What I bring</p>
+    <h2 class="t">Expertise earned solving real problems — <em>ready to apply to yours.</em></h2>
+    <div class="exp" id="exp"></div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2 class="t">Have a problem worth<br><em>getting right?</em></h2>
+    <div class="btns"><a class="btn btn-primary" href="mailto:john@moonshinerxwerks.com">Email John</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/johnjackson423" target="_blank" rel="noopener">LinkedIn</a></div>
+  </section>
+</main>
+<footer class="site-foot">© 2026 Moonshinerxwerks LLC · Bend, Oregon</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer"></aside>
+
+<script src="work-assets/showcase-content.js"></script>
+<script src="work-assets/showcase-graphics.js"></script>
+<script src="work-assets/hhr-graphics.js"></script>
+<script src="work-assets/fishon-graphics.js"></script>
+<script src="work-assets/showcase-reel.js"></script>
+<script>
+  const byId = id => CASES.find(c => c.id === id);
+  const icon = c => '<div class="icon">' + (c.icon ? '<img src="' + c.icon + '" alt="">' : c.mono) + '</div>';
+  const THUMB = {};
+
+  /** Card art: the app icon only; screenshots live in the case study. */
+  function thumb(c) {
+    return c.icon ? '<img class="appicon" src="' + c.icon + '" alt="' + c.name + ' icon">' : '<div class="appicon mono">' + c.mono + '</div>';
+  }
+  const card = c => '<button class="card" data-id="' + c.id + '" style="--c:' + c.color + '">' +
+    '<div class="thumb">' + thumb(c) + '</div>' +
+    '<div class="cbody">' + '<div class="ctop"><div><h3>' + c.name + '</h3><small>' + c.status + ' · ' + c.platforms + '</small></div></div>' +
+      '<p class="cq">' + c.quote + '</p>' +
+      '<p class="cwhy"><b>Solution:</b> ' + c.tagline + '</p>' +
+      '<p class="cwhy"><b>Why existing tools fell short:</b> ' + c.instead + '</p>' +
+      '<div class="skills">' + c.skills.map(s => '<span>' + s + '</span>').join('') + '</div>' +
+      '<span class="open">Case study →</span></div></button>';
+  document.getElementById('g-shipped').innerHTML = CASES.filter(c => c.kind === 'shipped' && !c.child).map(card).join('');
+  document.getElementById('g-unreleased').innerHTML = CASES.filter(c => c.kind === 'unreleased' && !c.child).map(card).join('');
+  document.getElementById('g-tools').innerHTML = CASES.filter(c => c.kind !== 'shipped' && c.kind !== 'unreleased' && !c.child && c.id !== 'groomer').map(card).join('');
+
+  const EXPERTISE = [
+    ['Finding the problem behind the request', 'I dig past the feature someone asks for to the problem they actually have — who it hurts, what it costs, and why current tools miss it. I even built a tool that pressure-tests ideas before a line of code.', ['groomer', 'fishon', 'hhr']],
+    ['Fitting the solution to the problem', 'The right answer is often less: read-only instead of trading, offline-first because anglers fish out of signal, one view instead of three logins. I cut whatever doesn’t serve the problem.', ['stock', 'ldr', 'daysnip']],
+    ['Developing solutions end to end', 'I take a solution from mockup to working software across phone, watch and web, directing AI coding agents with clear specs, tracked prompts, audits and a changelog for every change.', ['hhr', 'ldr', 'apt']],
+    ['Working with real-world data', 'Live government data, broker and marketplace APIs, payments, Notion and offline sync — solutions that hold up when the data is messy and the network drops.', ['fishon', 'stock', 'ssm']],
+    ['Proving it works before switching', 'A new solution earns its place by matching the old way first — three years of sales history, or past applications — before anyone relies on it.', ['ssm', 'apt']],
+    ['Making a solution sustainable', 'Pricing tiers, a sales pipeline, billing and a support loop that closes itself — so a solution keeps solving the problem after launch.', ['hhr-admin', 'hhr-venue', 'fishon']],
+  ];
+  document.getElementById('exp').innerHTML = EXPERTISE.map(([t, p, from]) =>
+    '<div><h3>' + t + '</h3><p>' + p + '</p><div class="from">Proven on ' + from.map(id => '<button data-id="' + id + '">' + byId(id).name + '</button>').join('') + '</div></div>').join('');
+
+  const SKILLS = [
+    { t: 'Turning messy data into decisions', p: 'Integrating data from dozens of outside partners, cleaning it, and shaping it into reporting that executives and clients actually used.', m: '25+ data partners · 300+ clients',
+      as: 'Senior Reporting Analyst, Egencia · Sr. Project Manager, OnTrac', now: 'Five federal data feeds, broker accounts and three years of shop orders, turned into one clear view.', from: ['fishon', 'stock', 'ssm'] },
+    { t: 'Hearing the need behind the request', p: 'Running discovery with clients to find what they really needed, then translating it into something that could be built and configured.', m: 'Deployments cut from 6 weeks to 2 · President’s Club',
+      as: 'Global Implementation Manager, Egencia', now: 'Every project starts by pinning down who has the problem and what it costs them.', from: ['hhr-venue', 'groomer', 'ldr'] },
+    { t: 'Scoring to decide where effort goes', p: 'Designing scoring methods that matched resources to complexity and value, and survey scoring that told support where to focus.', m: 'Client scoring · CSAT scoring in Salesforce',
+      as: 'Global Program Manager, Worldwide Customer Onboarding, Egencia', now: 'Conditions scores that rank fishing water, and fit checks that rank job postings.', from: ['fishon', 'apt'] },
+    { t: 'Standard work that scales', p: 'Pulling separate regional teams onto one way of working, with templates, playbooks and lessons-learned reviews that kept improving it.', m: '8 regional teams → 1 global PMO',
+      as: 'Global Program Manager, Worldwide Customer Onboarding, Egencia', now: 'Written workflows every build follows, from intake to audit to release.', from: ['hhr', 'ldr', 'fishon'] },
+    { t: 'Intake, governance and proving value', p: 'Redesigning how work enters, gets scoped and gets approved, then tracking delivered benefits against what was promised.', m: 'Intake cycle time −30%',
+      as: 'Program Manager, B2B Excellence & Change Delivery, Egencia', now: 'Every request tracked from intake to release, and new tools that must match the old way before replacing it.', from: ['apt', 'ssm', 'hhr-admin'] },
+    { t: 'Selling and supporting a product', p: 'Consolidating sales processes across brands, guiding CRM rollouts, and keeping customers supported after the sale.', m: 'Lead conversion +20% across 5 brands',
+      as: 'Program Manager, Egencia · Sr. Project Manager, OnTrac', now: 'A sales pipeline for venues, pricing tiers, and a support loop that closes itself.', from: ['hhr-admin', 'hhr-venue', 'fishon'] },
+  ];
+  document.getElementById('pathlist').innerHTML = SKILLS.map(k =>
+    '<div class="sk"><h3>' + k.t + '</h3><p>' + k.p + '</p><span class="metric">' + k.m + '</span><p class="as"><b>Learned as</b>' + k.as + '</p>' +
+    '<div class="now"><small>Applied now</small><p>' + k.now + '</p><div class="from">' + k.from.map(id => '<button data-id="' + id + '">' + byId(id).name + '</button>').join('') + '</div></div></div>').join('') +
+    '<div class="together"><h3>moonshinerXwerks is where they meet.</h3><p>Discovery, data, scoring, standard work, intake and selling — used together on every project, with AI coding agents doing the building under clear direction. It’s the whole job, end to end, in one place.</p></div>';
+
+  const LEAPS = [
+    ['fishon', 'Another app that shows flows, tides and weather.', 'Rank the river by your own best days, so the app learns what “good” means to you.'],
+    ['daysnip', 'A nicer blank page for journaling.', 'No page at all: speak moments as they happen, let AI write the entry, then turn a week of them into notes for therapy.'],
+    ['groomer', 'An AI that helps you brainstorm.', 'An AI whose second job is to argue against your idea, before you spend a dollar building it.'],
+    ['dpm', 'Another stock screener.', 'Use an accounting rule that forces companies to name their big customers, and map who depends on whom.'],
+    ['ldr', 'A list of fishing gear.', 'Treat a fishing rig like a recipe: name it, save it, and recall exactly what worked on that rod and that water.'],
+    ['hhr', 'A list of happy hour deals.', 'Let the crowd confirm what’s live right now, so the list stays true without anyone maintaining it.'],
+  ];
+  document.getElementById('leaps').innerHTML = LEAPS.map(([id, ob, im]) => { const c = byId(id);
+    return '<div class="leap" data-id="' + id + '" style="--c:' + c.color + '"><div class="who">' + icon(c) + c.name + '</div>' +
+      '<p class="ob"><b>Obvious</b>' + ob + '</p><p class="im"><b>Imaginative</b>' + im + '</p></div>'; }).join('');
+  const IMGP = '';
+  document.getElementById('brands').innerHTML = ['moonshinerXwerks_dark.png|logo', 'hhr.png', 'fishon.png', 'leaderbuilder.png', 'DaySnipAppLogo.png', 'wizardchef.png']
+    .map(x => { const [f, cls] = x.split('|'); return '<img src="' + IMGP + f + '" alt=""' + (cls ? ' class="' + cls + '"' : '') + '>'; }).join('');
+
+  const paperHtml = () => '<div class="paper"><span class="pill">SAMPLE</span><h5>Weekly Therapy Prep</h5><span class="dt">7 days before Thursday’s session · 23 snips · sample content</span>' +
+        '<h6>Week overview</h6><p>A demanding week at work, steadier toward the weekend. Sleep came up often, and so did a sense of finally making progress on a long project.</p>' +
+        '<h6>Mood trajectory</h6><div class="mood"><i style="height:45%"></i><i style="height:35%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:70%"></i><i style="height:80%"></i><i style="height:75%"></i></div>' +
+        '<h6>Recurring themes</h6><div class="chips"><span>Sleep</span><span>Work pressure</span><span>Time outdoors</span><span>Family calls</span></div>' +
+        '<h6>Suggested topics</h6><ol><li>What made the weekend feel steadier?</li><li>Setting limits on late work nights</li></ol>' +
+        '<p class="disc">A journaling tool, not a medical device or clinical service. Generated by AI from self-reported entries.</p></div>';
+  /** Feature spotlight: a single feature that solves one specific problem. */
+  const spotHtml = (c, withLink) => { const f = c.spotlight;
+    return '<div><p class="k">Feature spotlight · ' + c.name + '</p><h3>' + f.name + ': <em>walk into therapy prepared.</em></h3>' +
+      '<div class="pb"><div><small>The specific problem</small><p>' + f.problem + '</p></div><div><small>The solution</small><p>' + f.solution + '</p></div></div>' +
+      '<ul>' + f.details.map(d => '<li>' + d + '</li>').join('') + '</ul>' +
+      '<div class="acts">' + (withLink ? '<button data-id="' + c.id + '">DaySnip case study →</button>' : '') + '<span class="note">' + f.note + '</span></div></div>' +
+      paperHtml(); };
+
+  /** App Foundry's 12 stages, each with the lesson from past builds it now carries. */
+  const STAGES = [
+    ['Workshop', 'The idea', '', []],
+    ['Workshop', 'The user’s problem', 'Name who hurts and what it costs before any feature. A well-designed product is worth little if it solves the wrong problem.', ['hhr', 'daysnip']],
+    ['Workshop', 'Scope', 'Cut to fit. Pull features that don’t serve the problem, and keep tools read-only when that’s all the problem needs.', ['stock', 'daysnip']],
+    ['Workshop', 'Functions', 'A two-sided product is really two products, each with its own users, onboarding and proof of value.', ['hhr']],
+    ['Workshop', 'Data model', 'Filter at the source, and when two apps share one database, agree on every field up front.', ['hhr', 'fishon']],
+    ['Workshop', 'Sign-in', 'Pick the sign-in provider at the start; switching later costs more than it ever saves.', ['ldr', 'hhr']],
+    ['Defend', 'Integrations', 'Outside data is messy and sometimes down. Plan for it, and rule out your own setup before blaming the vendor.', ['fishon', 'stock']],
+    ['Defend', 'Monetization', 'App Store subscription rules shape the paywall. Design for them, not around them.', ['daysnip', 'ldr']],
+    ['Defend', 'Platform', 'Offline is a product decision. If users are out of signal, it comes first, not last.', ['ldr', 'fishon']],
+    ['Defend', 'Metrics', 'Prove it before you switch: a new tool must match the old way before anyone relies on it.', ['ssm', 'apt']],
+    ['Defend', 'Risks', 'Personal and sensitive features need guardrails designed in: user-controlled sharing and plain disclaimers.', ['daysnip']],
+    ['Defend', 'The spec', 'Mockups are the spec. Build to them, track every prompt, and log every change.', ['apt', 'ssm']],
+  ];
+  const foundryHtml = () => STAGES.map(([ph, t, lesson, from], i) =>
+    (i === 0 || STAGES[i - 1][0] !== ph ? '<div class="phase">Phase ' + (ph === 'Workshop' ? 'A · Workshop the idea' : 'B · Defend it') + '</div>' : '') +
+    '<div class="stage' + (lesson ? ' has' : '') + '"><span class="n">Stage ' + (i + 1) + '</span><h4>' + t + '</h4>' +
+      (lesson ? '<p>' + lesson + '</p><div class="from">' + from.map(id => '<button data-id="' + id + '">' + byId(id).name + '</button>').join('') + '</div>' : '<p class="none">Where it starts.</p>') +
+    '</div>').join('');
+
+  /* Case study drawer: full detail lives here, not on the page. */
+  const drawer = document.getElementById('drawer');
+  const list = a => '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+  const storyHtml = c =>
+    '<div class="d-story">' +
+      '<div><h4>1 · The problem</h4><blockquote>' + c.quote + '</blockquote><p>' + c.problem + '</p></div>' +
+      '<div><h4>2 · Why existing tools fell short</h4><p>' + c.instead + '</p></div>' +
+      '<div><h4>3 · Fitting the solution to the problem</h4>' + list(c.ideation) + '</div>' +
+      '<div><h4>4 · Developing the solution</h4>' + list(c.build) + '</div>' +
+      '<div><h4>5 · Did it solve the problem?</h4><p>' + (c.value || '') + '</p>' + (c.note ? '<p style="margin-top:8px"><span class="note">' + c.note + '</span></p>' : '') + '</div>' +
+      '<div><h4>6 · What I learned</h4><p>' + c.learned + '</p></div>' +
+      '<div class="full"><h4>Built with</h4><div class="skills" style="padding:0">' + c.stack.map(s => '<span>' + s + '</span>').join('') + '</div></div>' +
+    '</div>';
+  function bandsHtml(c) {
+    const bands = c.bands || (REELS[c.id] ? [{ t: 'reel', k: c.id }] : GRAPHICS[c.id] ? [{ t: 'graphic' }] : c.shots.length ? [{ t: 'shots' }] : []);
+    return bands.map(b => b.t === 'shots' ? '<div class="d-sec"><div class="d-shots">' + c.shots.map(s => '<img src="' + s + '" alt="">').join('') + '</div></div>'
+      : b.t === 'reel' ? '<div class="d-sec reel-host" data-key="' + b.k + '"></div>'
+      : b.t === 'flow' ? '<div class="d-sec"><p class="flow-title">How a support request gets resolved</p><div class="flow-host"></div></div>'
+      : b.t === 'graphic' ? '<div class="d-sec">' + GRAPHICS[c.id]() + '</div>'
+      : b.t === 'foundry' ? '<div class="d-sec"><p class="sh">Lessons built into each stage</p><div class="foundry">' + foundryHtml() + '</div></div>'
+      : b.t === 'paper' ? '<div class="d-sec"><div style="max-width:640px">' + paperHtml() + '</div></div>'
+      : '<div class="d-sec"><span class="note">' + b.text + '</span></div>').join('');
+  }
+  function openCase(id, partId) {
+    let c = byId(id);
+    if (c.child) { partId = c.id; c = byId(c.family); }
+    drawer.style.setProperty('--c', c.color);
+    let body;
+    if (c.parts) {
+      const parts = c.parts.map(byId);
+      body =
+        '<nav class="d-tabs">' + parts.map((p, i) => '<a href="#part-' + p.id + '"><b>' + (i + 1) + '</b>' + p.part + '</a>').join('') + '</nav>' +
+        '<div class="d-sec"><p class="sh">How the ' + ['', 'one', 'two', 'three'][parts.length] + ' ' + (c.unit || 'part') + 's work together</p><div class="together3" style="grid-template-columns:repeat(' + parts.length + ',minmax(0,1fr))">' +
+          c.together.map(([t, d], i) => '<div><span>' + (i + 1) + '</span><h4>' + t + '</h4><p>' + d + '</p></div>').join('') +
+        '</div><p class="tnote">' + c.togetherNote + '</p></div>' +
+        parts.map((p, i) =>
+          '<section class="part" id="part-' + p.id + '" style="--c:' + p.color + '">' +
+            '<div class="part-head"><span>' + (c.unit === 'component' ? 'Component ' : 'Part ') + (i + 1) + ' of ' + parts.length + '</span><h3>' + p.part + '</h3><p>' + p.tagline + '</p></div>' +
+            '<div class="d-sec">' + storyHtml(p) + '</div>' + bandsHtml(p) +
+          '</section>').join('');
+    } else {
+      body = '<div class="d-sec">' + storyHtml(c) + '</div>' +
+        bandsHtml(c);
+    }
+    drawer.innerHTML = '<div class="d-head">' + icon(c) + '<div><h2>' + c.name + '</h2><p>' + (c.parts ? c.tagline : c.quote) + '</p></div>' + (c.market ? '<a class="mk" href="' + c.market + '">See it in the Marketplace →</a>' : '') + '<button class="close" aria-label="Close">✕</button></div>' + body;
+    drawer.scrollTop = 0;
+    document.body.classList.add('open');
+    drawer.querySelector('.close').onclick = closeCase;
+    drawer.querySelectorAll('.reel-host').forEach(h => mountReel(h, h.dataset.key, h.closest('[style*="--c"]').style.getPropertyValue('--c') || c.color));
+    drawer.querySelectorAll('.flow-host').forEach(h => mountFlow(h, h.closest('.part') ? h.closest('.part').style.getPropertyValue('--c') : c.color));
+    drawer.querySelectorAll('.d-tabs a').forEach(a => a.onclick = e => { e.preventDefault(); drawer.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); });
+    if (partId) requestAnimationFrame(() => drawer.querySelector('#part-' + partId).scrollIntoView());
+  }
+  function closeCase() { document.body.classList.remove('open'); }
+  document.addEventListener('click', e => { const b = e.target.closest('[data-id]'); if (b) openCase(b.dataset.id); });
+  document.getElementById('scrim').onclick = closeCase;
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCase(); });
+</script>
+</body>
+</html>
