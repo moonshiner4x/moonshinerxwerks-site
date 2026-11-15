@@ -79,6 +79,22 @@
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
   }
 </style>
+<style>
+  /* Phone menu: the ☰ button opens the links as a dropdown (2026-11-15) */
+  @media (max-width: 768px) {
+    nav.menu-open .nav-links { display: flex !important; flex-direction: column; align-items: flex-start; gap: 18px;
+      position: absolute; top: 100%; left: 0; right: 0; padding: 18px 24px 24px;
+      background: var(--bg, #000); border-bottom: 1px solid var(--border, rgba(255,255,255,.12)); }
+    nav.menu-open .nav-links a { font-size: 1.05rem; }
+  }
+</style>
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('nav .nav-links a'); if (!a) return;
+    var n = a.closest('nav'); if (!n || !n.classList.contains('menu-open')) return;
+    n.classList.remove('menu-open'); var b = n.querySelector('.mobile-toggle'); if (b) { b.textContent = '☰'; b.setAttribute('aria-expanded', 'false'); }
+  });
+</script>
 </head>
 <body>
 
@@ -92,7 +108,7 @@
       <li><a href="index.html#legal">Legal</a></li>
       <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'" aria-label="Menu">☰</button>
+    <button class="mobile-toggle" onclick="var n=this.closest('nav');var o=n.classList.toggle('menu-open');this.textContent=o?'✕':'☰';this.setAttribute('aria-expanded',o)" aria-expanded="false" aria-label="Menu">☰</button>
   </div>
 </nav>
 
