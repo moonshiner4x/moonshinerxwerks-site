@@ -1,0 +1,137 @@
+<!doctype html>
+<!--
+  Filename: agents.html
+  App Name: moonshinerxwerks.com
+  Created Date: 2026-11-16
+  Last Edited Date: 2026-11-16
+  Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+  Code Description: Agent Status page of the Operations Command Center replica, copied from the real page: every agent grouped by Working / Idle / Not running, last report, what is waiting on the Studio Owner, context and token use, with a 14-day chart. Reads invented sample data from agents-data.js.
+-->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent Status</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#2a313c;--text:#e8e6e1;--mute:#9aa3ad;--ok:#3fb27f;--idle:#6f8fb8;--off:#5a626d;--wait:#e0a83a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1800px;margin:0 auto;padding:28px 24px 60px}
+.ops{display:inline-block;margin:0 0 10px;color:var(--mute);font-size:13px;text-decoration:none}.ops:hover{color:var(--text)}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+h1{font-size:28px;margin:0}.sub{color:var(--mute);margin:4px 0 0;font-size:14px}.sub b{color:var(--text);font-weight:600}.stale{color:var(--wait)!important}
+.stats{display:grid;grid-template-columns:repeat(6,minmax(110px,1fr));gap:10px}
+.tog{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:10px;vertical-align:middle}.tog button{background:none;border:0;color:var(--mute);font:inherit;font-size:11.5px;padding:2px 10px;cursor:pointer;letter-spacing:.06em}.tog button.on{background:#2a313c;color:var(--text)}
+.th h2{display:inline}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-height:74px}
+.stat b{display:block;font-size:24px;line-height:1.2}.stat span{color:var(--mute);font-size:12px}.stat small{color:var(--mute);font-size:11.5px;display:block}
+.trend{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:22px}
+.trend h2{margin:0 0 8px}.chart{display:grid;grid-template-columns:52px 1fr;gap:0 8px}
+.yax{position:relative;height:120px;font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}.yax span{position:absolute;right:0;transform:translateY(50%)}
+.plot{position:relative;height:120px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid{position:absolute;left:0;right:0;border-top:1px dashed #2a313c}
+.bars{position:absolute;inset:0 0 0 6px;display:grid;grid-template-columns:repeat(14,1fr);gap:6px;align-items:end}
+.bar .v{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--mute);white-space:nowrap;margin-bottom:2px}
+.bar{background:#2f6b52;border-radius:4px 4px 0 0;min-height:2px;position:relative}.bar.today{background:var(--ok)}
+.bl{display:grid;grid-template-columns:repeat(14,1fr);gap:6px;margin:4px 0 0 66px;color:var(--mute);font-size:11px;text-align:center}
+h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:24px 0 10px}
+.board{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13.5px}
+thead th{background:#1b222c;color:var(--mute);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;position:sticky;top:0}
+tr.g td{background:#11161d;color:var(--mute);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px}
+tr.a{border-left:4px solid var(--off)}
+tr.a.working td{background-color:rgba(63,178,127,.12);animation:glow 2.4s ease-in-out infinite;border-bottom-color:rgba(63,178,127,.35)}
+tr.a.working{box-shadow:inset 6px 0 0 var(--ok)!important}
+tr.a.working td.nmc a{color:#7ee2a8}
+
+@keyframes glow{0%,100%{background-color:rgba(63,178,127,.08)}50%{background-color:rgba(63,178,127,.20)}}
+@media(prefers-reduced-motion:reduce){tr.a.working td{animation:none}} tr.a.working{box-shadow:inset 4px 0 0 var(--ok)} tr.a.idle{box-shadow:inset 4px 0 0 var(--idle)} tr.a.stopped{box-shadow:inset 4px 0 0 var(--off)}
+td.nmc small{display:block;color:var(--mute);font-size:12px}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} th.num{text-align:right}
+.c-ag{width:19%}.c-la{width:9%}.c-w{width:24%}.c-r{width:24%}.c-cx{width:10%}.c-t{width:7%}.c-t7{width:7%}
+.cx{font-variant-numeric:tabular-nums;font-size:13px}.cx .b{height:6px;border-radius:3px;background:#262626;margin-top:5px;overflow:hidden}.cx .b i{display:block;height:100%;border-radius:3px}
+.cx.g i{background:#3fb27f}.cx.a i{background:#e0a83a}.cx.r i{background:#e5534b}.cx.a b{color:#e0a83a}.cx.r b{color:#ff7b72}.cx small{color:var(--mute)}
+@media(max-width:900px){table,thead,tbody,tr,td{display:block}thead{display:none}tr.a{padding:8px 4px;border-bottom:1px solid var(--line)}td{border:0;padding:3px 12px}td.num{text-align:left}td.num:before{content:attr(data-l)" ";color:var(--mute)}}
+.groups{display:none}
+.group{background:rgba(255,255,255,.015);border:1px solid var(--line);border-radius:12px;padding:12px}
+.group>h3{margin:0 0 10px;font-size:14px}
+.tile{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--off);border-radius:10px;padding:10px 12px;margin-top:8px}
+.tile.working{border-left-color:var(--ok)}.tile.idle{border-left-color:var(--idle)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.nm{font-weight:700;color:var(--text);text-decoration:none}.nm:hover{text-decoration:underline}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;white-space:nowrap;color:var(--mute)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--off)}
+.working .dot{background:var(--ok);box-shadow:0 0 0 0 rgba(63,178,127,.7);animation:p 1.6s infinite}.idle .dot{background:var(--idle)}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(63,178,127,.6)}70%{box-shadow:0 0 0 7px rgba(63,178,127,0)}100%{box-shadow:0 0 0 0 rgba(63,178,127,0)}}
+.meta{color:var(--mute);font-size:12.5px;margin-top:2px}
+.rep{font-size:13px;color:#c9ccd1;margin-top:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.rep.open{-webkit-line-clamp:unset}.rep em{color:var(--mute);font-style:normal}
+.wait{margin:0;padding:0;list-style:none}.wait li{font-size:13px;color:var(--wait);padding-left:16px;position:relative}.wait li:before{content:"●";position:absolute;left:0;font-size:9px;top:4px}
+.note{font-size:12.5px;color:var(--mute);margin-top:4px}
+.tok{font-size:12px;color:var(--mute);margin-top:6px;font-variant-numeric:tabular-nums}
+.others{font-size:13px;color:var(--mute)}.others li{margin:3px 0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--mute);font-size:12.5px;margin:6px 0 0}.legend span{display:inline-flex;gap:6px;align-items:center}
+.foot{color:var(--mute);font-size:12.5px;margin-top:26px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.wrap{padding:20px 16px 40px}.groups{grid-template-columns:1fr}}
+</style><script src="ops-brand.js"></script></head><body><div class="wrap"><a class="ops" href="index.html">← Command Center</a>
+<header><div><h1>Agent Status</h1><p class="sub" id="upd">Loading…</p>
+<div class="legend"><span class="working"><i class="dot"></i>Working</span><span class="idle"><i class="dot"></i>Idle, ready</span><span><i class="dot"></i>Not running</span><span style="color:var(--wait)">● Waiting on you</span></div></div>
+<div class="stats" id="stats"></div></header>
+<div class="trend"><div class="th"><h2 id="ttl">Studio tokens per day, last 14 days</h2><span class="tog"><button data-m="tok" class="on">Tokens</button><button data-m="usd">Est. cost</button></span></div><div style="height:8px"></div><div class="chart"><div class="yax" id="yax"></div><div class="plot" id="plot"><div class="bars" id="bars"></div></div></div><div class="bl" id="bl"></div></div>
+<div class="board"><table><thead><tr><th class="c-ag">Agent</th><th class="c-la">Last active</th><th class="c-w">Waiting on you</th><th class="c-r">Last report to the PM</th><th class="c-cx">Context</th><th class="c-t num">Today</th><th class="c-t7 num">7 days</th></tr></thead><tbody id="rows"></tbody></table></div>
+<h2>Other open sessions (not on the roster)</h2><ul class="others" id="others"></ul>
+<p class="foot">Sample data. In the real Command Center this page updates every 10 seconds from a local refresher. Tokens come from each agent's conversation files; "new" is fresh input plus cache writes, "cached" is re-read context. Estimated cost uses API list prices: what the same work would cost on the API, not what a subscription charges. Click an agent's name for its role card.</p>
+</div>
+<script>
+const GROUPS=[["Program Manager", ["Moonshinerxwerks Program Manager"]], ["Specialists", ["Research Analyst", "Store Consultant", "Legal Analyst", "QA Analyst"]], ["Marketing", ["Marketing Manager", "Product A - Campaign Manager", "Product B - Campaign Manager"]], ["Product A", ["Product A - Advisor", "Product A - Engineer"]], ["Product B", ["Product B - Advisor", "Product B - Engineer"]], ["Product C", ["Product C - Advisor", "Product C - Engineer"]], ["Product D", ["Product D - Advisor", "Product D - Engineer"]], ["Internal tools", ["Tracker - Engineer"]]];
+const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=n=>'$'+(n>=1000?Math.round(n).toLocaleString():n>=100?Math.round(n):n.toFixed(2));
+let METRIC='tok';
+function cx(a){const L=(window.AGENT_STATUS||{}).contextLimit||1e6;if(a.context==null)return '<td></td>';if(a.context<0)return '<td class="cx g" title="Compacted; the new size shows after its next reply"><b>Compacted</b><div class="b"><i style="width:4%"></i></div></td>';const p=Math.min(100,a.context/L*100),c=p>=75?'r':p>=50?'a':'g';return `<td class="cx ${c}" title="${K(a.context)} of ${K(L)} context; agents auto-compact near the limit"><b>${Math.round(p)}%</b> <small>${K(a.context)}</small><div class="b"><i style="width:${p}%"></i></div></td>`;}
+const K=n=>n>=1e9?(n/1e9).toFixed(1)+'B':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n);
+function ago(t){if(!t)return'never';const s=(Date.now()-(typeof t==='number'?t:Date.parse(t)))/1000;if(s<60)return'just now';if(s<3600)return Math.round(s/60)+' min ago';if(s<86400)return Math.round(s/3600)+' h ago';return Math.round(s/86400)+' d ago';}
+const open=new Set();
+function tile(a){
+  const st=a.state==='working'?'Working':a.state==='idle'?'Idle':'Not running';
+  const rep=a.report?`<div class="rep${open.has(a.name)?' open':''}" data-n="${E(a.name)}" title="Sent ${ago(a.report.at)}">${E(a.report.text)}</div>`:'';
+  const w=a.waiting.length?`<ul class="wait">${a.waiting.map(x=>'<li>'+E(x)+'</li>').join('')}</ul>`:'';
+  const t=a.tokToday[0]+a.tokToday[2];
+  return `<div class="tile ${a.state}"><div class="top"><a class="nm" href="agent-roster.html#p-${E(a.file.replace(/\.md$/,''))}">${E(a.name)}</a><span class="pill"><i class="dot"></i>${st}${a.kind?' · '+E(a.kind):''}</span></div>
+  <div class="meta">Last active ${ago(a.lastActive)}</div>${a.note?`<div class="note">${E(a.note)}</div>`:''}${w}${rep}
+  <div class="tok" title="Today: ${K(a.tokToday[0])} new input, ${K(a.tokToday[2])} output, ${K(a.tokToday[1])} cached reads">Tokens today ${K(t)} new+out · ${K(a.tokToday[1])} cached · 7 days ${K(a.tokWeek[0]+a.tokWeek[2])}</div></div>`;
+}
+function render(){
+  const d=window.AGENT_STATUS;if(!d)return;
+  const age=(Date.now()-d.built)/1000;
+  document.getElementById('upd').innerHTML=age>120?`<span class="stale">Not updating: last refresh ${ago(d.built)}. The refresher may be stopped.</span>`:`Live · refreshed ${ago(d.built)} · <b>${d['agents'].length}</b> roster agents`;
+  const by={};d['agents'].forEach(a=>by[a.name]=a);
+  const n=s=>d['agents'].filter(a=>a.state===s).length, waits=d['agents'].reduce((x,a)=>x+a.waiting.length,0);
+  const T=d.studio.today,W=d.studio.week;
+  document.getElementById('stats').innerHTML=[[n('working'),'Working'],[n('idle'),'Idle'],[n('stopped'),'Not running'],[waits,'Waiting on you'],[K(T[0]+T[2]),'Tokens today','+'+K(T[1])+' cached · 7d '+K(W[0]+W[2])],[$(T[3]),'Est. cost today','API list prices · 7d '+$(W[3])]]
+    .map(([v,l,s])=>`<div class="stat"><b>${v}</b><span>${l}</span>${s?'<small>'+s+'</small>':''}</div>`).join('');
+  const val=x=>METRIC==='usd'?x[1][3]:x[1][0]+x[1][2], F=METRIC==='usd'?$:K;
+  document.getElementById('ttl').textContent=METRIC==='usd'?'Studio estimated cost per day, last 14 days (API list prices)':'Studio tokens per day, last 14 days (new input + output)';
+  const raw=Math.max(1,...d.studio.daily.map(val));
+  const p10=Math.pow(10,Math.floor(Math.log10(raw))), mx=[1,2,2.5,5,10].map(m=>m*p10).find(m=>m>=raw);
+  const ticks=[0,.25,.5,.75,1];
+  document.getElementById('yax').innerHTML=ticks.map(t=>`<span style="bottom:${t*100}%">${F(mx*t)}</span>`).join('');
+  document.querySelectorAll('#plot .grid').forEach(g=>g.remove());
+  document.getElementById('plot').insertAdjacentHTML('afterbegin',ticks.slice(1).map(t=>`<div class="grid" style="bottom:${t*100}%"></div>`).join(''));
+  document.getElementById('bars').innerHTML=d.studio.daily.map((x,i)=>{const v=val(x);return `<div class="bar${i===13?' today':''}" style="height:${Math.max(1,v/mx*100)}%" title="${x[0]}: ${K(x[1][0])} new input, ${K(x[1][2])} output, ${K(x[1][1])} cached reads · est. ${$(x[1][3])}">${v?`<span class="v">${F(v)}</span>`:''}</div>`}).join('');
+  document.getElementById('bl').innerHTML=d.studio.daily.map(x=>`<span>${x[0].slice(5).replace('-','/')}</span>`).join('');
+  const seen=new Set();
+  const row=a=>{const st=a.state==='working'?'Working':a.state==='idle'?'Idle':'Not running';const t=a.tokToday[0]+a.tokToday[2];
+    return `<tr class="a ${a.state}"><td class="nmc"><a class="nm" href="agent-roster.html#p-${E(a.file.replace(/\.md$/,''))}">${E(a.name)}</a><small>${E([(team[a.name]||[''])[0],a.kind].filter(Boolean).join(' · '))}</small></td>
+    <td>${ago(a.lastActive)}</td>
+    <td>${a.waiting.length?`<ul class="wait">${a.waiting.map(x=>'<li>'+E(x)+'</li>').join('')}</ul>`:''}${a.note?`<div class="note">${E(a.note)}</div>`:''}</td>
+    <td>${a.report?`<div class="rep${open.has(a.name)?' open':''}" data-n="${E(a.name)}" title="Sent ${ago(a.report.at)}">${E(a.report.text)}</div>`:''}</td>
+    ${cx(a)}<td class="num" data-l="Today" title="${K(a.tokToday[0])} new input, ${K(a.tokToday[2])} output, ${K(a.tokToday[1])} cached reads">${K(t)}<small style="display:block;color:var(--mute)">${$(a.tokToday[3])}</small></td><td class="num" data-l="7 days">${K(a.tokWeek[0]+a.tokWeek[2])}<small style="display:block;color:var(--mute)">${$(a.tokWeek[3])}</small></td></tr>`;};
+  const team={};GROUPS.forEach(([g,ns],gi)=>ns.forEach((x,ni)=>team[x]=[g,gi*10+ni]));
+  const ord=a=>(team[a.name]||['',999])[1];
+  let html=[['working','Working'],['idle','Idle, ready for work'],['stopped','Not running']].map(([k,l])=>{
+    const rs=d['agents'].filter(a=>a.state===k).sort((x,y)=>(y.lastActive||0)-(x.lastActive||0)||ord(x)-ord(y));
+    return rs.length?`<tr class="g"><td colspan="7"><span class="${k}" style="display:inline-flex;gap:8px;align-items:center"><i class="dot"></i>${l} · ${rs.length}</span></td></tr>`+rs.map(row).join(''):'';}).join('');
+  document.getElementById('rows').innerHTML=html;
+  document.getElementById('others').innerHTML=d.others.length?d.others.map(o=>`<li>${E(o.name)} · ${o.state==='working'?'working':'idle'} · ${o.kind==='background'?'background':'window'} · started ${ago(o.started)} · ${K(o.tokToday[0]+o.tokToday[2])} tokens today</li>`).join(''):'<li>None</li>';
+}
+document.addEventListener('click',e=>{const b=e.target.closest('.tog button');if(b){METRIC=b.dataset.m;document.querySelectorAll('.tog button').forEach(x=>x.classList.toggle('on',x===b));render();return;}const r=e.target.closest('.rep');if(!r)return;const k=r.dataset.n;open.has(k)?open.delete(k):open.add(k);r.classList.toggle('open');});
+function load(){const s=document.createElement('script');s.src='agents-data.js?'+Date.now();s.onload=()=>{render();s.remove();};s.onerror=()=>s.remove();document.head.appendChild(s);}
+load();setInterval(load,10000);setInterval(render,30000);
+</script></body></html>

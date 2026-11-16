@@ -1,0 +1,122 @@
+<!doctype html>
+<!--
+  Filename: index.html
+  App Name: moonshinerxwerks.com
+  Created Date: 2026-11-16
+  Last Edited Date: 2026-11-16
+  Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+  Code Description: Dashboard of the Operations Command Center replica, copied from the real page: agents working now, the executive summary with click-for-context panels, ideas being explored and the library. All content is invented sample data from dashboard-data.js and agents-data.js.
+-->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dashboard · MoonshinerXwerks Operations Command Center</title><script src="dashboard-data.js"></script><script src="ops-brand.js"></script>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#2a313c;--text:#e8e6e1;--mute:#9aa3ad}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:36px 24px 60px}
+h1{font-size:28px;margin:0}.sub{color:var(--mute);margin:4px 0 26px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.tile{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:12px;padding:18px 20px;color:var(--text);text-decoration:none;transition:border-color .15s,transform .15s}
+.tile:hover{border-color:var(--c);transform:translateY(-2px)}
+.ic{width:34px;height:34px;border-radius:9px;background:var(--c);color:#0d1117;font-weight:800;display:flex;align-items:center;justify-content:center}
+.tile b{font-size:18px;margin-top:4px}.tile .d{color:var(--mute);font-size:14px;flex:1}.tile .u{color:var(--mute);font-size:12px}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:30px 0 10px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 18px}
+.box h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:12px 0 4px}
+ul{list-style:none;margin:0;padding:0}
+li{display:grid;grid-template-columns:1fr auto;gap:0 12px;padding:10px 0;border-top:1px solid var(--line)}
+li:first-child{border-top:0}
+li a{color:var(--text);text-decoration:none;font-weight:600}li a:hover{text-decoration:underline}
+li span{grid-column:1;color:var(--mute);font-size:13px}li em{grid-column:2;grid-row:1;color:var(--mute);font-size:12px;font-style:normal;white-space:nowrap}
+.note{color:var(--mute);font-size:13px;margin-top:28px}
+.live li{grid-template-columns:auto 1fr auto;gap:0 12px;align-items:start}
+.live li>i{grid-column:1;grid-row:1}.live li>div{grid-column:2;grid-row:1}.live li em{grid-column:3;grid-row:1}.live li a{font-weight:600}
+.live .pulse{width:10px;height:10px;border-radius:50%;background:#3fb27f;margin-top:6px;animation:p 1.6s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(63,178,127,.6)}70%{box-shadow:0 0 0 8px rgba(63,178,127,0)}100%{box-shadow:0 0 0 0 rgba(63,178,127,0)}}
+.live{padding:12px}
+.live li{border-top:0}
+.live li.w{background:rgba(63,178,127,.09);border:1px solid rgba(63,178,127,.32);border-radius:10px;padding:10px 14px;margin:0 0 8px;align-items:center}
+.live li.w .pulse{margin-top:0}
+.live li.w:last-child{margin-bottom:0}
+.live li.w a{color:#7ee2a8}
+.live .rep{color:var(--mute);font-size:13px;margin-top:2px}
+.live .none{grid-column:1/-1;color:var(--mute)}
+.ci{cursor:pointer;border-radius:8px;transition:background .12s}.ci:hover{background:rgba(255,255,255,.035)}
+dialog.ctx{width:min(720px,94vw);max-height:86vh;padding:0;border:1px solid #2a2a2a;border-radius:14px;background:#111;color:var(--text)}dialog.ctx::backdrop{background:rgba(0,0,0,.6)}
+.ctx .hd{position:sticky;top:0;background:#161616;border-bottom:1px solid #262626;padding:14px 20px;display:flex;gap:14px;justify-content:space-between;align-items:flex-start}
+.ctx .hd h3{margin:0;font-size:18px;line-height:1.35}.ctx .kind{color:var(--mute);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ctx .x{background:none;border:1px solid #333;color:var(--text);border-radius:8px;width:32px;height:32px;cursor:pointer;flex:none}
+.ctx .bd{padding:6px 20px 20px}.ctx .f{margin-top:14px}.ctx .f b{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+.ctx .f p{margin:0;font-size:14.5px;line-height:1.55}.ctx .f ul{list-style:disc;padding-left:20px}.ctx .f li{display:list-item;border:0;padding:2px 0;font-size:14.5px}
+.ctx .rec p{color:#7ee2a8}.ctx a{color:#79b8ff}.ctx .none{color:var(--mute);font-size:13.5px;margin-top:14px}
+.ctx .pmbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;padding-top:16px;border-top:1px solid #262626}.ctx .pmbar .l{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.ctx .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.ctx .rt{margin-left:8px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.75}.ctx .pb{background:#1b1b1b;border:1px solid #333;color:var(--text);border-radius:999px;padding:7px 14px;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer}.ctx .pb:hover{border-color:#7ee2a8}.ctx .pb.rec{background:#7ee2a8;color:#000;border-color:#7ee2a8;font-weight:600}.ctx .pb.ds{flex:none}.ctx .pbn{color:var(--mute);font-size:12px}
+.upd{color:var(--mute);font-size:12.5px;margin:22px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.es{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--k,#444);border-radius:12px;padding:4px 18px 10px}
+.es h2{margin:14px 0 6px;display:flex;align-items:center;gap:8px}.cnt{background:#222;color:var(--text);border-radius:999px;font-size:11px;padding:1px 8px;letter-spacing:0}
+.es.dec{--k:#e0a83a}.es.act{--k:#e0a83a}.es.ok{--k:#3fb27f}.es.prog{--k:#6f8fb8}.es.risk{--k:#e5534b}.es.iss{--k:#ff7b72}.es.dl{--k:#b07ef0}
+.es li{display:flex;gap:10px;align-items:flex-start}
+.es .tx{display:flex;flex-direction:column;flex:1;min-width:0}.es .tt{font-weight:600;font-size:14px;color:var(--text)!important}.es .tt a{color:var(--text);text-decoration:none}.es .tt a:after{content:" →";color:var(--mute);font-weight:400}.es .tt a:hover{text-decoration:underline}
+.es .det{color:var(--mute);font-size:13px}.es .n{flex:none;width:22px;height:22px;border-radius:6px;background:#2a2312;color:#e0a83a;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.app{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--a);margin-bottom:1px}
+.es li.urgent .tt{color:#ff7b72}.es li.urgent .tt:before{content:"Urgent · ";font-weight:700}
+.dl .dt{flex:none;font-size:12.5px;color:var(--mute);font-weight:500;white-space:nowrap}.dl li.soon .tt,.dl li.soon .dd{color:#ff7b72}
+h2.sec{margin-top:30px}
+.lib{margin-top:30px}.lib summary{cursor:pointer;color:var(--mute);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;list-style:none}.lib summary:before{content:"▸ "}.lib[open] summary:before{content:"▾ "}
+.lib h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+@media(max-width:1100px){.grid3{grid-template-columns:1fr 1fr}}@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:760px){.wrap{padding:22px 16px 40px}.cols{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<h1>MoonshinerXwerks Operations Command Center</h1><p class="sub">Studio operations, kept current by the Program Manager · built <span id="built">today</span></p>
+<h2>Working now</h2><div class="box live"><ul id="working"><li><span>Loading…</span></li></ul></div>
+<p class="upd" id="upd">Executive summary</p>
+<div id="summary"></div>
+<h2 class="sec">Ideas being explored <span class="cnt">5</span></h2><div class="box"><ul><li><a href="#" data-sample title="Not included in the sample">Shared lists between two accounts</a><span>Captured last week</span><em>3 days ago</em></li><li><a href="#" data-sample title="Not included in the sample">A home-screen widget for today&#x27;s top item</a><span>Captured last week</span><em>5 days ago</em></li><li><a href="#" data-sample title="Not included in the sample">Weekly digest email</a><span>Captured this month</span><em>1 week ago</em></li><li><a href="#" data-sample title="Not included in the sample">Offline-first sync for Product C</a><span>Captured this month</span><em>2 weeks ago</em></li><li><a href="#" data-sample title="Not included in the sample">Voice capture for quick notes</a><span>Captured last month</span><em>3 weeks ago</em></li></ul></div>
+<details class="lib"><summary>Library: reviews, records and archive</summary><div class="cols">
+<div><h3>Reviews and mockups</h3><div class="box"><ul><li><a href="#" data-sample title="Not included in the sample">Studio site page mockups</a><span>Three options for the studio website.</span><em>this week</em></li><li><a href="#" data-sample title="Not included in the sample">Quality review of those mockups</a><span>The QA Analyst recommends option B.</span><em>this week</em></li></ul></div></div><div><h3>Records</h3><div class="box"><ul><li><a href="#" data-sample title="Not included in the sample">Store requirements, both stores</a><span>Record</span><em>this week</em></li><li><a href="#" data-sample title="Not included in the sample">Compliance log</a><span>Record</span><em>today</em></li><li><a href="#" data-sample title="Not included in the sample">Agent sessions</a><span>Record</span><em>today</em></li><li><a href="#" data-sample title="Not included in the sample">UI rules proposal (QA Analyst)</a><span>Record</span><em>yesterday</em></li></ul></div></div><div><h3>Archive</h3><div class="box"><ul><li><a href="#" data-sample title="Not included in the sample">Studio status, last month</a><span>Replaced by the briefing.</span><em>last month</em></li><li><a href="#" data-sample title="Not included in the sample">Earlier briefing</a><span>Earlier briefing.</span><em>last week</em></li></ul></div></div>
+</div></details>
+<p class="note">Sample data: every name, product, number and item on these pages is invented. The real Command Center runs privately and isn't public.</p>
+</div><script>
+const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function ago(t){if(!t)return'';const s=(Date.now()-t)/1000;return s<60?'just now':s<3600?Math.round(s/60)+' min ago':Math.round(s/3600)+' h ago';}
+function render(){const d=window.AGENT_STATUS;if(!d)return;const w=d['agents'].filter(a=>a.state==='working').sort((a,b)=>(b.lastActive||0)-(a.lastActive||0));
+ document.getElementById('working').innerHTML=(w.length?w.map(a=>`<li class="w"><i class="pulse"></i><div><a href="agents.html">${E(a.name)}</a>${a.report?`<div class="rep">Last report: ${E(a.report.text.slice(0,180))}${a.report.text.length>180?'…':''}</div>`:''}</div></li>`).join('')
+  :'<li><span class="none">No agents working right now.</span></li>');}
+function load(){const s=document.createElement('script');s.src='agents-data.js?'+Date.now();s.onload=()=>{render();s.remove();};s.onerror=()=>s.remove();document.head.appendChild(s);}
+let DASH=window.DASH_DATA;
+const KIND={decisions:'Decision',actions:'Action',accomplished:'Accomplished',inprogress:'In progress',risks:'Risk',issues:'Issue',deadlines:'Deadline'};
+const dlg=document.createElement('dialog');dlg.className='ctx';document.body.appendChild(dlg);
+function showCtx(k,i){const x=DASH[k][i];const f=(l,v,c='')=>v?`<div class="f ${c}"><b>${l}</b>${Array.isArray(v)?'<ul>'+v.map(o=>'<li>'+E(o)+'</li>').join('')+'</ul>':'<p>'+E(v)+'</p>'}</div>`:'';
+ const num=(k==='decisions'||k==='actions')?' '+(i+1):'';
+ const label=(k==='decisions'?'Decision':k==='actions'?'Action':KIND[k])+num+' ('+x.text+')';
+ const norm=t=>String(t||'').toLowerCase().replace(/[^a-z0-9 ]/g,'');
+ const recIdx=(x.options||[]).findIndex(o=>{const a=norm(o).split(' ').slice(0,2).join(' ');return a&&norm(x.rec).startsWith(a);});
+ const opts=(k==='decisions'&&x.options&&x.options.length)?`<div class="f"><b>Options: click one to answer</b><div class="opts">${x.options.map((o,j)=>`<button class="pb${j===recIdx?' rec':''}" data-t="${E(label+': '+o+'.')}">${E(o)}${j===recIdx?'<span class="rt">Recommended</span>':''}</button>`).join('')}${recIdx<0&&x.rec?`<button class="pb rec" data-t="${E(label+': go with your recommendation.')}">Go with your recommendation</button>`:''}</div></div>`:'';
+ const acts=k==='actions'?[['Done',label+': done.'],['Not now',label+': not now.']].map(b=>`<button class="pb" data-t="${E(b[1])}">${b[0]}</button>`).join(''):'';
+ const bar=`<div class="pmbar"><div class="l">${acts}<span class="pbn">Opens the PM chat with your answer typed. Press Enter to send it.</span></div><button class="pb ds" data-t="${E('About '+label+': ')}">Discuss with PM</button></div>`;
+ const body=f('Summary',x.detail)+f('Why it matters',x.why)+opts+f('Steps',x.steps)+f('Recommendation',x.rec,'rec')+f('What to do',x.how)
+  +(x.links||x.href?`<div class="f"><b>Links</b><ul>${(x.href?[['Open',x.href]]:[]).concat(x.links||[]).map(l=>`<li><a href="${E(l[1])}">${E(l[0])}</a></li>`).join('')}</ul></div>`:'');
+ dlg.innerHTML=`<div class="hd"><div><div class="kind">${KIND[k]}${num}${x.app?' · '+E(x.app):''}${x.date?' · '+E(x.date):''}</div><h3>${E(x.text)}</h3></div><button class="x" aria-label="Close">✕</button></div><div class="bd">${body||'<p class="none">No more detail recorded yet.</p>'}${bar}</div>`;
+ dlg.querySelectorAll('.pb').forEach(b=>b.onclick=()=>{dlg.close();window.mxSendToPM&&window.mxSendToPM(b.dataset.t);});
+ dlg.querySelector('.x').onclick=()=>dlg.close();dlg.showModal();}
+document.addEventListener('click',e=>{if(e.target.closest('a'))return;const li=e.target.closest('li.ci');if(li)showCtx(li.dataset.k,+li.dataset.i);});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){const li=e.target.closest&&e.target.closest('li.ci');if(li)showCtx(li.dataset.k,+li.dataset.i);}});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();});
+
+const APPC={"Product A": "#f0a050", "Product B": "#5b9bf7", "Product C": "#b07ef0", "Product D": "#e86a8a", "Studio": "#9aa3ad", "Tracker": "#50c8b0"};
+function jItem(x,n,key,i){let t=E(x.text);if(x.href)t=`<a href="${E(x.href)}">${t}</a>`;
+ const app=x.app?`<span class="app" style="--a:${APPC[x.app]||'#9aa3ad'}">${E(x.app)}</span>`:'';
+ return `<li class="ci ${x.urgent?'urgent':''}" data-k="${key}" data-i="${i}" tabindex="0">${n?`<b class="n">${n}</b>`:''}<div class="tx">${app}<span class="tt">${t}</span>${x.detail?`<span class="det">${E(x.detail)}</span>`:''}</div></li>`;}
+function jSec(d,key,title,cls,num){const xs=d[key]||[];return `<section class="es ${cls}"><h2>${title} <span class="cnt">${xs.length}</span></h2><ul>${xs.map((x,i)=>jItem(x,num?i+1:0,key,i)).join('')||'<li><span class="det">Nothing right now.</span></li>'}</ul></section>`;}
+function jDl(d){const xs=d.deadlines||[];return `<section class="es dl"><h2>Upcoming deadlines <span class="cnt">${xs.length}</span></h2><ul>${xs.map((x,i)=>`<li class="ci" data-k="deadlines" data-i="${i}" tabindex="0" data-date="${E(x.date)}"><div class="tx"><span class="tt">${E(x.text)}</span><span class="det dd"></span></div><b class="dt">${new Date(x.date+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</b></li>`).join('')}</ul></section>`;}
+function countdowns(){document.querySelectorAll('li[data-date]').forEach(li=>{const d=Math.ceil((new Date(li.dataset.date+'T23:59')-Date.now())/864e5);li.querySelector('.dd').textContent=d<0?'Passed':d===0?'Today':d===1?'Tomorrow':'In '+d+' days';li.classList.toggle('soon',d<=7);});}
+function renderSummary(d){document.getElementById('summary').innerHTML='<div class="grid2">'+jSec(d,'decisions','Decisions for you','dec',1)+jSec(d,'actions','Actions for you','act',1)+'</div><div class="grid2">'+jSec(d,'accomplished','Accomplished, last 7 days','ok')+jSec(d,'inprogress','In progress','prog')+'</div><div class="grid3">'+jSec(d,'risks','Risks','risk')+jSec(d,'issues','Issues','iss')+jDl(d)+'</div>';
+ const u=new Date(d.updated);document.getElementById('upd').textContent='Executive summary updated '+u.toLocaleDateString('en-US',{month:'short',day:'numeric'})+', '+u.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();countdowns();}
+let DASH_SIG=JSON.stringify(DASH);
+function loadDash(){const s=document.createElement('script');s.src='dashboard-data.js?'+Date.now();s.onload=()=>{s.remove();const d=window.DASH_DATA;if(!d)return;const sig=JSON.stringify(d);if(sig!==DASH_SIG){DASH_SIG=sig;DASH=d;if(!(document.querySelector('dialog.ctx')||{}).open)renderSummary(d);}};s.onerror=()=>s.remove();document.head.appendChild(s);}
+document.querySelectorAll('li[data-date]').forEach(li=>{const d=Math.ceil((new Date(li.dataset.date+'T23:59')-Date.now())/864e5);li.querySelector('.dd').textContent=d<0?'Passed':d===0?'Today':d===1?'Tomorrow':'In '+d+' days';if(d<=7)li.classList.add('soon');});
+renderSummary(DASH);load();setInterval(load,10000);
+document.getElementById('built').textContent=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+', '+new Date(DASH.updated).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}).toLowerCase();
+{const m=location.hash.match(/^#ctx=(\w+)\.(\d+)$/);if(m&&DASH[m[1]]&&DASH[m[1]][+m[2]])showCtx(m[1],+m[2]);}
+document.querySelectorAll('a[data-sample]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+</script></body></html>

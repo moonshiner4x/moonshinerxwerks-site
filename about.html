@@ -1,3 +1,11 @@
+<!--
+  Filename: about.html
+  App Name: moonshinerxwerks.com
+  Created Date: 2026-11-16
+  Last Edited Date: 2026-11-16
+  Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+  Code Description: About page with the "How the studio runs" chapter; the Reporting section embeds the clickable Operations Command Center replica (command-center/index.html) in an iframe, labeled as sample data.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +13,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — moonshinerXwerks LLC</title>
 <link rel="canonical" href="https://moonshinerxwerks.com/about.html" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<meta name="description" content="moonshinerXwerks is a one-person software studio in Bend, Oregon, run on an operating model of AI agents with a human Studio Owner.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
+/* ═════ Part 1 · live about.html styles (unchanged) ═════ */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --bg: #000000; --bg-elevated: #0A0A0A; --surface: #141414;
@@ -24,7 +34,7 @@
   .logo-img:hover { opacity: 1; }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 400; transition: color 0.25s; }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover, .nav-links a.current { color: var(--text); }
   .nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 10px 22px !important; border-radius: 100px; font-weight: 500 !important; font-size: 0.84rem !important; }
   .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text); }
 
@@ -39,7 +49,6 @@
 
   .founder-section { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
   .founder-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; }
-  .founder-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-secondary); font-weight: 500; margin-bottom: 16px; }
   .founder-card h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 8px; }
   .founder-title { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 28px; }
   .founder-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px; }
@@ -78,9 +87,319 @@
     .founder-card { padding: 32px; }
     .footer-inner { flex-direction: column; text-align: center; } .footer-left { flex-direction: column; }
   }
+
+  /* ═════ Part 2 · new chapter: How the studio runs ═════ */
+  :root {
+    --text-2: #8A8A8A; --line: #1c1c1c; --line-2: #2a2a2a; --gold: #F5D76E; --green: #4ADE80;
+    /* Role colors, drawn from the site's existing app palette */
+    --r-lead: #F0EDE8; --r-ops: #E6A817; --r-pl: #5B9BF7; --r-bld: #50C8B0; --r-spec: #B07EF0; --r-camp: #EF8A62;
+  }
+  body { overflow-x: hidden; }
+  .c-lead { --c: var(--r-lead); } .c-ops { --c: var(--r-ops); } .c-pl { --c: var(--r-pl); } .c-bld { --c: var(--r-bld); } .c-spec { --c: var(--r-spec); } .c-camp { --c: var(--r-camp); }
+
+  .hero-jump { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; color: var(--text); text-decoration: none; font-size: .92rem; border-bottom: 1px solid #444; padding-bottom: 3px; }
+  .hero-jump:hover { border-color: var(--text); }
+
+  .ops { position: relative; border-top: 1px solid var(--border); }
+  .ops-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .k { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-2); margin-bottom: 18px; font-weight: 500; }
+  .k b { color: var(--text); font-weight: 500; }
+  .ops-h { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3.5rem); line-height: 1.06; letter-spacing: -.02em; max-width: 940px; }
+  .ops-h em { font-style: italic; background: linear-gradient(135deg, #fff 30%, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .ops-lede { color: var(--text-2); font-size: 1.08rem; line-height: 1.75; max-width: 720px; margin-top: 20px; }
+  .ops-lede b { color: var(--text); font-weight: 500; }
+
+  /* Opener */
+  .ops-open { padding: 120px 0 40px; background: radial-gradient(60% 50% at 80% 0%, rgba(230,168,23,.07) 0%, transparent 70%), radial-gradient(50% 40% at 10% 10%, rgba(91,155,247,.05) 0%, transparent 70%); }
+  .ops-open .ops-h { font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 1.0; }
+  .pull { margin: 48px 0 0; padding: 4px 0 4px 28px; border-left: 2px solid var(--r-ops); max-width: 820px; font-family: var(--font-display); font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.3; color: var(--text); }
+  .pull cite { display: block; margin-top: 12px; font-family: var(--font-body); font-style: normal; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+  .chapters { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 64px; }
+  .chapters a { display: block; color: var(--text); text-decoration: none; border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; background: var(--bg-elevated); transition: border-color .2s, transform .2s; }
+  .chapters a:hover { border-color: #3a3a3a; transform: translateY(-2px); }
+  .chapters .n { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-2); line-height: 1; }
+  .chapters b { display: block; font-weight: 500; font-size: .98rem; margin-top: 12px; }
+  .chapters span { color: var(--text-2); font-size: .84rem; }
+
+  .ops-sec { padding: 120px 0 0; }
+  .ops-sec:last-of-type { padding-bottom: 40px; }
+
+  /* Tags */
+  .tag { display: inline-block; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; padding: 2px 9px; border-radius: 100px; border: 1px solid var(--line-2); color: var(--text-2); white-space: nowrap; }
+  .tag.human { color: var(--text); border-color: #555; }
+  .who { display: inline-flex; align-items: center; gap: 7px; font-size: .74rem; color: var(--text); border: 1px solid color-mix(in srgb, var(--c) 45%, #222); background: color-mix(in srgb, var(--c) 10%, #0a0a0a); border-radius: 100px; padding: 2px 10px 2px 9px; white-space: nowrap; }
+  .who::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; }
+
+  /* ── 01 Organization ── */
+  .node { position: relative; z-index: 1; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 10px; }
+  .node .rl { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .node .rl > span:first-child { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); font-weight: 500; }
+  .node h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; line-height: 1.05; }
+  .node p { color: #cfcbc5; font-size: .93rem; line-height: 1.6; }
+  .node ul { list-style: none; display: grid; gap: 7px; }
+  .node li { color: var(--text-2); font-size: .9rem; line-height: 1.55; padding-left: 16px; position: relative; }
+  .node li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+  .node li b { color: var(--text); font-weight: 500; }
+
+
+
+
+
+  .trio { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .trio .node { background: radial-gradient(140% 120% at 0% 0%, color-mix(in srgb, var(--c) 11%, #0b0b0b) 0%, #0a0a0a 62%); }
+  .trio .node h3 { font-size: 1.6rem; }
+
+  .raci-band { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; border: 1px solid var(--line); border-radius: 24px; padding: 36px; background: linear-gradient(180deg, #0b0b0b, #060606); }
+  .raci-band h3 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.1; }
+  .raci-band h3 em { font-style: italic; color: var(--gold); }
+  .raci-band .raci-copy p { color: var(--text-2); font-size: .95rem; line-height: 1.7; margin-top: 12px; }
+  /* RACI excerpt: same table design as the Command Center's RACI page */
+  .rx { --rx-card: #161b22; --rx-line: #2a313c; --rx-head: #1b222c; --rx-grp: #11161d; --rx-text: #e8e6e1; --rx-mute: #9aa3ad; min-width: 0; }
+  .rx-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 16px; color: var(--rx-mute); font-size: .86rem; }
+  .rx-legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .rx .k { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 7px; font-weight: 700; font-size: 13px; font-style: italic; color: #0d1117; letter-spacing: 0; text-transform: none; margin: 0; flex: none; line-height: 1; }
+  .rx .k.R { background: #3fb27f; } .rx .k.A { background: #e5534b; } .rx .k.C { background: #e0a83a; } .rx .k.I { background: #6f8fb8; }
+  .rx .k.AR { background: linear-gradient(135deg, #e5534b 50%, #3fb27f 50%); width: 34px; }
+  .rx-card { background: var(--rx-card); border: 1px solid var(--rx-line); border-radius: 12px; overflow: hidden; }
+  .rx-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rx-scroll:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+  .rx table { border-collapse: collapse; width: 100%; min-width: 1040px; table-layout: fixed; color: var(--rx-text); }
+  .rx th, .rx td { border-bottom: 1px solid var(--rx-line); padding: 9px 6px; text-align: center; vertical-align: middle; }
+  .rx tbody tr:last-child td { border-bottom: 0; }
+  .rx thead th { background: var(--rx-head); font-size: 12.5px; font-weight: 700; line-height: 1.25; vertical-align: bottom; overflow-wrap:normal;word-break:normal; }
+  .rx thead th small { display: block; color: var(--rx-mute); font-weight: 400; font-size: 11px; margin-top: 2px; }
+  .rx th.act, .rx td.act { text-align: left; width: 26%; padding-left: 14px; }
+  .rx td.act b { display: block; font-size: 14px; font-weight: 600; }
+  .rx td.act span { color: var(--rx-mute); font-size: 12.5px; line-height: 1.45; }
+  .rx th.mk, .rx td.mk { background: rgba(111,143,184,.05); }
+  .rx td.own { background: rgba(229,83,75,.04); }
+  .rx tr.grp td { background: var(--rx-grp); text-align: left; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--rx-mute); padding: 8px 12px; }
+  .rx-hint { display: none; margin: 0 0 8px; text-align: right; color: var(--text-2); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .rx-cap { margin-top: 12px; color: var(--text-2); font-size: .78rem; }
+
+  /* ── 02 Cadence ── */
+  .cad { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  .protos { display: grid; gap: 0; }
+  .proto { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .proto:first-child { border-top: 0; padding-top: 4px; }
+  .proto .n { font-family: var(--font-display); font-size: 1.7rem; color: var(--text-2); line-height: 1; }
+  .proto h3 { font-size: 1.05rem; font-weight: 500; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .proto h3 small { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); font-weight: 400; }
+  .proto p { color: var(--text-2); font-size: .92rem; line-height: 1.65; margin-top: 6px; }
+  .feed { position: sticky; top: 130px; border: 1px solid var(--line-2); border-radius: 22px; background: #080808; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .feed-h { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); font-size: .82rem; }
+  .feed-h::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--r-ops); }
+  .feed-h span { margin-left: auto; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid #5a4c17; background: #1a1607; border-radius: 100px; padding: 2px 9px; }
+  .msgs { padding: 8px 18px 18px; }
+  .msg { padding: 14px 0; border-top: 1px solid var(--line); }
+  .msg:first-child { border-top: 0; }
+  .msg .mh { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .msg .ty { font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--c); }
+  .msg .fr { font-size: .78rem; color: var(--text-2); }
+  .msg p { margin-top: 6px; font-size: .88rem; color: #d6d2cc; line-height: 1.55; }
+  .msg p b { color: var(--text); font-weight: 500; }
+
+  /* ── 03 Reporting ── */
+  .feats { margin-top: 48px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+  .feat { border-top: 1px solid #3a3a3a; padding-top: 16px; }
+  .feat h3 { font-size: .98rem; font-weight: 500; }
+  .feat p { color: var(--text-2); font-size: .86rem; line-height: 1.6; margin-top: 6px; }
+  .sample-note { display: inline-flex; align-items: center; gap: 8px; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid #5a4c17; background: #1a1607; border-radius: 100px; padding: 4px 12px; }
+
+  /* ── 04 Execution ── */
+  .ship { margin-top: 56px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+  .step { position: relative; border: 1px solid var(--line); border-radius: 18px; padding: 18px 16px 16px; background: var(--bg-elevated); display: flex; flex-direction: column; gap: 9px; }
+  .step:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 20px; width: 12px; text-align: center; color: #555; font-size: .85rem; }
+  .step .n { font-family: var(--font-display); font-size: 1.7rem; color: var(--text-2); line-height: 1; }
+  .step h3 { font-size: .98rem; font-weight: 500; line-height: 1.3; }
+  .step p { color: var(--text-2); font-size: .84rem; line-height: 1.55; }
+  .step .ws { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 4px; }
+  .step.gate { border-color: #555; background: radial-gradient(140% 120% at 0% 0%, #222 0%, #0a0a0a 62%); }
+  .step.gate .n { color: var(--text); }
+  .step.gate h3::after { content: "Human gate"; display: block; margin-top: 4px; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .layers { margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .layer { padding: 18px 20px; border-left: 1px solid var(--line); }
+  .layer:first-child { border-left: 0; }
+  .layer small { display: block; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+  .layer b { display: block; font-weight: 500; font-size: .94rem; margin-top: 6px; }
+  .layer span { display: block; color: var(--text-2); font-size: .84rem; margin-top: 2px; }
+  .layer.last { background: radial-gradient(140% 140% at 0% 0%, #1d1d1d, #0a0a0a 70%); }
+
+  /* ── 05 Governance ── */
+  .rails { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 40px; margin-top: 56px; }
+  .rails .n { font-family: var(--font-display); font-size: 2.1rem; color: var(--text-2); line-height: 1; }
+  .rails h3 { font-size: 1.04rem; font-weight: 500; margin: 14px 0 8px; line-height: 1.35; }
+  .rails p { color: var(--text-2); font-size: .93rem; line-height: 1.65; }
+
+  /* ── Transferable ── */
+  .xfer { margin-top: 120px; border: 1px solid var(--line-2); border-radius: 28px; padding: 48px; background: radial-gradient(80% 120% at 100% 0%, rgba(230,168,23,.08) 0%, transparent 60%), #070707; }
+  .xfer .ops-h { font-size: clamp(2rem, 3vw, 2.9rem); }
+  .xmap { margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+  .xmap > div { padding: 22px 24px 22px 0; border-bottom: 1px solid var(--line); }
+  .xmap small { display: block; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+  .xmap b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.35rem; line-height: 1.2; margin-top: 6px; }
+  .xmap span { display: block; color: var(--text-2); font-size: .88rem; margin-top: 4px; }
+
+  .ops-end { height: 120px; }
+
+  @media (max-width: 1100px) {
+    .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ship { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .step:nth-child(4)::after { display: none; }
+    .feats { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 24px; }
+    .rails { grid-template-columns: 1fr 1fr; }
+    .xmap { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .cad { grid-template-columns: 1fr; gap: 32px; }
+    .trio { grid-template-columns: 1fr; }
+    .feed { position: static; }
+    .layers { grid-template-columns: 1fr 1fr; }
+    .layer:nth-child(3) { border-left: 0; }
+    .layer:nth-child(n+3) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 700px) {
+    .ops-wrap { padding: 0 20px; }
+    .ops-open { padding-top: 88px; }
+    .ops-sec { padding-top: 88px; }
+    .pull { padding-left: 18px; }
+    .chapters { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 44px; }
+    .chapters a { padding: 14px; }
+    .chapters a:last-child { grid-column: 1 / -1; }
+    .node { padding: 20px; }
+    .raci-band { padding: 22px 18px; border-radius: 18px; }
+    .raci-band h3 { font-size: 1.6rem; }
+    .rx-hint { display: block; }
+    .rx-legend { font-size: .78rem; gap: 8px 16px; }
+    .rx table { min-width: 950px; }
+    .rx th.act, .rx td.act { width: 170px; padding-left: 12px; }
+    .feats { grid-template-columns: 1fr 1fr; }
+    .ship { grid-template-columns: 1fr; gap: 10px; }
+    .step::after { display: none !important; }
+    .step { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 12px; row-gap: 6px; }
+    .step .n { font-size: 1.4rem; grid-row: span 3; }
+    .layers { grid-template-columns: 1fr; }
+    .layer { border-left: 0 !important; border-top: 1px solid var(--line); }
+    .layer:first-child { border-top: 0; }
+    .rails { grid-template-columns: 1fr; gap: 30px; }
+    .xfer { padding: 28px 20px; border-radius: 20px; margin-top: 88px; }
+    .xmap { grid-template-columns: 1fr; }
+    .xmap > div { padding-right: 0; }
+  }
+  @media (min-width: 1800px) { .ops-wrap { max-width: 1360px; } }
+
+/* Alignment (2026-11-16): every About section shares the chapter's 1200px column, so all left edges line up. */
+.about-hero, .about-section, .values-section, .founder-section { max-width: 1200px; }
+@media (min-width: 1800px) { .about-hero, .about-section, .values-section, .founder-section { max-width: 1360px; } }
+.founder-section > * { max-width: none; }
+.founder-card { width: 100%; }
+.founder-card p { max-width: 880px; }
+.values-grid, .values-section .values { max-width: none; }
+
+/* Full-width text (Studio Owner, 2026-11-16): paragraphs fill their container instead of a reading-width cap. */
+.about-hero .lead, .about-section p, .founder-card p, .ops-lede, .ops-open p, .ops-sec .ops-sub, .ops-sec > .ops-wrap > p { max-width: none !important; }
+.node p { max-width: none !important; }
+
+/* Org chart · hub and spokes (2026-11-16). Self-contained (.hb-*): the script after the chart places the boxes on two
+   rings around the Program Manager and draws every spoke from measured positions. Under 1180px: stacked on a left rail. */
+.hb { position: relative; margin-top: 64px; }
+.hb-wires { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; z-index: 0; }
+.hb-wires path, .hb-wires ellipse { fill: none; stroke: #4a4a4a; stroke-width: 1.25; stroke-linecap: round; }
+.hb-wires .ring { stroke: #242424; stroke-dasharray: 3 6; }
+.hb-wires .ring.i { stroke: color-mix(in srgb, var(--r-spec) 22%, #1a1a1a); }
+.hb-wires .dot { fill: #6a6a6a; stroke: none; }
+.hb-b { position: absolute; transform: translate(-50%, -50%); z-index: 1; background: var(--bg-elevated); border: 1px solid var(--line-2); border-radius: 18px; }
+.hb-rl { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); font-weight: 500; }
+.hb-owner { width: 520px; padding: 20px 24px; text-align: center; border-color: #3a3a3a; background: linear-gradient(180deg, #151515, #0b0b0b); }
+.hb-owner h3, .hb-pm h3 { font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.05; margin-top: 8px; }
+.hb-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; text-align: left; margin-top: 12px; }
+.hb-two small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); margin-bottom: 3px; }
+.hb-two p { color: #cfcbc5; font-size: .84rem; line-height: 1.5; }
+.hb-pm { width: 340px; padding: 18px 22px; border-color: color-mix(in srgb, var(--r-ops) 45%, #222); background: radial-gradient(120% 140% at 50% 0%, color-mix(in srgb, var(--r-ops) 13%, #0b0b0b), #0a0a0a 70%); }
+.hb-pm .hb-rl { color: var(--r-ops); }
+.hb-pm h3 { text-align: center; }
+.hb-pm ul { list-style: none; margin-top: 10px; display: grid; gap: 5px; }
+.hb-pm li { color: var(--text-2); font-size: .8rem; line-height: 1.45; padding-left: 14px; position: relative; }
+.hb-pm li::before { content: ""; position: absolute; left: 0; top: .58em; width: 6px; height: 6px; border-radius: 50%; background: var(--r-ops); }
+.hb-pm li b { color: var(--text); font-weight: 500; }
+.hb-mini { display: none; }
+.hb-sp { width: 200px; padding: 11px 14px; text-align: center; border-color: color-mix(in srgb, var(--r-spec) 42%, #222); background: color-mix(in srgb, var(--r-spec) 9%, #0a0a0a); }
+.hb-sp b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.22rem; line-height: 1.1; }
+.hb-sp span { display: block; color: var(--text-2); font-size: .74rem; margin-top: 3px; line-height: 1.35; }
+.hb-pod { width: 262px; padding: 13px; display: flex; flex-direction: column; gap: 7px; background: #080808; }
+.hb-ph { display: flex; align-items: center; gap: 11px; }
+.hb-mono { width: 36px; height: 36px; border-radius: 10px; flex: none; display: grid; place-items: center; font-family: var(--font-display); font-size: 1.3rem; border: 1px solid #2c2c2c; background: linear-gradient(145deg, #1d1d1d, #0c0c0c); }
+.hb-pod h4 { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; line-height: 1.05; }
+.hb-pod small { display: block; color: var(--text-2); font-size: .7rem; }
+.hb-seat { position: relative; border-radius: 10px; padding: 7px 10px 7px 25px; border: 1px solid color-mix(in srgb, var(--c) 32%, #1c1c1c); background: color-mix(in srgb, var(--c) 7%, #0a0a0a); font-size: .78rem; line-height: 1.3; }
+.hb-seat::before { content: ""; position: absolute; left: 10px; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.hb-seat i { display: none; }
+.hb-ghost { border: 1px dashed #2a2a2a; background: transparent; color: var(--text-2); padding-left: 10px; }
+.hb-ghost::before { display: none; }
+.hb-grp { display: contents; }
+.hb-orb { position: absolute; transform: translate(-50%, -50%); z-index: 1; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: #6a6a6a; background: var(--bg); padding: 0 8px; white-space: nowrap; }
+.hb-orb:not(.hb-narrow *) { display: none; }
+.hb-narrow .hb-orb { display: block; }
+.hb-key { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 8px 0 18px; vertical-align: 1px; }
+.hb-key.s { background: var(--r-spec); margin-left: 0; } .hb-key.p { border: 1.5px solid #8a8a8a; width: 6px; height: 6px; }
+.hb-sep { margin: 0 12px; }
+.hb-cap { margin-top: 10px; text-align: center; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+/* narrow: Program Manager panel with a mini hub graphic, then the two rings as tidy groups on a rail */
+.hb.hb-narrow { margin-top: 40px; display: grid; gap: 12px; padding-left: 26px; }
+.hb-narrow .hb-b, .hb-narrow .hb-orb { position: relative; transform: none; left: auto !important; top: auto !important; width: auto; }
+.hb-narrow .hb-owner { text-align: left; } .hb-narrow .hb-owner .hb-rl { justify-content: flex-start; }
+.hb-narrow .hb-pm { display: grid; grid-template-columns: 104px minmax(0, 1fr); column-gap: 18px; align-items: start; margin-top: 8px; }
+.hb-narrow .hb-pm > :not(.hb-mini) { grid-column: 2; }
+.hb-narrow .hb-pm .hb-rl { justify-content: flex-start; }
+.hb-narrow .hb-pm h3 { text-align: left; }
+.hb-narrow .hb-mini { display: block; grid-column: 1; grid-row: 1 / span 3; width: 104px; height: 104px; }
+.hb-mini .o { fill: none; stroke: #3a3a3a; stroke-dasharray: 3 4; } .hb-mini .i { fill: none; stroke: color-mix(in srgb, var(--r-spec) 55%, #222); stroke-dasharray: 3 4; }
+.hb-mini .sd { fill: var(--r-spec); } .hb-mini .pd { fill: #0a0a0a; stroke: #8a8a8a; stroke-width: 1.5; } .hb-mini .c { fill: var(--r-ops); }
+.hb-mini text { font: 600 9px var(--font-body); fill: #000; letter-spacing: .04em; }
+.hb-narrow .hb-orb { background: none; padding: 0; margin-top: 18px; color: var(--text-2); }
+.hb-narrow .hb-orb::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 0; }
+.hb-narrow [data-hb="orbS"]::before { background: var(--r-spec); } .hb-narrow [data-hb="orbP"]::before { border: 1.5px solid #8a8a8a; width: 6px; height: 6px; }
+.hb-narrow .hb-grp { display: grid; gap: 10px; }
+.hb-narrow .hb-sp { text-align: left; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.hb-narrow .hb-sp span { margin-top: 0; }
+.hb-narrow .hb-seat i { display: block; font-style: normal; color: var(--text-2); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; margin-top: 1px; }
+@media (max-width: 700px) {
+  .hb.hb-narrow { padding-left: 22px; }
+  .hb-narrow .hb-two { grid-template-columns: 1fr; gap: 10px; }
+  .hb-narrow .hb-pm { grid-template-columns: 1fr; }
+  .hb-narrow .hb-pm > :not(.hb-mini) { grid-column: 1; }
+  .hb-narrow .hb-mini { grid-row: auto; width: 96px; height: 96px; margin-bottom: 8px; }
+}
+
+
+  .live-demo { margin-top: 56px; }
+  .demo-frame { border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden; background: #050505; box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.02); }
+  .demo-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #0a0a0a; }
+  .demo-live { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--text); font-weight: 500; }
+  .demo-live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: dping 2.4s ease-out infinite; }
+  @keyframes dping { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.55); } 70%, 100% { box-shadow: 0 0 0 8px rgba(74,222,128,0); } }
+  .demo-bar .full { margin-left: auto; font-size: .8rem; color: var(--text-2); text-decoration: none; border: 1px solid var(--line-2); border-radius: 100px; padding: 5px 12px; white-space: nowrap; }
+  .demo-bar .full:hover { color: var(--text); border-color: #444; }
+  .demo-frame iframe { display: block; width: 100%; height: 820px; border: 0; background: #000; }
+  .try { margin-top: 18px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .try div { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--bg-elevated); }
+  .try small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
+  .try b { display: block; font-weight: 500; font-size: .9rem; margin-top: 4px; }
+  .try span { display: block; color: var(--text-2); font-size: .82rem; margin-top: 2px; }
+  .demo-note { margin-top: 16px; color: var(--text-2); font-size: .8rem; }
+  @media (max-width: 1100px) { .try { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) {
+    .live-demo { margin-top: 40px; }
+    .demo-frame { border-radius: 14px; margin: 0 -8px; }
+    .demo-frame iframe { height: 680px; }
+    .demo-bar { padding: 10px 12px; gap: 8px; }
+    .demo-bar .sample-note { font-size: .58rem; padding: 2px 8px; }
+    .try { grid-template-columns: 1fr; gap: 8px; }
+  }
+
 </style>
 <style>
-  /* Phone menu: the ☰ button opens the links as a dropdown (2026-11-15) */
+  /* Phone menu: the ☰ button opens the links as a dropdown (same as the live site) */
   @media (max-width: 768px) {
     nav.menu-open .nav-links { display: flex !important; flex-direction: column; align-items: flex-start; gap: 18px;
       position: absolute; top: 100%; left: 0; right: 0; padding: 18px 24px 24px;
@@ -96,13 +415,13 @@
   });
 </script>
 </head>
-<body>
+<body id="top">
 
 <nav>
   <div class="nav-inner">
     <a href="index.html"><img src="moonshinerXwerks_dark.png" alt="moonshinerXwerks" class="logo-img"></a>
     <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
+      <li><a href="#top" class="current">About</a></li>
       <li><a href="index.html#marketplace">Marketplace</a></li>
       <li><a href="work.html">Work</a></li>
       <li><a href="index.html#legal">Legal</a></li>
@@ -115,23 +434,13 @@
 <section class="about-hero">
   <h1 class="fade-in">Built in Bend.<br>Brewed with <em>intent.</em></h1>
   <p class="lead fade-in fade-in-d1">moonshinerXwerks LLC is an independent app studio that builds original products from scratch — no clients, no contracts, just ideas we believe in, built the way we think they should be built.</p>
+  <a class="hero-jump fade-in fade-in-d2" href="#studio">How the studio runs: one person and a team of AI agents ↓</a>
 </section>
 
 <section class="about-section">
   <h2 class="fade-in">The Story</h2>
   <p class="fade-in fade-in-d1">moonshinerXwerks was founded with a straightforward premise: build useful apps for real people, own every pixel, and never cut corners on privacy. Every product in our portfolio started as a personal itch — a problem we encountered, a tool we wished existed, or an idea we couldn't shake.</p>
   <p class="fade-in fade-in-d2">We're based in Bend, Oregon — a place where people actually go outside, fish real rivers, and meet friends for happy hour. Our apps reflect that. They're built for people who do things, not just scroll through things.</p>
-</section>
-
-<section class="founder-section">
-  <div class="founder-card fade-in">
-    <h2>John P. Jackson</h2>
-    <p class="founder-title">Co-Founder & Principal — moonshinerXwerks LLC</p>
-    <p>John is a senior program manager with over 20 years of experience leading enterprise programs across PMO design, process optimization, commercial excellence, and global customer implementation. He spent a decade at Expedia's Egencia division, progressing from reporting and analytics through global implementation management to program leadership — overseeing Fortune 500 client delivery, consolidating regional teams into a unified global PMO, and earning a President's Club Award for onboarding $195M+ in annual new business revenue.</p>
-    <p>His career spans enterprise transformation and product-driven delivery at every scale: directing cloud migrations and SaaS platform rollouts, leading product development initiatives to improve SaaS usability and drive adoption, spearheading internal commercialization efforts that aligned product capabilities with go-to-market strategy, and managing Salesforce CRM integrations and commercial excellence programs across multiple organizations.</p>
-    <p>moonshinerXwerks is where all of that converges — an independent software studio applying 20+ years of enterprise discipline to consumer product development. Every app is taken from concept through release with full ownership of product strategy, feature delivery, privacy architecture, and commercial model. The full product lifecycle is managed using agile delivery, structured change analysis, and AI-enabled tooling — while also owning all supporting operations including legal compliance, hosting infrastructure, and CI/CD pipelines.</p>
-    <p>Based in Bend, Oregon. Usually found on a river when not managing the next product through development and delivery.</p>
-  </div>
 </section>
 
 <section class="values-section">
@@ -149,6 +458,300 @@
       <h3>Own the Craft</h3>
       <p>No outsourcing, no templates. Every line of code, every design decision, every user flow is built in-house with intention and care from concept to App Store.</p>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════ NEW CHAPTER · How the studio runs ═══════════════ -->
+<div class="ops" id="studio">
+
+  <section class="ops-open">
+    <div class="ops-wrap">
+      <p class="k">How the studio runs</p>
+      <h2 class="ops-h">I design the operating model. <em>AI agents run inside it.</em></h2>
+      <p class="ops-lede">moonshinerXwerks runs like a small product organization in which every seat but one is filled by an AI agent. I treated the studio itself as a product: <b>I designed the roles, wrote the reporting protocols, built the command center that tracks the work, and set the rules for where a human has to say yes.</b> The agents do the work. The operating model is what makes that work dependable.</p>
+      <blockquote class="pull">AI agents are capable out of the box. What they don’t come with is an org chart, a reporting line or a definition of done. That’s the part I build.<cite>Studio Owner</cite></blockquote>
+      <div class="chapters" role="navigation" aria-label="How the studio runs">
+        <a href="#org"><div class="n">01</div><b>Organization</b><span>Who owns what</span></a>
+        <a href="#cadence"><div class="n">02</div><b>Operating cadence</b><span>How work reports itself</span></a>
+        <a href="#reporting"><div class="n">03</div><b>Reporting</b><span>One screen for the studio</span></a>
+        <a href="#execution"><div class="n">04</div><b>Execution</b><span>From idea to release</span></a>
+        <a href="#governance"><div class="n">05</div><b>Governance</b><span>Where a human decides</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 · Organization -->
+  <section class="ops-sec" id="org">
+    <div class="ops-wrap">
+      <p class="k"><b>01</b> · Organization</p>
+      <h2 class="ops-h">One human. <em>A team with clear seats.</em></h2>
+      <p class="ops-lede">Every agent has one job description, one reporting line and a short list of things it never does. That is what lets several products move at once without two agents doing the same job, or none of them doing it.</p>
+
+      <!-- Org chart: hub and spokes (option C). Self-contained: .hb-* styles in base.css, layout + connectors in the script below. -->
+      <div class="hb" id="hb">
+        <svg class="hb-wires" aria-hidden="true"></svg>
+        <div class="hb-b hb-owner" data-hb="owner"><div class="hb-rl"><span>Owner · product designer</span><span class="tag human">Human</span></div><h3>Studio Owner</h3>
+          <div class="hb-two"><div><small>Decides</small><p>What each product does, what goes in a release, what waits and what it costs.</p></div><div><small>Approves</small><p>Anything that ships, publishes, spends money or touches a key.</p></div></div></div>
+        <div class="hb-b hb-pm" data-hb="pm">
+          <svg class="hb-mini" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" class="o"/><circle cx="60" cy="60" r="34" class="i"/>
+            <circle cx="60" cy="26" r="4" class="sd"/><circle cx="92.3" cy="49.5" r="4" class="sd"/><circle cx="80" cy="87.5" r="4" class="sd"/><circle cx="40" cy="87.5" r="4" class="sd"/><circle cx="27.7" cy="49.5" r="4" class="sd"/>
+            <circle cx="21.8" cy="21.8" r="5" class="pd"/><circle cx="98.2" cy="21.8" r="5" class="pd"/><circle cx="21.8" cy="98.2" r="5" class="pd"/><circle cx="98.2" cy="98.2" r="5" class="pd"/>
+            <circle cx="60" cy="60" r="13" class="c"/><text x="60" y="64" text-anchor="middle">PM</text></svg>
+          <div class="hb-rl"><span>Single point of contact</span><span class="tag">AI agent</span></div><h3>Program Manager</h3>
+          <ul><li><b>Routes every request</b> and brings back one answer.</li><li><b>Owns the roadmap</b> and the executive summary.</li><li><b>Rolls up reporting</b> from every agent.</li><li><b>Audits agents</b> against studio rules.</li></ul></div>
+        <span class="hb-orb" data-hb="orbS">Inner ring · shared specialists</span>
+        <div class="hb-grp hb-sps">
+          <div class="hb-b hb-sp" data-hb="s"><b>Research Analyst</b><span>Answers questions, with a source for every claim</span></div>
+          <div class="hb-b hb-sp" data-hb="s"><b>Store Consultant</b><span>Store rules, listings and privacy answers</span></div>
+          <div class="hb-b hb-sp" data-hb="s"><b>Legal Analyst</b><span>Flags legal concerns early, with sources</span></div>
+          <div class="hb-b hb-sp" data-hb="s"><b>QA Analyst</b><span>Independent UX and UI audits</span></div>
+          <div class="hb-b hb-sp" data-hb="s"><b>Marketing Manager</b><span>Launches; gated until I kick one off</span></div>
+        </div>
+        <span class="hb-orb" data-hb="orbP">Outer ring · product pods</span>
+        <div class="hb-grp hb-pods">
+          <div class="hb-b hb-pod" data-hb="p"><div class="hb-ph"><div class="hb-mono">A</div><div><h4>Product A</h4><small>Sells · in active release</small></div></div><div class="hb-seat c-pl">Product A - Advisor<i>Plans</i></div><div class="hb-seat c-bld">Product A - Engineer<i>Builds</i></div><div class="hb-seat c-camp">Product A - Campaign Manager<i>Sells</i></div></div>
+          <div class="hb-b hb-pod" data-hb="p"><div class="hb-ph"><div class="hb-mono">B</div><div><h4>Product B</h4><small>Sells · in active release</small></div></div><div class="hb-seat c-pl">Product B - Advisor<i>Plans</i></div><div class="hb-seat c-bld">Product B - Engineer<i>Builds</i></div><div class="hb-seat c-camp">Product B - Campaign Manager<i>Sells</i></div></div>
+          <div class="hb-b hb-pod" data-hb="p"><div class="hb-ph"><div class="hb-mono">C</div><div><h4>Product C</h4><small>Free · quiet</small></div></div><div class="hb-seat c-pl">Product C - Advisor<i>Plans</i></div><div class="hb-seat c-bld">Product C - Engineer<i>Builds</i></div><div class="hb-seat hb-ghost">No campaign seat</div></div>
+          <div class="hb-b hb-pod" data-hb="p"><div class="hb-ph"><div class="hb-mono">D</div><div><h4>Product D</h4><small>Free · in development</small></div></div><div class="hb-seat c-pl">Product D - Advisor<i>Plans</i></div><div class="hb-seat c-bld">Product D - Engineer<i>Builds</i></div><div class="hb-seat hb-ghost">No campaign seat</div></div>
+        </div>
+      </div>
+      <p class="hb-cap"><span class="hb-key s"></span>Inner ring · shared specialists<span class="hb-key p"></span>Outer ring · product pods<span class="hb-sep">·</span>every line reports to the Program Manager</p>
+      <script>
+      /* Hub-and-spokes org chart: places the boxes on two rings around the Program Manager (wide screens) and draws
+         every connector from measured box positions, so no card floats. Under 1180px it becomes a stacked layout on a
+         left rail with a tick into every card. */
+      (function () {
+        var hub = document.getElementById('hb'); if (!hub) return;
+        var NS = 'http://www.w3.org/2000/svg', svg = hub.querySelector('.hb-wires');
+        function all(k) { return Array.prototype.slice.call(hub.querySelectorAll('[data-hb="' + k + '"]')); }
+        function box(el) { var r = el.getBoundingClientRect(), o = hub.getBoundingClientRect();
+          return { l: r.left - o.left, t: r.top - o.top, r: r.right - o.left, b: r.bottom - o.top, cx: r.left - o.left + r.width / 2, cy: r.top - o.top + r.height / 2 }; }
+        function el(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+        function render() {
+          var narrow = window.innerWidth < 1180, owner = all('owner')[0], pm = all('pm')[0], ss = all('s'), ps = all('p');
+          hub.classList.toggle('hb-narrow', narrow);
+          svg.innerHTML = '';
+          [owner, pm].concat(ss, ps, all('orbS'), all('orbP')).forEach(function (e) { e.style.left = ''; e.style.top = ''; });
+          if (narrow) {
+            hub.style.height = '';
+            var bs = [owner, pm].concat(ss, ps).map(box), x = 7, ys = bs.map(function (b) { return Math.min(b.t + 24, (b.t + b.b) / 2); });
+            svg.setAttribute('width', hub.clientWidth); svg.setAttribute('height', hub.scrollHeight);
+            el('path', { d: 'M' + x + ' ' + ys[0] + ' V' + ys[ys.length - 1] });
+            bs.forEach(function (b, i) { el('path', { d: 'M' + x + ' ' + ys[i] + ' H' + b.l }); el('circle', { cx: x, cy: ys[i], r: 2.5, 'class': 'dot' }); });
+            return;
+          }
+          // Ten directions 36° apart: the Studio Owner straight up, then specialists (inner ring) and pods (outer ring)
+          // alternate, so each spoke runs between the boxes of the other ring.
+          var W = hub.clientWidth, s = W / 1300, cx = W / 2, cy = 540 * s, H = Math.round(950 * s);
+          hub.style.height = H + 'px';
+          svg.setAttribute('width', W); svg.setAttribute('height', H);
+          function place(e, deg, rx, ry) { var a = deg * Math.PI / 180; e.style.left = (cx + rx * Math.cos(a)) + 'px'; e.style.top = (cy + ry * Math.sin(a)) + 'px'; }
+          owner.style.left = cx + 'px'; owner.style.top = (70 * s + 52) + 'px';
+          pm.style.left = cx + 'px'; pm.style.top = cy + 'px';
+          [-54, 18, 90, 162, 234].forEach(function (d, i) { place(ss[i], d, 340 * s, 262 * s); });
+          [198, -18, 126, 54].forEach(function (d, i) { place(ps[i], d, 520 * s, 370 * s); });
+          var oS = all('orbS')[0], oP = all('orbP')[0];
+          oS.style.left = cx + 'px'; oS.style.top = (cy - 262 * s) + 'px';
+          oP.style.left = cx + 'px'; oP.style.top = (cy + 370 * s) + 'px';
+          el('ellipse', { cx: cx, cy: cy, rx: 340 * s, ry: 262 * s, 'class': 'ring i' });
+          el('ellipse', { cx: cx, cy: cy, rx: 520 * s, ry: 370 * s, 'class': 'ring' });
+          var c = box(pm);
+          [owner].concat(ss, ps).map(box).forEach(function (b) { el('path', { d: 'M' + c.cx + ' ' + c.cy + ' L' + b.cx + ' ' + b.cy }); });
+        }
+        var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(render, 60); });
+        render(); window.addEventListener('load', render);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
+      })();
+      </script>
+
+      <div class="trio">
+        <div class="node c-pl">
+          <div class="rl"><span>In every pod</span><span class="tag">AI agent</span></div>
+          <h3>Product Advisor</h3>
+          <ul>
+            <li><b>Plans and scopes</b> each change: the goal, what done looks like, what not to touch.</li>
+            <li><b>Owns the product’s records</b>: issues, release notes, test sheets.</li>
+            <li><b>Never builds.</b> Checks the Product Engineer’s work instead.</li>
+          </ul>
+        </div>
+        <div class="node c-bld">
+          <div class="rl"><span>In every pod</span><span class="tag">AI agent</span></div>
+          <h3>Product Engineer</h3>
+          <ul>
+            <li><b>Builds and tests</b> to the Product Advisor’s brief and logs every change.</li>
+            <li><b>Ships both platforms together</b> when a product runs on both.</li>
+            <li><b>Never decides product.</b> Questions go up through the Product Advisor.</li>
+          </ul>
+        </div>
+        <div class="node c-camp">
+          <div class="rl"><span>Pods that sell</span><span class="tag">AI agent</span></div>
+          <h3>Campaign Manager</h3>
+          <ul>
+            <li><b>Runs the product’s campaigns</b> inside the plan the Marketing Manager sets.</li>
+            <li><b>Proposes, never spends.</b> Budgets need my approval.</li>
+            <li><b>Stays gated</b> until I kick the campaign off.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="raci-band">
+        <div class="raci-copy">
+          <p class="k" style="margin-bottom:12px">RACI</p>
+          <h3>Every kind of work has <em>exactly one</em> Accountable role.</h3>
+          <p>The RACI lives on a page I edit live, and agents read it before they act. Changing who owns something is an edit, not a meeting. <a href="#reporting" style="color:var(--text)">Try editing it in the demo below.</a></p>
+        </div>
+        <div class="rx">
+          <div class="rx-legend"><span><i class="k R">R</i>Responsible: does the work</span><span><i class="k A">A</i>Accountable: owns the outcome (only one per row)</span><span><i class="k AR">A/R</i>Both</span><span><i class="k C">C</i>Consulted: asked before or during</span><span><i class="k I">I</i>Informed: told after</span></div>
+          <p class="rx-hint" aria-hidden="true">Scroll →</p>
+          <div class="rx-card"><div class="rx-scroll" tabindex="0" role="region" aria-label="RACI excerpt, scrolls sideways">
+          <table aria-label="RACI excerpt">
+            <thead><tr><th class="act">Work</th><th>Studio Owner<small>decides</small></th><th>Program Manager<small>studio-wide, your single contact</small></th><th>Product Advisor<small>one per product</small></th><th>Product Engineer<small>one per product</small></th><th>Research Analyst<small>any product</small></th><th>Store Consultant<small>both app stores</small></th><th>Legal Analyst<small>legal + privacy</small></th><th>QA Analyst<small>UX/UI, every product</small></th><th class="mk">Marketing Manager<small>all studio marketing</small></th><th class="mk">Product Campaign Mgr<small>per product</small></th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="11">Direction and planning</td></tr>
+              <tr><td class="act"><b>Product vision, scope and priorities</b><span>What a product does, what&#x27;s in a release, what waits</span></td><td class="own"><i class="k A">A</i></td><td><i class="k C">C</i></td><td><i class="k R">R</i></td><td><i class="k I">I</i></td><td><i class="k I">I</i></td><td><i class="k C">C</i></td><td></td><td><i class="k C">C</i></td><td class="mk"><i class="k C">C</i></td><td class="mk"><i class="k I">I</i></td></tr>
+              <tr><td class="act"><b>Cross-product sequencing</b><span>Which product gets attention when; one release lane at a time</span></td><td class="own"><i class="k A">A</i></td><td><i class="k R">R</i></td><td><i class="k C">C</i></td><td></td><td></td><td></td><td></td><td></td><td class="mk"></td><td class="mk"></td></tr>
+              <tr><td class="act"><b>Pricing and paid-tier decisions</b><span>Prices, tiers, what&#x27;s paid vs free</span></td><td class="own"><i class="k A">A</i></td><td><i class="k C">C</i></td><td><i class="k R">R</i></td><td></td><td><i class="k C">C</i></td><td><i class="k C">C</i></td><td></td><td></td><td class="mk"><i class="k C">C</i></td><td class="mk"></td></tr>
+              <tr class="grp"><td colspan="11">Building and shipping</td></tr>
+              <tr><td class="act"><b>Building features and fixes</b><span>Code, tests and local commits</span></td><td class="own"><i class="k I">I</i></td><td><i class="k I">I</i></td><td><i class="k A">A</i></td><td><i class="k R">R</i></td><td></td><td></td><td></td><td><i class="k C">C</i></td><td class="mk"></td><td class="mk"></td></tr>
+              <tr><td class="act"><b>Quality review before release</b><span>UX/UI audit and release checks</span></td><td class="own"><i class="k I">I</i></td><td><i class="k I">I</i></td><td><i class="k C">C</i></td><td><i class="k C">C</i></td><td></td><td></td><td></td><td><i class="k AR">A/R</i></td><td class="mk"></td><td class="mk"></td></tr>
+              <tr><td class="act"><b>Commits, pushes and deploys</b><span>Only after the Studio Owner&#x27;s OK</span></td><td class="own"><i class="k A">A</i></td><td><i class="k R">R</i></td><td><i class="k C">C</i></td><td><i class="k R">R</i></td><td></td><td></td><td></td><td></td><td class="mk"></td><td class="mk"></td></tr>
+              <tr class="grp"><td colspan="11">Stores and compliance</td></tr>
+              <tr><td class="act"><b>Store listings and review answers</b><span>App Store and Google Play</span></td><td class="own"><i class="k A">A</i></td><td><i class="k I">I</i></td><td><i class="k C">C</i></td><td></td><td></td><td><i class="k R">R</i></td><td></td><td></td><td class="mk"><i class="k C">C</i></td><td class="mk"><i class="k C">C</i></td></tr>
+            </tbody>
+          </table></div></div>
+          <p class="rx-cap">Excerpt with sample rows · the full page has every kind of work</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · Operating cadence -->
+  <section class="ops-sec" id="cadence">
+    <div class="ops-wrap">
+      <p class="k"><b>02</b> · Operating cadence</p>
+      <h2 class="ops-h">Work that <em>reports itself.</em></h2>
+      <p class="ops-lede">I invented a handful of lightweight protocols so status flows up without anyone chasing it. Each one has a fixed shape, so the Program Manager can roll every message into one picture of the studio.</p>
+
+      <div class="cad">
+        <div class="protos">
+          <div class="proto"><div class="n">01</div><div><h3>Roadmap update <small>On every status change</small></h3><p>Whenever work moves (planned, building, checked, blocked), the agent sends the Program Manager a short update in a fixed format: what moved, what’s next, what’s waiting on me.</p></div></div>
+          <div class="proto"><div class="n">02</div><div><h3>Direct note <small>When I go direct</small></h3><p>If I talk to an agent directly instead of through the Program Manager, that agent files a note with the Program Manager. Shortcuts are fine; losing the thread isn’t.</p></div></div>
+          <div class="proto"><div class="n">03</div><div><h3>Check-in <small>On demand</small></h3><p>I can ask every Product Advisor for a check-in at once. Each answers the same four questions: done, doing, blocked, needs a decision.</p></div></div>
+          <div class="proto"><div class="n">04</div><div><h3>End-of-session check <small>Before I sign off</small></h3><p>What changed, what’s unsaved, what’s waiting. Nothing gets stranded between one working session and the next.</p></div></div>
+          <div class="proto"><div class="n">05</div><div><h3>Release runbook <small>Every release</small></h3><p>Releases follow written steps with gates. An agent can’t skip a gate, and the runbook records who cleared each one.</p></div></div>
+        </div>
+
+        <div class="feed" aria-label="Sample Program Manager inbox">
+          <div class="feed-h">Program Manager · inbox<span>Sample</span></div>
+          <div class="msgs">
+            <div class="msg c-bld"><div class="mh"><span class="ty">Roadmap update</span><span class="fr">Product D - Engineer</span></div><p>Onboarding redesign moved <b>Plan → Build</b>. Both platforms in this pass. Waiting on Studio Owner: nothing.</p></div>
+            <div class="msg c-spec"><div class="mh"><span class="ty">Direct note</span><span class="fr">QA Analyst</span></div><p>Studio Owner asked me directly for a small-phone audit of Product A onboarding. Logging it here so the roadmap stays whole. <b>Finding:</b> spacing fails on the first screen.</p></div>
+            <div class="msg c-pl"><div class="mh"><span class="ty">Check-in</span><span class="fr">Product B - Advisor</span></div><p><b>Done:</b> crash fix checked on both platforms. <b>Doing:</b> Release 2.4 proposal. <b>Blocked:</b> none. <b>Needs a decision:</b> none.</p></div>
+            <div class="msg c-ops"><div class="mh"><span class="ty">Runbook gate</span><span class="fr">Release 2.3 · Product A</span></div><p>Gate 5 of 7, quality review, in progress. Next gate: <b>Studio Owner sign-off</b>.</p></div>
+            <div class="msg c-lead"><div class="mh"><span class="ty">End-of-session check</span><span class="fr">Program Manager</span></div><p><b>Changed:</b> 3 records. <b>Unsaved:</b> none. <b>Waiting on you:</b> 3 decisions, 3 actions.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · Reporting -->
+  <section class="ops-sec" id="reporting">
+    <div class="ops-wrap">
+      <p class="k"><b>03</b> · Reporting</p>
+      <h2 class="ops-h">One screen for <em>the whole studio.</em></h2>
+      <p class="ops-lede">The Operations Command Center is a local web app I designed to run the studio from. It turns the stream of updates into an executive summary I can act on in minutes, and it shows what every agent is doing right now.</p>
+
+      <div class="feats">
+        <div class="feat"><h3>Executive summary</h3><p>Numbered decisions with a recommendation, numbered actions, progress, risks, issues and deadline countdowns. Any item opens its context.</p></div>
+        <div class="feat"><h3>Live agent status</h3><p>Working, idle or not running; each agent’s last report; and what’s waiting on me.</p></div>
+        <div class="feat"><h3>Context monitoring</h3><p>Context use per agent against a written compaction policy, so no agent compacts mid-change.</p></div>
+        <div class="feat"><h3>Token and cost tracking</h3><p>Tokens and estimated cost per agent and per session, visible next to the work they bought.</p></div>
+        <div class="feat"><h3>Direct line</h3><p>A chat drawer to message the Program Manager without leaving the dashboard.</p></div>
+      </div>
+
+<div class="live-demo">
+        <div class="demo-frame">
+          <div class="demo-bar"><span class="demo-live">Interactive demo</span><span class="sample-note">This is a demo with sample data</span><a class="full" href="command-center/index.html" target="_blank" rel="noopener">Open full screen ↗</a></div>
+          <iframe src="command-center/index.html" title="Operations Command Center demo with sample data" loading="lazy"></iframe>
+        </div>
+        <div class="try" aria-label="Things to try">
+          <div><small>Try 1</small><b>Open a decision</b><span>Click any decision for why it matters, the options and the recommended one.</span></div>
+          <div><small>Try 2</small><b>Check agent status</b><span>Working rows pulse; context bars turn amber and red as they fill. Toggle tokens and cost.</span></div>
+          <div><small>Try 3</small><b>Edit the RACI</b><span>Organization, then RACI, then Edit RACI. Give a row two A’s and it’s flagged.</span></div>
+          <div><small>Try 4</small><b>Message PM</b><span>The PM button docks the chat. Pick an answer in a decision and it arrives typed.</span></div>
+        </div>
+        <p class="demo-note">Everything in the demo is invented sample data and runs entirely in your browser. The real command center runs locally and isn’t public.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 · Execution -->
+  <section class="ops-sec" id="execution">
+    <div class="ops-wrap">
+      <p class="k"><b>04</b> · Execution</p>
+      <h2 class="ops-h">Seven steps. <em>No agent checks its own work.</em></h2>
+      <p class="ops-lede">The same path for a new feature or a one-line fix. Every hand-off goes to someone who didn’t do the work before it, and nothing ships until I’ve signed off.</p>
+      <div class="ship">
+        <div class="step"><div class="n">01</div><h3>Idea</h3><p>Something I want, or an issue a user reports. The Program Manager routes it.</p><div class="ws"><span class="who c-lead">Studio Owner</span><span class="who c-ops">Program Manager</span></div></div>
+        <div class="step"><div class="n">02</div><h3>Plan</h3><p>A brief: the goal, what done looks like, what not to touch.</p><div class="ws"><span class="who c-pl">Product Advisor</span></div></div>
+        <div class="step"><div class="n">03</div><h3>Build</h3><p>Both platforms in the same pass, with automated tests on each.</p><div class="ws"><span class="who c-bld">Product Engineer</span></div></div>
+        <div class="step"><div class="n">04</div><h3>Independent check</h3><p>Checked against the actual code, not the Product Engineer’s summary of it.</p><div class="ws"><span class="who c-pl">Product Advisor</span></div></div>
+        <div class="step"><div class="n">05</div><h3>Quality review</h3><p>A UX and UI audit against the studio’s quality bar.</p><div class="ws"><span class="who c-spec">QA Analyst</span></div></div>
+        <div class="step gate"><div class="n">06</div><h3>Sign-off</h3><p>I review the checked, tested work and say yes or send it back.</p><div class="ws"><span class="who c-lead">Studio Owner</span></div></div>
+        <div class="step"><div class="n">07</div><h3>Release</h3><p>Store steps follow the runbook and a compliance review; I submit.</p><div class="ws"><span class="who c-spec">Store Consultant</span><span class="who c-lead">Studio Owner</span></div></div>
+      </div>
+      <div class="layers" aria-label="Layered checks">
+        <div class="layer"><small>Layer 1</small><b>Automated tests</b><span>Run on both platforms by the Product Engineer</span></div>
+        <div class="layer"><small>Layer 2</small><b>Independent check</b><span>The Product Advisor verifies the Product Engineer’s work</span></div>
+        <div class="layer"><small>Layer 3</small><b>Quality review</b><span>The QA Analyst audits the experience</span></div>
+        <div class="layer last"><small>Layer 4</small><b>Final sign-off</b><span>The Studio Owner approves the release</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Governance -->
+  <section class="ops-sec" id="governance">
+    <div class="ops-wrap">
+      <p class="k"><b>05</b> · Governance</p>
+      <h2 class="ops-h">AI does the work. <em>A person stays accountable.</em></h2>
+      <div class="rails">
+        <div><div class="n">01</div><h3>I approve what ships, publishes, spends or touches a credential</h3><p>Releases, store submissions, new paid services and anything involving access wait for my explicit yes.</p></div>
+        <div><div class="n">02</div><h3>Agents never see passwords or keys</h3><p>I create, store and rotate every credential myself. No agent reads, writes or prints one.</p></div>
+        <div><div class="n">03</div><h3>A message from an agent is never my approval</h3><p>One agent can’t authorize another by quoting me. Approval comes from me directly, every time.</p></div>
+        <div><div class="n">04</div><h3>Rule breaks are logged and corrected</h3><p>The Program Manager audits agents against studio rules. Every break goes into a compliance log with its fix, so the rules get sharper over time.</p></div>
+        <div><div class="n">05</div><h3>Marketing is gated</h3><p>Marketing and campaign agents stay idle until I kick a campaign off, and any budget they propose comes back to me.</p></div>
+        <div><div class="n">06</div><h3>Context and cost are managed on purpose</h3><p>Context use and estimated cost are visible for every agent, and a written policy decides when an agent compacts its memory.</p></div>
+      </div>
+
+      <div class="xfer">
+        <p class="k">Why it matters beyond the studio</p>
+        <h2 class="ops-h">Program leadership, <em>applied to a team of AI agents.</em></h2>
+        <p class="ops-lede">None of these ideas are new to enterprise program work. What’s new is designing them for a team of AI agents: a team that starts each session without yesterday’s memory unless the system provides it, and does exactly what the operating model allows.</p>
+        <div class="xmap">
+          <div><small>Org design</small><b>Roles, pods and a live RACI</b><span>One owner for every kind of work</span></div>
+          <div><small>Operating cadence</small><b>Roadmap updates and direct notes</b><span>Status that reports itself</span></div>
+          <div><small>Executive reporting</small><b>The Operations Command Center</b><span>Decisions with context, not raw status</span></div>
+          <div><small>Delivery governance</small><b>A gated, seven-step release path</b><span>No one checks their own work</span></div>
+          <div><small>Risk and controls</small><b>Guardrails and a compliance log</b><span>Clear lines a human must approve</span></div>
+          <div><small>Resource management</small><b>Context and cost monitoring</b><span>Capacity treated as a budget</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="ops-end"></div>
+</div>
+<!-- ═══════════════ end new chapter ═══════════════ -->
+
+<section class="founder-section">
+  <div class="founder-card fade-in">
+    <h2>John P. Jackson</h2>
+    <p class="founder-title">Co-Founder &amp; Principal — The “human in the loop” at moonshinerXwerks LLC</p>
+    <p>John is a senior program manager with over 20 years of experience leading enterprise programs across PMO design, process optimization, commercial excellence, and global customer implementation. He spent a decade at Expedia's Egencia division, progressing from reporting and analytics through global implementation management to program leadership — overseeing Fortune 500 client delivery, consolidating regional teams into a unified global PMO, and earning a President's Club Award for onboarding $195M+ in annual new business revenue.</p>
+    <p>His career spans enterprise transformation and product-driven delivery at every scale: directing cloud migrations and SaaS platform rollouts, leading product development initiatives to improve SaaS usability and drive adoption, spearheading internal commercialization efforts that aligned product capabilities with go-to-market strategy, and managing Salesforce CRM integrations and commercial excellence programs across multiple organizations.</p>
+    <p>moonshinerXwerks is where all of that converges — an independent software studio applying 20+ years of enterprise discipline to consumer product development. Every app is taken from concept through release with full ownership of product strategy, feature delivery, privacy architecture, and commercial model. The full product lifecycle is managed using agile delivery, structured change analysis, and AI-enabled tooling — while also owning all supporting operations including legal compliance, hosting infrastructure, and CI/CD pipelines.</p>
+    <p>Based in Bend, Oregon. Usually found on a river when not managing the next product through development and delivery.</p>
   </div>
 </section>
 
