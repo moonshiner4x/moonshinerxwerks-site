@@ -5,7 +5,7 @@
   Created Date: 2026-11-16
   Last Edited Date: 2026-11-16
   Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
-  Code Description: Agent Status page of the Operations Command Center replica, copied from the real page: every agent grouped by Working / Idle / Not running, last report, what is waiting on the Studio Owner, context and token use, with a 14-day chart. Reads invented sample data from agents-data.js.
+  Code Description: Agent Status page of the Operations Command Center replica, copied from the real page: eight tiles (waiting, working, idle, not running; work time, wait time, active today, tokens today with the usage popup from ops-metrics.js), then every agent grouped by state with its model, what it is working on, what is waiting on the Studio Owner, context, utilization and token use. Reads invented sample data from agents-data.js.
 -->
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent Status</title>
 <style>
@@ -16,7 +16,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system
 .ops{display:inline-block;margin:0 0 10px;color:var(--mute);font-size:13px;text-decoration:none}.ops:hover{color:var(--text)}
 header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
 h1{font-size:28px;margin:0}.sub{color:var(--mute);margin:4px 0 0;font-size:14px}.sub b{color:var(--text);font-weight:600}.stale{color:var(--wait)!important}
-.stats{display:grid;grid-template-columns:repeat(6,minmax(110px,1fr));gap:10px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .tog{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:10px;vertical-align:middle}.tog button{background:none;border:0;color:var(--mute);font:inherit;font-size:11.5px;padding:2px 10px;cursor:pointer;letter-spacing:.06em}.tog button.on{background:#2a313c;color:var(--text)}
 .th h2{display:inline}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-height:74px}
@@ -28,7 +28,7 @@ h1{font-size:28px;margin:0}.sub{color:var(--mute);margin:4px 0 0;font-size:14px}
 .grid{position:absolute;left:0;right:0;border-top:1px dashed #2a313c}
 .bars{position:absolute;inset:0 0 0 6px;display:grid;grid-template-columns:repeat(14,1fr);gap:6px;align-items:end}
 .bar .v{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--mute);white-space:nowrap;margin-bottom:2px}
-.bar{background:#2f6b52;border-radius:4px 4px 0 0;min-height:2px;position:relative}.bar.today{background:var(--ok)}
+.bar{background:#2f6b52;border-radius:4px 4px 0 0;min-height:2px;position:relative;display:flex;flex-direction:column-reverse;overflow:visible}.bar i{display:block;min-height:1px}.bar i:last-of-type{border-radius:4px 4px 0 0}.bar.today{box-shadow:0 0 0 1.5px var(--text)}.sg-opus{background:#3fb27f}.sg-sonnet{background:#5b9bf7}.sg-haiku{background:#c9ced6}.sg-fable,.sg-mythos{background:#b07ef0}.sg-other{background:#6b7480}.mlg{margin-top:14px;overflow-x:auto}.mtab{width:100%;border-collapse:collapse;table-layout:auto;font-size:13px;font-variant-numeric:tabular-nums}.mtab th{color:var(--mute);font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase;text-align:right;padding:4px 10px;border-bottom:1px solid var(--line)}.mtab th:first-child,.mtab td:first-child{text-align:left}.mtab tr.sub th{text-transform:none;letter-spacing:0;font-weight:500}.mtab td{text-align:right;padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}.mtab td small{color:var(--mute);margin-left:6px;font-size:11px}.mtab td i{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:8px}.mtab tr.tt td{border-bottom:0}
 .bl{display:grid;grid-template-columns:repeat(14,1fr);gap:6px;margin:4px 0 0 66px;color:var(--mute);font-size:11px;text-align:center}
 h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:24px 0 10px}
 .board{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -39,13 +39,14 @@ tr.g td{background:#11161d;color:var(--mute);font-size:11.5px;letter-spacing:.12
 tr.a{border-left:4px solid var(--off)}
 tr.a.working td{background-color:rgba(63,178,127,.12);animation:glow 2.4s ease-in-out infinite;border-bottom-color:rgba(63,178,127,.35)}
 tr.a.working{box-shadow:inset 6px 0 0 var(--ok)!important}
-tr.a.working td.nmc a{color:#7ee2a8}
+tr.a.working td.nmc .nm{color:#7ee2a8}
 
 @keyframes glow{0%,100%{background-color:rgba(63,178,127,.08)}50%{background-color:rgba(63,178,127,.20)}}
 @media(prefers-reduced-motion:reduce){tr.a.working td{animation:none}} tr.a.working{box-shadow:inset 4px 0 0 var(--ok)} tr.a.idle{box-shadow:inset 4px 0 0 var(--idle)} tr.a.stopped{box-shadow:inset 4px 0 0 var(--off)}
 td.nmc small{display:block;color:var(--mute);font-size:12px}
 td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} th.num{text-align:right}
-.c-ag{width:19%}.c-la{width:9%}.c-w{width:24%}.c-r{width:24%}.c-cx{width:10%}.c-t{width:7%}.c-t7{width:7%}
+.c-ag{width:16%}.c-wo{width:25%}.c-la{width:7%}.c-w{width:23%}.c-cx{width:8%}.c-ut{width:9%}.c-t{width:6%}.c-t7{width:6%}td[data-l=Utilized] small{white-space:normal}
+.wo b{cursor:default;display:block;font-weight:500;color:#e8e6e1;font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.wo b.open{-webkit-line-clamp:unset}.wo em{display:block;font-style:normal;color:#9aa3ad;font-size:12px;margin-top:2px}.wo span{display:block;color:#7ee2a8;font-size:12px;margin-top:4px}.wo span:before{content:"Now: ";color:#9aa3ad}
 .cx{font-variant-numeric:tabular-nums;font-size:13px}.cx .b{height:6px;border-radius:3px;background:#262626;margin-top:5px;overflow:hidden}.cx .b i{display:block;height:100%;border-radius:3px}
 .cx.g i{background:#3fb27f}.cx.a i{background:#e0a83a}.cx.r i{background:#e5534b}.cx.a b{color:#e0a83a}.cx.r b{color:#ff7b72}.cx small{color:var(--mute)}
 @media(max-width:900px){table,thead,tbody,tr,td{display:block}thead{display:none}tr.a{padding:8px 4px;border-bottom:1px solid var(--line)}td{border:0;padding:3px 12px}td.num{text-align:left}td.num:before{content:attr(data-l)" ";color:var(--mute)}}
@@ -62,7 +63,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} th
 @keyframes p{0%{box-shadow:0 0 0 0 rgba(63,178,127,.6)}70%{box-shadow:0 0 0 7px rgba(63,178,127,0)}100%{box-shadow:0 0 0 0 rgba(63,178,127,0)}}
 .meta{color:var(--mute);font-size:12.5px;margin-top:2px}
 .rep{font-size:13px;color:#c9ccd1;margin-top:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
-.rep.open{-webkit-line-clamp:unset}.rep em{color:var(--mute);font-style:normal}
+.rep.open{-webkit-line-clamp:unset}.mdl.off{border-color:#a07a2a;color:#f0c35a}.mdl{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;border:1px solid #3a424e;color:#b9c0c9;font-size:10.5px;line-height:15px;vertical-align:1px}.wo .rep.ld em{display:inline;color:var(--mute);font-style:normal;margin-right:2px}.wo .rep.ld{margin-top:2px}.rep em{color:var(--mute);font-style:normal}
 .wait{margin:0;padding:0;list-style:none}.wait li{font-size:13px;color:var(--wait);padding-left:16px;position:relative}.wait li:before{content:"●";position:absolute;left:0;font-size:9px;top:4px}
 .note{font-size:12.5px;color:var(--mute);margin-top:4px}
 .tok{font-size:12px;color:var(--mute);margin-top:6px;font-variant-numeric:tabular-nums}
@@ -70,26 +71,53 @@ td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} th
 .legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--mute);font-size:12.5px;margin:6px 0 0}.legend span{display:inline-flex;gap:6px;align-items:center}
 .foot{color:var(--mute);font-size:12.5px;margin-top:26px}
 @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.wrap{padding:20px 16px 40px}.groups{grid-template-columns:1fr}}
+tr.a.blocked td{background-color:rgba(230,170,40,.10);border-bottom-color:rgba(230,170,40,.35)}
+tr.a.blocked{box-shadow:inset 6px 0 0 #e6aa28!important}
+tr.a.blocked td.nmc .nm{color:#f0c35a}
+.blocked .dot{background:#e6aa28}.tile.blocked{border-left-color:#e6aa28}
+td.wo .wt{color:#f0c35a;font-weight:600}
+td.wo .go{display:inline-block;margin:6px 10px 2px 0;padding:5px 12px;border-radius:999px;border:1px solid #e6aa28;background:#e6aa28;color:#1a1300;font:600 12.5px 'DM Sans',sans-serif;cursor:pointer}td.wo .go:hover{background:#f0c35a}
+.avg{position:absolute;left:0;right:0;border-top:2px dashed #e6aa28;z-index:2;pointer-events:auto}.avg span{position:absolute;right:0;top:-20px;font-size:11.5px;font-weight:600;color:#e6aa28;background:var(--bg,#0b0b0b);padding:0 6px;border-radius:4px}
+.nmb{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}.nmb:hover{text-decoration:underline}
+
+.stat{position:relative}.inf{position:absolute;top:8px;right:9px;width:16px;height:16px;border-radius:50%;border:1px solid #4a525e;color:var(--mute);font:600 10.5px/14px Georgia,serif;font-style:italic;text-align:center;cursor:help;user-select:none}.inf:hover,.inf:focus{color:var(--text);border-color:var(--mute);outline:none}.inf .tip{display:none;position:absolute;z-index:30;top:22px;right:-6px;width:260px;padding:10px 12px;background:#1d232c;border:1px solid #3a424e;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.5);color:var(--text);font:400 12.5px/1.45 'DM Sans',sans-serif;font-style:normal;text-align:left;white-space:normal;cursor:default}.inf:hover .tip,.inf:focus .tip{display:block}.stat .inf .tip{font-size:12.5px}
+.stat.clk{cursor:pointer;border-color:#3d5a4c}.stat.clk:hover{border-color:#7ee2a8}.stat.clk>span:not(.inf)::after{content:' ›';color:#7ee2a8}
+dialog.udlg{width:min(900px,94vw);max-height:88vh;padding:0;border:1px solid #4a4a4a;border-top:3px solid #7ee2a8;border-radius:14px;background:#1e1e1e;color:var(--text);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 24px 80px rgba(0,0,0,.85)}
+dialog.tdlg{width:min(1100px,95vw)}.tdlg .tbd{padding:6px 20px 18px}.tdlg .trend{border:0;background:none;padding:0;margin:0}
+dialog.udlg::backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.udlg .uh{display:flex;justify-content:space-between;gap:14px;padding:16px 20px;background:#262626;border-bottom:1px solid #383838;position:sticky;top:0}
+.udlg .uh small{color:var(--mute);letter-spacing:.1em;font-size:11.5px}.udlg .uh h3{margin:2px 0;font-size:20px}.udlg .uh p{margin:0;color:var(--mute);font-size:13.5px}
+.udlg .ux,.udlg .uback{background:none;border:1px solid #444;color:var(--text);border-radius:8px;cursor:pointer}.udlg .ux{width:32px;height:32px;flex:none}.udlg .uback{padding:1px 8px;font-size:11.5px;letter-spacing:0}
+.udlg .utabs{display:flex;gap:6px;padding:12px 20px 0}.udlg .utabs button{background:#2a2a2a;border:1px solid #444;color:var(--text);border-radius:999px;padding:5px 14px;cursor:pointer;font:500 13px 'DM Sans',sans-serif}.udlg .utabs button.on{background:#7ee2a8;color:#000;border-color:#7ee2a8}
+.udlg .ul{padding:10px 20px}.udlg .ur{display:grid;grid-template-columns:320px minmax(0,1fr) 52px 190px;gap:12px;align-items:center;width:100%;background:none;border:0;border-bottom:1px solid #2e2e2e;color:var(--text);padding:9px 4px;cursor:pointer;text-align:left;font:inherit}.udlg .ur:hover{background:#262626}
+.udlg .ur b{text-align:right}.udlg .ur small{color:var(--mute);text-align:right;white-space:nowrap}.udlg .ur .un{white-space:normal;overflow-wrap:normal}
+.udlg .ub{height:8px;border-radius:4px;background:#2c2c2c;overflow:hidden}.udlg .ub i{display:block;height:100%;background:#3fb27f}
+.udlg .uc{display:flex;gap:4px;align-items:flex-end;height:220px;padding:18px 20px 6px}.udlg .ucol{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;min-width:0}
+.udlg .ucb{flex:1;width:100%;max-width:38px;background:#262626;border-radius:4px 4px 0 0;display:flex;align-items:flex-end}.udlg .ucb i{display:block;width:100%;background:#3fb27f;border-radius:4px 4px 0 0}
+.udlg .uv{font-size:11px;color:var(--mute);height:14px}.udlg .uk{font-size:10.5px;color:var(--mute);white-space:nowrap;overflow:hidden;max-width:100%}
+.udlg .unote{color:var(--mute);font-size:12.5px;padding:0 20px 16px;margin:6px 0 0}.udlg .none{color:var(--mute)}
+@media(max-width:640px){.udlg .ur{grid-template-columns:1fr 60px;}.udlg .ur .ub,.udlg .ur small{display:none}}
+.udlg .usec{padding:14px 20px 0;color:var(--mute);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase}.udlg .ur.ap{cursor:default}.udlg .ur.ap:hover{background:none}.udlg .ur.ap .ub i{background:#5b9bf7}
 </style><script src="ops-brand.js"></script></head><body><div class="wrap"><a class="ops" href="index.html">← Command Center</a>
 <header><div><h1>Agent Status</h1><p class="sub" id="upd">Loading…</p>
-<div class="legend"><span class="working"><i class="dot"></i>Working</span><span class="idle"><i class="dot"></i>Idle, ready</span><span><i class="dot"></i>Not running</span><span style="color:var(--wait)">● Waiting on you</span></div></div>
+</div>
 <div class="stats" id="stats"></div></header>
-<div class="trend"><div class="th"><h2 id="ttl">Studio tokens per day, last 14 days</h2><span class="tog"><button data-m="tok" class="on">Tokens</button><button data-m="usd">Est. cost</button></span></div><div style="height:8px"></div><div class="chart"><div class="yax" id="yax"></div><div class="plot" id="plot"><div class="bars" id="bars"></div></div></div><div class="bl" id="bl"></div></div>
-<div class="board"><table><thead><tr><th class="c-ag">Agent</th><th class="c-la">Last active</th><th class="c-w">Waiting on you</th><th class="c-r">Last report to the PM</th><th class="c-cx">Context</th><th class="c-t num">Today</th><th class="c-t7 num">7 days</th></tr></thead><tbody id="rows"></tbody></table></div>
+
+<div class="board"><table><thead><tr><th class="c-ag">Agent</th><th class="c-wo">Working on</th><th class="c-la">Last active</th><th class="c-w">Waiting on you</th><th class="c-cx">Context</th><th class="c-ut num" title="Share of the time its session was running today that the agent spent working">Utilized today</th><th class="c-t num">Today</th><th class="c-t7 num">7 days</th></tr></thead><tbody id="rows"></tbody></table></div>
 <h2>Other open sessions (not on the roster)</h2><ul class="others" id="others"></ul>
-<p class="foot">Sample data. In the real Command Center this page updates every 10 seconds from a local refresher. Tokens come from each agent's conversation files; "new" is fresh input plus cache writes, "cached" is re-read context. Estimated cost uses API list prices: what the same work would cost on the API, not what a subscription charges. Click an agent's name for its role card.</p>
+<p class="foot">Sample data. In the real Command Center this page updates every 10 seconds from a local refresher. Tokens come from each agent's conversation files; "new" is fresh input plus cache writes, "cached" is re-read context. Estimated cost uses API list prices per model: what the same work would cost on the API, not what a subscription charges. Click an agent's name for its role card.</p>
 </div>
 <script>
-const GROUPS=[["Program Manager", ["Moonshinerxwerks Program Manager"]], ["Specialists", ["Research Analyst", "Store Consultant", "Legal Analyst", "QA Analyst"]], ["Marketing", ["Marketing Manager", "Product A - Campaign Manager", "Product B - Campaign Manager"]], ["Product A", ["Product A - Advisor", "Product A - Engineer"]], ["Product B", ["Product B - Advisor", "Product B - Engineer"]], ["Product C", ["Product C - Advisor", "Product C - Engineer"]], ["Product D", ["Product D - Advisor", "Product D - Engineer"]], ["Internal tools", ["Tracker - Engineer"]]];
+const GROUPS=[["Program Manager", ["Moonshinerxwerks Program Manager"]], ["Specialists", ["Research Analyst", "Store Consultant", "Legal Analyst", "QA Analyst"]], ["Marketing", ["Marketing Manager", "Product A - Campaign Manager", "Product B - Campaign Manager"]], ["Product A", ["Product A - Advisor", "Product A - Engineer"]], ["Product B", ["Product B - Advisor", "Product B - Engineer"]], ["Product C", ["Product C - Advisor", "Product C - Engineer"]], ["Product D", ["Product D - Advisor", "Product D - Engineer"]], ["Internal tools", ["Ops Board - Engineer"]]];
 const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $=n=>'$'+(n>=1000?Math.round(n).toLocaleString():n>=100?Math.round(n):n.toFixed(2));
-let METRIC='tok';
 function cx(a){const L=(window.AGENT_STATUS||{}).contextLimit||1e6;if(a.context==null)return '<td></td>';if(a.context<0)return '<td class="cx g" title="Compacted; the new size shows after its next reply"><b>Compacted</b><div class="b"><i style="width:4%"></i></div></td>';const p=Math.min(100,a.context/L*100),c=p>=75?'r':p>=50?'a':'g';return `<td class="cx ${c}" title="${K(a.context)} of ${K(L)} context; agents auto-compact near the limit"><b>${Math.round(p)}%</b> <small>${K(a.context)}</small><div class="b"><i style="width:${p}%"></i></div></td>`;}
+const hm=s=>{const m=Math.floor(s/60);return m<1?'0 min':m<60?m+' min':Math.floor(m/60)+' hr'+(m%60?' '+m%60+' min':'');};
 const K=n=>n>=1e9?(n/1e9).toFixed(1)+'B':n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?Math.round(n/1e3)+'K':String(n);
 function ago(t){if(!t)return'never';const s=(Date.now()-(typeof t==='number'?t:Date.parse(t)))/1000;if(s<60)return'just now';if(s<3600)return Math.round(s/60)+' min ago';if(s<86400)return Math.round(s/3600)+' h ago';return Math.round(s/86400)+' d ago';}
 const open=new Set();
 function tile(a){
-  const st=a.state==='working'?'Working':a.state==='idle'?'Idle':'Not running';
+  const st=a.state==='working'?'Working':a.state==='blocked'?'Waiting on direction':a.state==='idle'?'Idle':'Not running';
   const rep=a.report?`<div class="rep${open.has(a.name)?' open':''}" data-n="${E(a.name)}" title="Sent ${ago(a.report.at)}">${E(a.report.text)}</div>`:'';
   const w=a.waiting.length?`<ul class="wait">${a.waiting.map(x=>'<li>'+E(x)+'</li>').join('')}</ul>`:'';
   const t=a.tokToday[0]+a.tokToday[2];
@@ -104,34 +132,44 @@ function render(){
   const by={};d['agents'].forEach(a=>by[a.name]=a);
   const n=s=>d['agents'].filter(a=>a.state===s).length, waits=d['agents'].reduce((x,a)=>x+a.waiting.length,0);
   const T=d.studio.today,W=d.studio.week;
-  document.getElementById('stats').innerHTML=[[n('working'),'Working'],[n('idle'),'Idle'],[n('stopped'),'Not running'],[waits,'Waiting on you'],[K(T[0]+T[2]),'Tokens today','+'+K(T[1])+' cached · 7d '+K(W[0]+W[2])],[$(T[3]),'Est. cost today','API list prices · 7d '+$(W[3])]]
-    .map(([v,l,s])=>`<div class="stat"><b>${v}</b><span>${l}</span>${s?'<small>'+s+'</small>':''}</div>`).join('');
-  const val=x=>METRIC==='usd'?x[1][3]:x[1][0]+x[1][2], F=METRIC==='usd'?$:K;
-  document.getElementById('ttl').textContent=METRIC==='usd'?'Studio estimated cost per day, last 14 days (API list prices)':'Studio tokens per day, last 14 days (new input + output)';
-  const raw=Math.max(1,...d.studio.daily.map(val));
-  const p10=Math.pow(10,Math.floor(Math.log10(raw))), mx=[1,2,2.5,5,10].map(m=>m*p10).find(m=>m>=raw);
-  const ticks=[0,.25,.5,.75,1];
-  document.getElementById('yax').innerHTML=ticks.map(t=>`<span style="bottom:${t*100}%">${F(mx*t)}</span>`).join('');
-  document.querySelectorAll('#plot .grid').forEach(g=>g.remove());
-  document.getElementById('plot').insertAdjacentHTML('afterbegin',ticks.slice(1).map(t=>`<div class="grid" style="bottom:${t*100}%"></div>`).join(''));
-  document.getElementById('bars').innerHTML=d.studio.daily.map((x,i)=>{const v=val(x);return `<div class="bar${i===13?' today':''}" style="height:${Math.max(1,v/mx*100)}%" title="${x[0]}: ${K(x[1][0])} new input, ${K(x[1][2])} output, ${K(x[1][1])} cached reads · est. ${$(x[1][3])}">${v?`<span class="v">${F(v)}</span>`:''}</div>`}).join('');
-  document.getElementById('bl').innerHTML=d.studio.daily.map(x=>`<span>${x[0].slice(5).replace('-','/')}</span>`).join('');
+const INFO={
+ 'Active today':'Agents that did any work since midnight (used any tokens), out of every agent on the roster.',
+ 'Waiting on direction':'Agents that were working and paused to wait for your direction, and are still waiting now. Idle agents with nothing to do are not counted.',
+ 'Wait time today':'Combined time agents spent waiting on your direction since midnight. A wait runs from when an agent pauses for you until it starts its next turn. Below: how many agents waited today, and the total for today plus the previous 6 days.',
+ 'Working':'Agents running a turn right now.',
+ 'Utilization today':'Work time divided by available time since midnight. Available time is while an agent\'s session was open. Click the tile for the breakdown by agent and product.',
+ 'Work time today':'Combined time agents spent actively working since midnight, from each turn\'s recorded length. Agents working at the same time each count, so this can be more than clock time. Below: today plus the previous 6 days.',
+ 'Tokens today':'New input plus output tokens across every agent and every model since midnight (cached reads not counted). Click for the per-day chart and the breakdown by model, in tokens or estimated cost. Cost and utilization live on the Dashboard.',
+ 'Est. cost today':'What today\'s usage would cost at Anthropic API list prices, across every agent and model since midnight. An estimate, not a bill. Click for the per-day chart and the breakdown by model.',
+ 'Idle':'Sessions that are open with nothing to do and not waiting on you.',
+ 'Not running':'Agents on the roster with no session open right now.'};
+  document.getElementById('stats').innerHTML=[[n('blocked'),'Waiting on direction'],[n('working'),'Working'],[n('idle'),'Idle'],[n('stopped'),'Not running'],[hm(((d.studio.work||{}).today)||0),'Work time today','Last 7 days: '+hm(((d.studio.work||{}).week)||0)],[hm((d.studio.wait||{today:[0,0]}).today[0]),'Wait time today',((d.studio.wait||{})['agentsToday']||0)+' agents · Last 7 days: '+hm(((d.studio.wait||{}).week||[0])[0])],[d['agents'].filter(a=>a.tokToday[0]+a.tokToday[1]+a.tokToday[2]>0).length,'Active today','of '+d['agents'].length+' agents'],[K(d.studio.today[0]+d.studio.today[2]),'Tokens today','Last 7 days: '+K(d.studio.week[0]+d.studio.week[2])]]
+    .map(([v,l,s])=>`<div class="stat${l==='Utilization today'?' clk" data-util="1" title="Click for the breakdown by agent':l==='Tokens today'?' clk" data-tok="tok" title="Click for tokens per day by model':l==='Est. cost today'?' clk" data-tok="usd" title="Click for cost per day by model':''}">${INFO[l]?`<span class="inf" tabindex="0" role="button" aria-label="What is ${l}?">i<span class="tip">${INFO[l]}</span></span>`:''}<b>${v}</b><span>${l}</span>${s?'<small>'+s+'</small>':''}</div>`).join('');
+  window.mxUsageRefresh&&window.mxUsageRefresh();
   const seen=new Set();
-  const row=a=>{const st=a.state==='working'?'Working':a.state==='idle'?'Idle':'Not running';const t=a.tokToday[0]+a.tokToday[2];
-    return `<tr class="a ${a.state}"><td class="nmc"><a class="nm" href="agent-roster.html#p-${E(a.file.replace(/\.md$/,''))}">${E(a.name)}</a><small>${E([(team[a.name]||[''])[0],a.kind].filter(Boolean).join(' · '))}</small></td>
-    <td>${ago(a.lastActive)}</td>
+const lastDone=a=>{let t=String(a.report.text||'').replace(/^DIRECT NOTE\s*[·:-]\s*/i,'');
+ const n=a.name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');t=t.replace(new RegExp('^(from (the )?)?'+n+'\\s*[-·:]\\s*','i'),'').replace(/^[\w !-]{0,40}?(check-in|update|report|status)\s*:\s*/i,'');
+ return t.charAt(0).toUpperCase()+t.slice(1);};
+const mname=m=>{const x=/claude-(opus|sonnet|haiku|fable)-(\d+)-(\d+)/.exec(m||'');return x?x[1][0].toUpperCase()+x[1].slice(1)+' '+x[2]+'.'+x[3]:m;};
+const mtier=m=>/opus|fable/.test(m||'')?'hi':/sonnet/.test(m||'')?'mid':'lo';
+  const row=a=>{const st=a.state==='working'?'Working':a.state==='blocked'?'Waiting on direction':a.state==='idle'?'Idle':'Not running';const t=a.tokToday[0]+a.tokToday[2];
+    return `<tr class="a ${a.state}"><td class="nmc">${a.id?`<button type="button" class="nm nmb" data-open="${E(a.id)}" data-name="${E(a.name)}" title="Open ${E(a.name)}'s terminal">${E(a.name)}</button>`:`<span class="nm" title="Agent terminals are not part of the sample">${E(a.name)}</span>`}<small>${E([(team[a.name]||[''])[0],a.kind].filter(Boolean).join(' · '))}${a.model?(()=>{const off=a.modelSet&&!(a.model||'').includes(a.modelSet);return ` <span class="mdl${off?' off':''}" title="${E(a.model)}${a.modelSet?' · assigned: '+E(a.modelSet)+(off?'. Switches when the agent restarts.':''):''}">${E(mname(a.model))}${off?' → '+E(a.modelSet[0].toUpperCase()+a.modelSet.slice(1)):''}</span>`;})():''}</small></td>
+    <td class="wo">${a.state==='blocked'?(a.needs?`<b>Needs: ${E(a.needs)}</b>`:'<b>Paused for your direction</b>')+(a.since?`<span class="wt" title="Since ${new Date(a.since).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}">Waiting ${hm((Date.now()-a.since)/1000)}</span>`:''):''}${a.state==='working'&&(a.brief||a.step)?`${a.brief?`<b title="${E(a.task)}">${E(a.brief)}</b>`:''}${a.from?`<em>from ${E(a.from)}</em>`:''}${a.step?`<span>${E(a.step)}</span>`:''}`:''}${a.state==='idle'&&a.report?`<div class="rep ld${open.has(a.name)?' open':''}" data-n="${E(a.name)}" title="Reported ${ago(a.report.at)}; click to expand"><em>Last done:</em> ${E(lastDone(a))}</div>`:''}</td>    <td>${ago(a.lastActive)}</td>
     <td>${a.waiting.length?`<ul class="wait">${a.waiting.map(x=>'<li>'+E(x)+'</li>').join('')}</ul>`:''}${a.note?`<div class="note">${E(a.note)}</div>`:''}</td>
-    <td>${a.report?`<div class="rep${open.has(a.name)?' open':''}" data-n="${E(a.name)}" title="Sent ${ago(a.report.at)}">${E(a.report.text)}</div>`:''}</td>
-    ${cx(a)}<td class="num" data-l="Today" title="${K(a.tokToday[0])} new input, ${K(a.tokToday[2])} output, ${K(a.tokToday[1])} cached reads">${K(t)}<small style="display:block;color:var(--mute)">${$(a.tokToday[3])}</small></td><td class="num" data-l="7 days">${K(a.tokWeek[0]+a.tokWeek[2])}<small style="display:block;color:var(--mute)">${$(a.tokWeek[3])}</small></td></tr>`;};
+    ${cx(a)}<td class="num" data-l="Utilized" title="${a.util&&a.util[1]>0?hm(a.util[0])+' working of '+hm(a.util[1])+' open today':''}">${a.util&&a.util[1]>0?`<b>${Math.round(100*a.util[0]/a.util[1])}%</b>`:''}</td><td class="num" data-l="Today" title="${K(a.tokToday[0])} new input, ${K(a.tokToday[2])} output, ${K(a.tokToday[1])} cached reads">${K(t)}<small style="display:block;color:var(--mute)">${$(a.tokToday[3])}</small></td><td class="num" data-l="7 days">${K(a.tokWeek[0]+a.tokWeek[2])}<small style="display:block;color:var(--mute)">${$(a.tokWeek[3])}</small></td></tr>`;};
   const team={};GROUPS.forEach(([g,ns],gi)=>ns.forEach((x,ni)=>team[x]=[g,gi*10+ni]));
   const ord=a=>(team[a.name]||['',999])[1];
-  let html=[['working','Working'],['idle','Idle, ready for work'],['stopped','Not running']].map(([k,l])=>{
+  let html=[['blocked','Working, waiting on direction'],['working','Working'],['idle','Idle, ready for work'],['stopped','Not running']].map(([k,l])=>{
     const rs=d['agents'].filter(a=>a.state===k).sort((x,y)=>(y.lastActive||0)-(x.lastActive||0)||ord(x)-ord(y));
-    return rs.length?`<tr class="g"><td colspan="7"><span class="${k}" style="display:inline-flex;gap:8px;align-items:center"><i class="dot"></i>${l} · ${rs.length}</span></td></tr>`+rs.map(row).join(''):'';}).join('');
+    return rs.length?`<tr class="g"><td colspan="8"><span class="${k}" style="display:inline-flex;gap:8px;align-items:center"><i class="dot"></i>${l} · ${rs.length}</span></td></tr>`+rs.map(row).join(''):'';}).join('');
   document.getElementById('rows').innerHTML=html;
   document.getElementById('others').innerHTML=d.others.length?d.others.map(o=>`<li>${E(o.name)} · ${o.state==='working'?'working':'idle'} · ${o.kind==='background'?'background':'window'} · started ${ago(o.started)} · ${K(o.tokToday[0]+o.tokToday[2])} tokens today</li>`).join(''):'<li>None</li>';
 }
-document.addEventListener('click',e=>{const b=e.target.closest('.tog button');if(b){METRIC=b.dataset.m;document.querySelectorAll('.tog button').forEach(x=>x.classList.toggle('on',x===b));render();return;}const r=e.target.closest('.rep');if(!r)return;const k=r.dataset.n;open.has(k)?open.delete(k):open.add(k);r.classList.toggle('open');});
-function load(){const s=document.createElement('script');s.src='agents-data.js?'+Date.now();s.onload=()=>{render();s.remove();};s.onerror=()=>s.remove();document.head.appendChild(s);}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-open]');if(g){if(window.mxOpenAgent)window.mxOpenAgent(g.dataset.name,g.dataset.open);return;}const w=e.target.closest('[data-wo]');if(w){const k='wo:'+w.dataset.wo;open.has(k)?open.delete(k):open.add(k);w.classList.toggle('open');return;}const r=e.target.closest('.rep');if(!r)return;const k=r.dataset.n;open.has(k)?open.delete(k):open.add(k);r.classList.toggle('open');});
+
+document.addEventListener('click',e=>{
+  if(e.target.closest('.inf'))return;
+  const tk=e.target.closest('[data-tok]');if(tk&&window.mxOpenUsage)return window.mxOpenUsage(tk.dataset.tok);});
+function load(){const s=document.createElement('script');s.src='agents-data.js?'+Date.now();s.onload=()=>{render();s.remove();if(!window.hashDone){window.hashDone=1;const h=location.hash;if(h==='#cost'||h==='#tokens'){window.mxOpenUsage&&window.mxOpenUsage(h==='#cost'?'usd':'tok');}else if(h==='#util'){window.mxOpenUtil&&window.mxOpenUtil();}history.replaceState(null,'',location.pathname);}};s.onerror=()=>s.remove();document.head.appendChild(s);}
 load();setInterval(load,10000);setInterval(render,30000);
-</script></body></html>
+</script><script src="ops-metrics.js"></script></body></html>

@@ -15,6 +15,7 @@
     ['Agent Status', 'agents.html'],
     ['Briefing', ''],
     ['Roadmap', ''],
+    ['Marketing', 'marketing.html'],
     ['Organization', 'agent-roster.html'],
   ];
   const head = document.head;
@@ -72,7 +73,7 @@
   `});
 
   /* Sample conversation shown in the PM drawer (the real Command Center shows a live terminal here). */
-  const CHAT = [["Studio Owner", "what's ready to commit?"], ["Program Manager", "Three changes are checked and ready:\n\u00b7 Product A 2.1: release notes and the settings fix (QA Analyst passed it)\n\u00b7 Product B 1.3: sign-in key config\n\u00b7 Tracker: board archive tab\nNothing is pushed until you say so."], ["Studio Owner", "commit all three"], ["Program Manager", "Committed Product A 2.1, Product B 1.3 and the Tracker board; nothing pushed.\nMarked Decision 1 done on the Dashboard."], ["Studio Owner", "what's next for me?"], ["Program Manager", "One urgent action: renew the Product B sign-in key before Thursday. The four steps are on the Dashboard under Actions 1; Product B - Engineer is ready to test as soon as you hand it the key."]];
+  const CHAT = [["Studio Owner", "what's ready to commit?"], ["Program Manager", "Three changes are checked and ready:\n\u00b7 Product A 2.1: release notes and the settings fix (QA Analyst passed it)\n\u00b7 Product B 1.3: sign-in key config\n\u00b7 Ops Board: archive tab\nNothing is pushed until you say so."], ["Studio Owner", "commit all three"], ["Program Manager", "Committed Product A 2.1, Product B 1.3 and the Ops Board archive tab; nothing pushed.\nMarked Decision 1 done on the Dashboard."], ["Studio Owner", "what's next for me?"], ["Program Manager", "One urgent action: renew the Product B sign-in key before Thursday. The four steps are on the Dashboard under Actions 1; Product B - Engineer is ready to test as soon as you hand it the key."]];
   const CHAT_REPLY = "Got it. In the real Command Center I would route that to the right lead and confirm here when it is done. This is a demo with sample data, so nothing is sent.";
   function fakeChat() {
     const E = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -126,7 +127,7 @@
         try { const v = getComputedStyle(root); localStorage.setItem('mxW', parseInt(v.getPropertyValue('--mxw')) || ''); localStorage.setItem('mxH', parseInt(v.getPropertyValue('--mxh')) || ''); } catch (e) {} };
       document.addEventListener('mousemove', move); document.addEventListener('mouseup', up);
     });
-    const open = () => { if (!d.querySelector('.mx-chat')) d.appendChild(fakeChat()); d.classList.add('open'); document.body.classList.add('mx-docked'); setTimeout(() => { const i = d.querySelector('.mx-chat input'); if (i) i.focus({ preventScroll: true }); }, 250); try { sessionStorage.setItem('mxChat', '1'); } catch (e) {} };
+        const open = () => { if (!d.querySelector('.mx-chat')) d.appendChild(fakeChat()); d.classList.add('open'); document.body.classList.add('mx-docked'); setTimeout(() => { const i = d.querySelector('.mx-chat input'); if (i) i.focus({ preventScroll: true }); }, 250); try { sessionStorage.setItem('mxChat', '1'); } catch (e) {} };
     const close = () => { d.classList.remove('open'); document.body.classList.remove('mx-docked'); try { sessionStorage.removeItem('mxChat'); } catch (e) {} };
     const av = document.createElement('button');
     av.className = 'mx-av'; av.type = 'button'; av.setAttribute('aria-label', 'Message the Program Manager');
@@ -144,7 +145,7 @@
       sc.onerror = () => sc.remove(); document.head.appendChild(sc); };
     presence(); setInterval(presence, 20000);
     d.querySelector('.mx-dh button').onclick = close;
-    try { if (sessionStorage.getItem('mxChat') || location.hash === '#chat') open(); } catch (e) {}
+        try { if (sessionStorage.getItem('mxChat') || location.hash === '#chat') open(); } catch (e) {}
   }
   if (document.body) bar(); else document.addEventListener('DOMContentLoaded', bar);
 })();

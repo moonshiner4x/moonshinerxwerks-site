@@ -25,8 +25,8 @@ h1{font-size:28px;margin:0}.sub{color:var(--mute);margin:4px 0 22px}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;min-width:980px;table-layout:fixed}
 th,td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:center;vertical-align:middle}
-thead th{position:sticky;top:0;background:#1b222c;z-index:2;font-size:12.5px;font-weight:700;line-height:1.25;vertical-align:bottom;overflow-wrap:normal;word-break:normal}
-thead th small{display:block;color:var(--mute);font-weight:400;font-size:11px;margin-top:2px}
+thead th{position:sticky;top:0;background:#1b222c;z-index:2;font-size:12.5px;font-weight:700;line-height:1.25;vertical-align:bottom;overflow-wrap:normal;word-break:normal;hyphens:manual}
+thead th small{display:block;color:var(--mute);font-weight:400;font-size:10.5px;margin-top:2px;line-height:1.25}
 th.act,td.act{text-align:left;width:22%;padding-left:14px}
 td.act b{display:block;font-size:14px}td.act span{color:var(--mute);font-size:12.5px}
 th.mk,td:nth-child(10),td:nth-child(11){background:rgba(111,143,184,.05)}
@@ -36,7 +36,7 @@ td.col-owner{background:rgba(229,83,75,.04)}
 .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
 .box h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px}
 .box ul{margin:0;padding-left:18px}.box li{margin:5px 0;color:var(--mute)}.box li b{color:var(--text)}
-table.who{min-width:0;width:100%;table-layout:fixed}.who td,.who th{text-align:left;font-size:13.5px;padding:7px 10px;overflow-wrap:normal;word-break:normal}.who thead th{position:static}
+table.who{min-width:0;width:100%;table-layout:fixed}.who td,.who th{text-align:left;font-size:13.5px;padding:7px 10px;overflow-wrap:anywhere}.who thead th{position:static}
 .who th{background:#1b222c}
 .approve{border-color:#2c6a46;background:#122219}
 .approve h2{color:#7ee2a8}
@@ -61,8 +61,8 @@ table.who{min-width:0;width:100%;table-layout:fixed}.who td,.who th{text-align:l
 <th>Product Advisor<small>one per product</small></th>
 <th>Product Engineer<small>one per product</small></th>
 <th>Research Analyst<small>any product</small></th>
-<th>Store Consultant<small>both app stores</small></th>
-<th>Legal Analyst<small>legal + privacy</small></th>
+<th>Store Consultant<small>App Store + Google Play</small></th>
+<th>Legal Analyst<small>legal + privacy, every product</small></th>
 <th>QA Analyst<small>UX/UI, every product</small></th>
 <th class="mk">Marketing Manager<small>all studio marketing</small></th>
 <th class="mk">Product Campaign Mgr<small>per product</small></th>
@@ -100,7 +100,7 @@ table.who{min-width:0;width:100%;table-layout:fixed}.who td,.who th{text-align:l
 <tr><td>Product B</td><td>Product B - Advisor</td><td>Product B - Engineer</td></tr>
 <tr><td>Product C</td><td>Product C - Advisor</td><td>Product C - Engineer</td></tr>
 <tr><td>Product D</td><td>Product D - Advisor (paused)</td><td>Product D - Engineer (paused)</td></tr>
-<tr><td>Tracker · Portfolio tool</td><td>the Program Manager covers it</td><td>Tracker - Engineer</td></tr>
+<tr><td>Ops Board · Internal tool</td><td>the Program Manager covers it</td><td>Ops Board - Engineer</td></tr>
 <tr><td>Studio-wide</td><td colspan="2">Research Analyst · Store Consultant (App Store + Google Play) · Legal Analyst (legal + privacy) · QA Analyst (UX/UI audits)</td></tr>
 <tr><td>Marketing</td><td colspan="2">Marketing Manager (studio, accountable) · Product A - Campaign Manager · Product B - Campaign Manager</td></tr>
 </tbody></table></div>

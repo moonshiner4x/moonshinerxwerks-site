@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+  Filename: marketing.html
+  App Name: moonshinerxwerks.com
+  Created Date: 2026-11-16
+  Last Edited Date: 2026-11-16
+  Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
+  Code Description: Marketing page of the Operations Command Center replica, copied from the real page: channels, the post pipeline (idea to posted), a 4-week schedule, campaign themes and the standing rules. Reads invented sample data from marketing-data.js.
+-->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing · MoonshinerXwerks Operations Command Center</title>
+<style>
+:root{--bg:#050505;--card:#111;--line:#262626;--text:#F0EDE8;--mute:#8f8f8f;--gold:#D4A843}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 'DM Sans',system-ui,sans-serif}
+.wrap{max-width:1320px;margin:0 auto;padding:24px 24px 60px}
+h1{margin:6px 0 2px}.sub{color:var(--mute);margin:0 0 18px}
+h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700;margin:30px 0 10px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}.stat b{display:block;font-size:24px}.stat span{color:var(--mute);font-size:12.5px}
+.stat.hot{border-color:#6b5420}.stat.hot b{color:var(--gold)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:11px 14px;border-bottom:1px solid #1c1c1c;vertical-align:top;font-size:14px}tr:last-child td{border-bottom:0}
+td small{display:block;color:var(--mute);font-size:12.5px}
+.pl{font-weight:600}.pv{display:inline-block;margin-left:6px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid #4a3d6b;color:#b9a6e8;border-radius:4px;padding:0 5px;vertical-align:1px}
+.pill{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:1px 10px;border:1px solid currentColor;white-space:nowrap}
+.s-active{color:#3fb27f}.s-standby,.s-held{color:#e6aa28}.s-tagged{color:var(--mute)}
+.tags{color:var(--mute);font-size:12.5px;max-width:420px}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:120px}
+.col h3{margin:0 0 8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.col.ready{border-color:#6b5420}.col.ready h3{color:var(--gold)}
+.card{display:block;width:100%;text-align:left;background:#181818;border:1px solid #2a2a2a;border-radius:8px;padding:9px 10px;margin-bottom:8px;color:var(--text);font:inherit;cursor:pointer}
+.card:hover{border-color:#555}.card .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.card b{display:block;font-size:13.5px;font-weight:600;line-height:1.35;margin:2px 0}.card small{color:var(--mute);font-size:12px}
+.card .g{color:#e6aa28}
+.empty{color:#555;font-size:13px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cal .h{background:#141414;color:var(--mute);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px}
+.cal .d{background:var(--card);min-height:78px;padding:6px 8px;font-size:12px}.cal .d.past{background:#0c0c0c}.cal .d.today{box-shadow:inset 0 0 0 1.5px var(--gold)}
+.cal .n{color:var(--mute);font-size:11.5px}.cal .ev{display:block;margin-top:4px;padding:2px 6px;border-radius:4px;background:#1f2a22;color:#cfe9d8;font-size:11.5px;line-height:1.3;cursor:pointer;border:0;text-align:left;width:100%;font-family:inherit}
+.cal .ev.ready{background:#2a2414;color:#f0dca8}.cal .ev.plan{background:#1a2230;color:#c8d8f0}
+.uns{margin-top:10px;color:var(--mute);font-size:13px}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.theme{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.theme .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.theme b{display:block;margin:2px 0 6px}.theme p{margin:6px 0 0;color:#c9c3b8;font-size:13.5px}
+ul.rules{margin:0;padding:12px 14px 12px 32px;background:var(--card);border:1px solid var(--line);border-radius:10px}ul.rules li{margin:4px 0;font-size:14px}
+.note{color:var(--mute);font-size:12.5px;margin-top:26px}
+dialog{width:min(640px,94vw);padding:0;border:1px solid #4a4a4a;border-top:3px solid var(--gold);border-radius:14px;background:#1e1e1e;color:var(--text);box-shadow:0 24px 80px rgba(0,0,0,.85)}
+dialog::backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(4px)}
+dialog .hd{display:flex;justify-content:space-between;gap:12px;padding:16px 20px;background:#262626;border-bottom:1px solid #383838}
+dialog .hd small{color:var(--mute);letter-spacing:.08em;font-size:11.5px;text-transform:uppercase}dialog h3{margin:2px 0 0;font-size:19px}
+dialog .x{background:none;border:1px solid #444;color:var(--text);border-radius:8px;width:32px;height:32px;cursor:pointer;flex:none}
+dialog .bd{padding:14px 20px 18px}dialog .f{margin:0 0 12px}dialog .f b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+dialog a{color:#7ee2a8}
+@media(max-width:900px){.board{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.cal .d{min-height:60px}}
+</style><script src="ops-brand.js"></script></head><body><div class="wrap">
+<h1>Marketing</h1><p class="sub" id="sub">Social channels, posts and campaigns. Kept current by the Marketing Manager.</p>
+<div class="stats" id="stats"></div>
+<h2>Channels</h2><div id="channels"></div>
+<h2>Post pipeline</h2><div class="board" id="board"></div>
+<h2>Schedule, next 4 weeks</h2><div id="sched"></div>
+<h2>Campaign themes</h2><div class="themes" id="themes"></div>
+<h2>Standing rules</h2><ul class="rules" id="rules"></ul>
+<p class="note">Sample data: every channel, post and date here is invented. Agents draft; the Studio Owner posts.</p>
+</div><dialog id="dlg"></dialog>
+<script>
+const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ST=[['idea','Idea'],['drafting','Drafting'],['qa','QA review'],['ready','Ready for you'],['posted','Posted']];
+const dk=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fmt=s=>s?new Date(s+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}):'';
+const pv=x=>'';
+let D=null,SIG='';
+function render(){const d=window.MKT_DATA;if(!d)return;const sig=JSON.stringify(d);if(sig===SIG)return;SIG=sig;D=d;
+ const ch={};d.channels.forEach(c=>ch[c.id]=c);const P=d.posts;
+ const today=dk(new Date()),d30=dk(new Date(Date.now()-30*864e5));
+ const cnt=s=>P.filter(p=>p.stage===s).length;
+ document.getElementById('stats').innerHTML=[
+  [d.channels.filter(c=>c.status==='active').length+' of '+d.channels.length,'Channels active'],
+  [cnt('ready'),'Ready for you to post',cnt('ready')>0],
+  [cnt('drafting')+cnt('qa'),'In progress (drafting or QA)'],
+  [P.filter(p=>p.stage==='posted'&&p.date>=d30).length,'Posted, last 30 days']].map(([v,l,h])=>`<div class="stat${h?' hot':''}"><b>${v}</b><span>${l}</span></div>`).join('');
+ document.getElementById('channels').innerHTML=`<table><thead><tr><th>Channel</th><th>Drafted by</th><th>Status</th><th>Last post</th><th>Hashtags</th></tr></thead><tbody>${d.channels.map(c=>{
+  const last=P.filter(p=>p.channel===c.id&&p.stage==='posted').map(p=>p.date).sort().pop();
+  return `<tr><td><span class="pl">${E(c.product)} · ${E(c.platform)}</span>${pv(c)}<small>${c.url?`<a href="${E(c.url)}" target="_blank" style="color:inherit">${E(c.handle)} ↗</a>`:E(c.handle)}</small></td><td>${E(c.owner)}</td><td><span class="pill s-${E(c.status)}">${E(c.status[0].toUpperCase()+c.status.slice(1))}</span><small>${E(c.statusText.replace(/^[A-Za-z]+:\s*/,''))}</small></td><td>${last?fmt(last):'<small>None yet</small>'}</td><td class="tags">${E(c.hashtags)||'<small>None set</small>'}</td></tr>`;}).join('')}</tbody></table>`;
+ document.getElementById('board').innerHTML=ST.map(([k,l])=>{const xs=P.filter(p=>p.stage===k);
+  return `<div class="col ${k}"><h3>${l}<span>${xs.length}</span></h3>${xs.map(p=>`<button class="card" data-p="${E(p.id)}"><span class="k">${E(p.product)} · ${E((ch[p.channel]||{}).platform||'')}</span>${pv(p)}<b>${E(p.title)}</b><small>${p.stage==='posted'?'Posted '+fmt(p.date):p.gate?`<span class="g">Waits on: ${E(p.gate)}</span>`:p.due?'Target '+fmt(p.due):'No date yet'}</small></button>`).join('')||'<div class="empty">Nothing here</div>'}</div>`;}).join('');
+ { const now=new Date();const mon=new Date(now.getFullYear(),now.getMonth(),now.getDate()-((now.getDay()+6)%7));let h='<div class="cal">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="h">${x}</div>`).join('');
+  for(let i=0;i<28;i++){const t=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+i),k=dk(t);
+   const ev=P.filter(p=>(p.stage==='posted'?p.date:p.due)===k);
+   h+=`<div class="d${k<today?' past':''}${k===today?' today':''}"><span class="n">${t.getDate()===1||i===0?t.toLocaleDateString('en-US',{month:'short'})+' ':''}${t.getDate()}</span>${ev.map(p=>`<button class="ev${p.stage==='ready'?' ready':p.stage!=='posted'?' plan':''}" data-p="${E(p.id)}">${E(p.product)}: ${E(p.title)}</button>`).join('')}</div>`;}
+  const un=P.filter(p=>p.stage!=='posted'&&!p.due);
+  document.getElementById('sched').innerHTML=h+'</div>'+(un.length?`<div class="uns">Not scheduled yet: ${un.map(p=>`${E(p.product)}: ${E(p.title)}`).join(' · ')}</div>`:''); }
+ document.getElementById('themes').innerHTML=d.themes.map(t=>`<div class="theme"><span class="k">${E(t.product)}</span>${pv(t)}<b>${E(t.title)}</b><span class="pill s-${E(t.status)}">${t.status==='held'?'Held':'Active'}</span><p>${E(t.text)}</p></div>`).join('');
+ document.getElementById('rules').innerHTML=d.rules.map(r=>`<li>${E(r)}</li>`).join('');
+}
+const dlg=document.getElementById('dlg');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(b&&D){const p=D.posts.find(x=>x.id===b.dataset.p);if(!p)return;const c=D.channels.find(x=>x.id===p.channel)||{};
+ const f=(l,v)=>v?`<div class="f"><b>${l}</b>${v}</div>`:'';
+ dlg.innerHTML=`<div class="hd"><div><small>${E(p.product)} · ${E(c.platform||'')} · ${E((ST.find(s=>s[0]===p.stage)||['',''])[1])}</small><h3>${E(p.title)}</h3></div><button class="x" aria-label="Close">✕</button></div><div class="bd">`
+  +f('Summary',E(p.summary))+f('Channel',E((c.handle||'')))+f('Drafted by',E(p.owner))+f('Posted',p.stage==='posted'?fmt(p.date):'')+f('Target date',p.due?fmt(p.due):'')+f('Waits on',E(p.gate))
+  +f('Draft',p.draft?`<a href="${E(p.draft)}">Open the draft</a>`:'')+'</div>';
+ dlg.showModal();return;}
+ if(e.target.closest('dialog .x')||e.target===dlg)dlg.close();});
+function load(){const s=document.createElement('script');s.src='marketing-data.js?'+Date.now();s.onload=()=>{s.remove();render();};s.onerror=()=>s.remove();document.head.appendChild(s);}
+load();setInterval(load,10000);
+</script></body></html>
