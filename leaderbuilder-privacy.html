@@ -94,7 +94,7 @@
   <a href="leaderbuilder.html" class="back-link">← Back to LDR | BLDR</a>
 
   <h1>LDR | BLDR — Privacy Policy</h1>
-  <p class="updated"><strong>Effective Date:</strong> May 26, 2026 · <strong>Last Updated:</strong> June 6, 2026</p>
+  <p class="updated"><strong>Effective Date:</strong> May 26, 2026 · <strong>Last Updated:</strong> November 18, 2026</p>
 
   <p>LDR | BLDR ("we," "our," or "us") is a fly-fishing utility app built by Moonshinerxwerks LLC. This Privacy Policy explains how we collect, use, store, and protect your information when you use the LDR | BLDR mobile application and any companion web experience (collectively, the "App"). By using the App, you agree to the practices described here. If you do not agree, please do not use the App.</p>
 
@@ -146,7 +146,8 @@
 
   <h2>4. How Your Data Is Stored and Synced</h2>
   <p>Your account and content are stored in a Postgres database hosted by Supabase in the United States. The App syncs that data to your device's local storage so that you can use it offline; the sync layer is provided by PowerSync, which streams only the rows scoped to your user account.</p>
-  <p>When you sign out, the local copy of your data on your device is cleared. When you sign back in, your data is re-synced from the Supabase database.</p>
+  <p>When you sign out, the App deletes your data from your device. Anything already synced stays safe in our database and comes back when you sign in again. If you have changes that haven't synced yet, the App warns you first; if you sign out anyway, those changes are deleted and can't be recovered.</p>
+  <p>If your login expires on its own instead, and you have unsynced changes, the App keeps your data on the device and pauses syncing. When you sign back in with the same account, your changes sync. If a different account signs in on that device first, your data is deleted from the device before anything else is shown, and your unsynced changes are lost. They are never added to the other person's account.</p>
 
   <h2>5. How We Use Aggregate Data to Improve the App</h2>
   <p>Some features of LDR | BLDR work better as more anglers use the App. To support those features, we may use a narrow slice of the content you create — what we call "Pairing Data" in our Terms of Service — in <strong>aggregate and de-identified form</strong>.</p>
@@ -228,7 +229,7 @@
     <li>All communication between the App and our servers uses encrypted HTTPS / TLS connections.</li>
     <li>Supabase encrypts data at rest in the underlying database.</li>
     <li>Passwords are hashed by Supabase Auth before storage — we never see or store your plain-text password.</li>
-    <li>Your local cache is cleared when you sign out of the App.</li>
+    <li>Your data is deleted from your device when you sign out. If your login expires while you have unsynced changes, your data stays on the device until you sign back in, and it is deleted before anyone else's account can use the App on that device.</li>
   </ul>
   <p>No method of transmission or storage is 100% secure. While we take commercially reasonable steps to protect your data, we cannot guarantee absolute security.</p>
 
