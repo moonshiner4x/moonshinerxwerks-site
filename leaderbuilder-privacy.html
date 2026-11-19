@@ -103,7 +103,7 @@
   <h2>1. Who We Are</h2>
   <p>LDR | BLDR is a product of:</p>
   <p><strong>Moonshinerxwerks LLC</strong><br>Bend, Oregon, USA<br>Contact: <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a></p>
-  <p>For any privacy question, data request, or account deletion, email <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> and include the email address associated with your account.</p>
+  <p>For any privacy question, data request, or account deletion, email <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> and include the email address associated with your account (or tell us your sign-in method and the email you used).</p>
 
   <h2>2. Information We Collect</h2>
 
@@ -112,9 +112,10 @@
   <ul>
     <li><strong>Sign in with Apple</strong> — a unique identifier from Apple and the email address Apple shares. If you choose Apple's "Hide My Email" option, we only ever receive Apple's private-relay address; your real email is not shared with us.</li>
     <li><strong>Sign in with Google</strong> — a unique identifier from Google, the email address tied to your Google account, and the display name on that account.</li>
-    <li><strong>Email + Password</strong> — the email address you provide and a password. Passwords are never stored in plain text — they are hashed by Supabase Auth before being written to our database.</li>
+    <li><strong>Email + Password</strong> — available only to accounts that already use it; new accounts can't be created with an email address and password. For those accounts we hold the email address you gave us and a password. Passwords are never stored in plain text — they are hashed by Supabase Auth before being written to our database.</li>
   </ul>
   <p>We do not collect your phone number, address, date of birth, or any government identifier.</p>
+  <p>If you signed in with an email address and password and forget your password, email info@moonshinerxwerks.com from the email address on your account. The App doesn't send password-reset emails. We reply only to that address with a one-time temporary password, and you then set your own in the App's Settings (Change password).</p>
 
   <h3>2.2 Content You Create</h3>
   <p>LDR | BLDR is a leader-recipe app. The content you create stays scoped to your account and includes:</p>
@@ -142,6 +143,7 @@
     <li>Respond to your support requests, bug reports, and feature suggestions</li>
     <li>Comply with applicable legal obligations</li>
   </ul>
+  <p><strong>Account emails.</strong> The App doesn't send password-reset or change-email emails. If a confirmation message is ever sent to an email account, it comes from Supabase, our sign-in provider, on our behalf. We say "ever" because earlier versions of the app can still create email accounts.</p>
   <p>We do not use your information for advertising, marketing personalization, behavioral profiling, or any form of analytics about you as an individual.</p>
 
   <h2>4. How Your Data Is Stored and Synced</h2>
@@ -159,9 +161,10 @@
   <p>Before any Pairing Data is used outside of serving the App back to you, we remove the identifiers that connect it to you, including:</p>
   <ul>
     <li>Your name, email address, and account identifier</li>
-    <li>Any nicknames, recipe titles, notes, purpose descriptions, custom rod or gear names, or other free-text fields you have entered (collectively, your "Personal Expression")</li>
+    <li>Any casting, recipe or leader notes you have entered (collectively, your "Personal Expression")</li>
     <li>The creation timestamps and any other metadata that could be used to single out your account</li>
   </ul>
+  <p>Custom gear you add, such as a line, tip or leader material, including the name and description you type for it, is treated as gear data, not Personal Expression. We remove the link to your account, but we don't change what you typed.</p>
   <p>Once stripped, the remaining data describes only that, for example, "a 5-weight rod of this model is often paired with this line and this leader" — not who made that pairing.</p>
 
   <h3>5.3 What We May Use It For</h3>
@@ -174,7 +177,8 @@
 
   <h3>5.4 What We Will Not Do With Your Content</h3>
   <ul>
-    <li>We will <strong>not</strong> share, sell, or publish your Personal Expression — the notes, recipe titles, custom names, or anything else you wrote in your own words — to other users.</li>
+    <li>We will <strong>not</strong> share, sell, or publish your Personal Expression — your casting, recipe and leader notes — to other users.</li>
+    <li>Custom gear you add, including its name and description, may be reviewed by us and added to the shared catalog, without any link to you.</li>
     <li>We will <strong>not</strong> attribute any recommendation or popularity signal to you by name, handle, email, or any other identifier without your separate, explicit opt-in.</li>
     <li>If we introduce a future opt-in feature that shows Your Content to other users <em>as having come from you</em>, we will present additional terms before you turn it on and you will be able to turn it back off.</li>
   </ul>
@@ -193,7 +197,7 @@
 
   <h2>7. Third-Party Services We Use</h2>
   <p>LDR | BLDR relies on a small number of third-party services to function. Each handles your data only as needed to deliver its part of the App:</p>
-  <table>
+  <div class="table-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%"><table>
     <thead><tr><th>Service</th><th>Purpose</th><th>Privacy Policy</th></tr></thead>
     <tbody>
       <tr><td><strong>Supabase</strong></td><td>Authentication and database hosting</td><td><a href="https://supabase.com/privacy">supabase.com/privacy</a></td></tr>
@@ -202,7 +206,7 @@
       <tr><td><strong>Google</strong></td><td>Sign in with Google</td><td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td></tr>
       <tr><td><strong>Amazon</strong></td><td>Amazon Associates affiliate program — handles "Buy on Amazon" link clicks from catalog items</td><td><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ">amazon.com privacy notice</a></td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p>We encourage you to review their policies. These providers are bound by contractual and platform obligations limiting how they may use the data they process on our behalf.</p>
 
   <h3>7.1 Note on Amazon affiliate links</h3>
@@ -216,19 +220,19 @@
     <li><strong>Deletion</strong> — request that we delete your account and associated data</li>
     <li><strong>Portability</strong> — request your data in a structured, machine-readable format</li>
   </ul>
-  <p>To exercise any of these rights, email <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> from the email address associated with your account. We will respond within 30 days. We may need to verify your identity before processing a request.</p>
-  <p>You can delete your account at any time from inside the App (<strong>Settings → Delete account</strong>), or by emailing <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> from your account's email address.</p>
-  <p>When you delete your account, we permanently remove your <strong>authentication record</strong> (your sign-in identity and email address), your <strong>favorites</strong>, and all of your <strong>Personal Expression</strong> — casting notes, recipe notes, purpose descriptions, and any other free text you wrote. We <strong>retain the structured gear-pairing choices</strong> you created (which rod pairs with which line, leader, tip, and water conditions) in <strong>de-identified form</strong>, with every link to you removed, as described in Section 5. Curated catalog data is not associated with you and is not affected. The removal of your identity and Personal Expression cannot be undone.</p>
+  <p>To exercise any of these rights, email <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> from the email address associated with your account (or tell us your sign-in method and the email you used). We will respond within 30 days. We may need to verify your identity before processing a request.</p>
+  <p>You can delete your account at any time from inside the App (<strong>Settings → Delete account</strong>), or by emailing <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a> from your account's email address (or tell us your sign-in method and the email you used).</p>
+  <p>When you delete your account, we permanently remove your <strong>authentication record</strong> (your sign-in identity and email address), your <strong>favorites</strong>, and your <strong>Personal Expression</strong>: your casting, recipe and leader notes. We keep the gear-pairing choices you created (which rod pairs with which line, leader, tip and water conditions) and any custom gear you added, including the names and descriptions you typed for it, without any link to your account, as described in Section 5. We don't change what you typed, so if a description has anything personal in it, email info@moonshinerxwerks.com before you delete your account and we'll clear it. Curated catalog data is not associated with you and is not affected. The removal of your identity and Personal Expression cannot be undone.</p>
 
   <h2>9. Data Retention</h2>
-  <p>We retain your account and content for as long as your account is active. If you delete your account, your authentication record, favorites, and Personal Expression are removed from our live database immediately and from backups within 30 days. The de-identified Pairing Data described in Section 5 may be retained after that point, since it no longer identifies you. Support emails you send us are retained for a reasonable period to maintain a record of resolved issues.</p>
+  <p>We retain your account and content for as long as your account is active. If you delete your account, your authentication record, favorites, and Personal Expression are removed from our live database immediately and from backups within 30 days. The de-identified Pairing Data described in Section 5 may be retained after that point, since it is no longer linked to your account. Support emails you send us are retained for a reasonable period to maintain a record of resolved issues.</p>
 
   <h2>10. Security</h2>
   <p>We protect your information with industry-standard safeguards:</p>
   <ul>
     <li>All communication between the App and our servers uses encrypted HTTPS / TLS connections.</li>
     <li>Supabase encrypts data at rest in the underlying database.</li>
-    <li>Passwords are hashed by Supabase Auth before storage — we never see or store your plain-text password.</li>
+    <li>For accounts that sign in with an email address, passwords are hashed by Supabase Auth before storage — we never see or store your plain-text password.</li>
     <li>Your data is deleted from your device when you sign out. If your login expires while you have unsynced changes, your data stays on the device until you sign back in, and it is deleted before anyone else's account can use the App on that device.</li>
   </ul>
   <p>No method of transmission or storage is 100% secure. While we take commercially reasonable steps to protect your data, we cannot guarantee absolute security.</p>
@@ -245,7 +249,7 @@
   <h2>14. Contact Us</h2>
   <p>If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us:</p>
   <p><strong>Moonshinerxwerks LLC</strong><br>Bend, Oregon, USA<br>Email: <a href="mailto:info@moonshinerxwerks.com">info@moonshinerxwerks.com</a></p>
-  <p>For account deletion or data-export requests, please include the email address associated with your account.</p>
+  <p>For account deletion or data-export requests, please include the email address associated with your account (or tell us your sign-in method and the email you used).</p>
 
 </div>
 
