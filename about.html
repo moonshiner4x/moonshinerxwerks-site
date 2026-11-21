@@ -4,7 +4,7 @@
   Created Date: 2026-11-16
   Last Edited Date: 2026-11-21
   Copyright: © 2026 Moonshinerxwerks LLC. All rights reserved.
-  Code Description: About page with the "How the studio runs" chapter; the Reporting section embeds the clickable Operations Command Center replica (command-center/index.html) in an iframe, labeled as sample data.
+  Code Description: About page with the "How the studio runs" chapter; the Reporting section describes the Operations Command Center and shows a static illustration of how a message becomes a decision.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -204,7 +204,6 @@
   .feat { border-top: 1px solid #3a3a3a; padding-top: 16px; }
   .feat h3 { font-size: .98rem; font-weight: 500; }
   .feat p { color: var(--text-2); font-size: .86rem; line-height: 1.6; margin-top: 6px; }
-  .sample-note { display: inline-flex; align-items: center; gap: 8px; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid #5a4c17; background: #1a1607; border-radius: 100px; padding: 4px 12px; }
 
   /* ── 04 Execution ── */
   .ship { margin-top: 56px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
@@ -372,29 +371,8 @@
 }
 
 
-  .live-demo { margin-top: 56px; }
-  .demo-frame { border: 1px solid var(--line-2); border-radius: 20px; overflow: hidden; background: #050505; box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.02); }
-  .demo-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 16px; border-bottom: 1px solid var(--line); background: #0a0a0a; }
-  .demo-live { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; color: var(--text); font-weight: 500; }
-  .demo-live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: dping 2.4s ease-out infinite; }
   @keyframes dping { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.55); } 70%, 100% { box-shadow: 0 0 0 8px rgba(74,222,128,0); } }
-  .demo-bar .full { margin-left: auto; font-size: .8rem; color: var(--text-2); text-decoration: none; border: 1px solid var(--line-2); border-radius: 100px; padding: 5px 12px; white-space: nowrap; }
-  .demo-bar .full:hover { color: var(--text); border-color: #444; }
-  .demo-frame iframe { display: block; width: 100%; height: 820px; border: 0; background: #000; }
-  .try { margin-top: 18px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  .try div { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--bg-elevated); }
-  .try small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); }
-  .try b { display: block; font-weight: 500; font-size: .9rem; margin-top: 4px; }
-  .try span { display: block; color: var(--text-2); font-size: .82rem; margin-top: 2px; }
-  .demo-note { margin-top: 16px; color: var(--text-2); font-size: .8rem; }
-  @media (max-width: 1100px) { .try { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 700px) {
-    .live-demo { margin-top: 40px; }
-    .demo-frame { border-radius: 14px; margin: 0 -8px; }
-    .demo-frame iframe { height: 680px; }
-    .demo-bar { padding: 10px 12px; gap: 8px; }
-    .demo-bar .sample-note { font-size: .58rem; padding: 2px 8px; }
-    .try { grid-template-columns: 1fr; gap: 8px; }
   }
 
 </style>
@@ -414,6 +392,22 @@
     n.classList.remove('menu-open'); var b = n.querySelector('.mobile-toggle'); if (b) { b.textContent = '☰'; b.setAttribute('aria-expanded', 'false'); }
   });
 </script>
+<style>
+.lessons{margin-top:120px}.lessons .rails{margin-top:36px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:768px){.lessons{margin-top:88px}.lessons .rails{grid-template-columns:1fr}}
+</style>
+<style>
+.flow{margin-top:56px;border:1px solid var(--line-2);border-radius:20px;padding:28px;background:#070707}
+.flow-k{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);margin-bottom:18px}.flow-k span{margin-left:10px;color:#5d5d5d}
+.flow-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+.fn{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--bg-elevated)}.fn.me{border-color:#6b5420}
+.fn small{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}.fn b{display:block;font-family:var(--font-display);font-weight:400;font-size:1.35rem;margin:4px 0 6px}.fn span{display:block;color:var(--text-2);font-size:.84rem;line-height:1.55}
+.fa{align-self:center;color:var(--text-2);font-size:1.3rem}
+.flow-back{margin-top:16px;color:var(--text-2);font-size:.86rem}
+.flow-ex{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}.flow-ex small{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}.flow-ex p{margin-top:6px;color:#cfcbc5;font-size:.9rem;line-height:1.7;max-width:none}.flow-ex b{color:var(--text);font-weight:500}
+@media (max-width:1100px){.flow-row{grid-template-columns:1fr 1fr}.fa{display:none}}
+@media (max-width:768px){.flow{margin-top:40px;padding:20px 16px;border-radius:14px}.flow-row{grid-template-columns:1fr}}
+</style>
 </head>
 <body id="top">
 
@@ -599,7 +593,7 @@
         <div class="raci-copy">
           <p class="k" style="margin-bottom:12px">RACI</p>
           <h3>Every kind of work has <em>exactly one</em> Accountable role.</h3>
-          <p>The RACI lives on a page I edit live, and agents read it before they act. Changing who owns something is an edit, not a meeting. <a href="#reporting" style="color:var(--text)">Try editing it in the demo below.</a></p>
+          <p>The RACI lives on a page I edit live, and agents read it before they act. Changing who owns something is an edit, not a meeting.</p>
         </div>
         <div class="rx">
           <div class="rx-legend"><span><i class="k R">R</i>Responsible: does the work</span><span><i class="k A">A</i>Accountable: owns the outcome (only one per row)</span><span><i class="k AR">A/R</i>Both</span><span><i class="k C">C</i>Consulted: asked before or during</span><span><i class="k I">I</i>Informed: told after</span></div>
@@ -640,6 +634,8 @@
           <div class="proto"><div class="n">03</div><div><h3>Check-in <small>On demand</small></h3><p>I can ask every Product Advisor for a check-in at once. Each answers the same four questions: done, doing, blocked, needs a decision.</p></div></div>
           <div class="proto"><div class="n">04</div><div><h3>End-of-session check <small>Before I sign off</small></h3><p>What changed, what’s unsaved, what’s waiting. Nothing gets stranded between one working session and the next.</p></div></div>
           <div class="proto"><div class="n">05</div><div><h3>Release runbook <small>Every release</small></h3><p>Releases follow written steps with gates. An agent can’t skip a gate, and the runbook records who cleared each one.</p></div></div>
+          <div class="proto"><div class="n">06</div><div><h3>Morning briefing <small>Every morning</small></h3><p>A short briefing of what changed overnight, what carries over to today and what is waiting on me. Nothing is dropped silently: anything unfinished is carried forward by name.</p></div></div>
+          <div class="proto"><div class="n">07</div><div><h3>Current decisions page <small>One per product</small></h3><p>Each product keeps one page of decided items, release state and what is waiting on me. Every agent reads it before asking me anything, so I am never asked the same question twice.</p></div></div>
         </div>
 
         <div class="feed" aria-label="Sample Program Manager inbox">
@@ -649,6 +645,8 @@
             <div class="msg c-spec"><div class="mh"><span class="ty">Direct note</span><span class="fr">QA Analyst</span></div><p>Studio Owner asked me directly for a small-phone audit of Product A onboarding. Logging it here so the roadmap stays whole. <b>Finding:</b> spacing fails on the first screen.</p></div>
             <div class="msg c-pl"><div class="mh"><span class="ty">Check-in</span><span class="fr">Product B - Advisor</span></div><p><b>Done:</b> crash fix checked on both platforms. <b>Doing:</b> Release 2.4 proposal. <b>Blocked:</b> none. <b>Needs a decision:</b> none.</p></div>
             <div class="msg c-ops"><div class="mh"><span class="ty">Runbook gate</span><span class="fr">Release 2.3 · Product A</span></div><p>Gate 5 of 7, quality review, in progress. Next gate: <b>Studio Owner sign-off</b>.</p></div>
+            <div class="msg c-lead"><div class="mh"><span class="ty">Morning briefing</span><span class="fr">Program Manager</span></div><p><b>Overnight:</b> one release moved a gate. <b>Carried to today:</b> an audit and two decisions. <b>Dropped:</b> nothing.</p></div>
+            <div class="msg c-pl"><div class="mh"><span class="ty">Current decisions</span><span class="fr">Product A - Advisor</span></div><p>Page updated: onboarding copy <b>decided</b>, release at <b>gate 5</b>. Waiting on Studio Owner: <b>sign-off</b>.</p></div>
             <div class="msg c-lead"><div class="mh"><span class="ty">End-of-session check</span><span class="fr">Program Manager</span></div><p><b>Changed:</b> 3 records. <b>Unsaved:</b> none. <b>Waiting on you:</b> 3 decisions, 3 actions.</p></div>
           </div>
         </div>
@@ -671,18 +669,19 @@
         <div class="feat"><h3>Direct line</h3><p>A chat drawer to message the Program Manager without leaving the dashboard.</p></div>
       </div>
 
-<div class="live-demo">
-        <div class="demo-frame">
-          <div class="demo-bar"><span class="demo-live">Interactive demo</span><span class="sample-note">This is a demo with sample data</span><a class="full" href="command-center/index.html" target="_blank" rel="noopener">Open full screen ↗</a></div>
-          <iframe src="command-center/index.html" title="Operations Command Center demo with sample data" loading="lazy"></iframe>
+<div class="flow">
+        <p class="flow-k">How a message becomes a decision <span>Illustration, invented example</span></p>
+        <div class="flow-row">
+          <div class="fn"><small>1 · Agents</small><b>Do the work</b><span>Advisors, Engineers, QA, Research and Legal each report in a fixed format.</span></div>
+          <div class="fa" aria-hidden="true">&rarr;</div>
+          <div class="fn"><small>2 · Program Manager</small><b>Rolls it up</b><span>One picture of the studio: what moved, what is blocked, what needs me.</span></div>
+          <div class="fa" aria-hidden="true">&rarr;</div>
+          <div class="fn"><small>3 · Command Center</small><b>Shows it</b><span>Executive summary, live agent status, context use, usage and cost.</span></div>
+          <div class="fa" aria-hidden="true">&rarr;</div>
+          <div class="fn me"><small>4 · Studio Owner</small><b>Decides</b><span>Picks an option, with the recommendation in front of me.</span></div>
         </div>
-        <div class="try" aria-label="Things to try">
-          <div><small>Try 1</small><b>Open a decision</b><span>Click any decision for why it matters, the options and the recommended one.</span></div>
-          <div><small>Try 2</small><b>Check agent status</b><span>Agents waiting on direction come first; working rows pulse. Click Tokens today for usage per day by model.</span></div>
-          <div><small>Try 3</small><b>Edit the RACI</b><span>Organization, then RACI, then Edit RACI. Give a row two A’s and it’s flagged.</span></div>
-          <div><small>Try 4</small><b>Message PM</b><span>The PM button docks the chat. Pick an answer in a decision and it arrives typed.</span></div>
-        </div>
-        <p class="demo-note">Everything in the demo is invented sample data and runs entirely in your browser. The real command center runs locally and isn’t public.</p>
+        <p class="flow-back">&larr; The answer travels back the same way, through the direct line to the Program Manager, and the agents act on it.</p>
+        <div class="flow-ex"><small>Example, invented</small><p><b>Agent:</b> &ldquo;Onboarding copy is ready. Two wording options.&rdquo; &rarr; <b>Summary card:</b> &ldquo;Decision needed: pick option A or B. Recommended: A, because it is shorter.&rdquo; &rarr; <b>Studio Owner:</b> &ldquo;A.&rdquo; &rarr; <b>Agent:</b> continues with A.</p></div>
       </div>
 
     </div>
@@ -738,6 +737,18 @@
           <div><small>Delivery governance</small><b>A gated, seven-step release path</b><span>No one checks their own work</span></div>
           <div><small>Risk and controls</small><b>Guardrails and a compliance log</b><span>Clear lines a human must approve</span></div>
           <div><small>Resource management</small><b>Context and cost monitoring</b><span>Capacity treated as a budget</span></div>
+        </div>
+      </div>
+    
+      <div class="lessons">
+        <p class="k">Still learning</p>
+        <h2 class="ops-h">What I&rsquo;ve learned <em>running the team.</em></h2>
+        <p class="ops-lede">Four lessons so far, in plain words. I expect the list to change.</p>
+        <div class="rails">
+          <div><div class="n">01</div><h3>Tell everyone on the job</h3><p>When something is decided, I tell every agent working on that job, not only the one who asked. Otherwise an agent keeps acting on old information.</p></div>
+          <div><div class="n">02</div><h3>Give each agent its own lane</h3><p>Shared resources need an owner. Two agents once used the same test device and disturbed each other&rsquo;s work, so now each has its own.</p></div>
+          <div><div class="n">03</div><h3>Keep working files where a restart can&rsquo;t wipe them</h3><p>Notes, test runs and screenshots live in a folder that survives a restart, not in a temporary one.</p></div>
+          <div><div class="n">04</div><h3>One page of current decisions per product</h3><p>Every agent reads it first, so nobody asks me something I already answered.</p></div>
         </div>
       </div>
     </div>
